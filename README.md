@@ -1,8 +1,8 @@
 # KekApp
 App for lulz
 
-## Routes
+## api Routes
 
 | Route | Info |
 | ------ | ------ |
-| /getdays | Route for get days |
+| api/getdays | Route for get days |

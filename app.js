@@ -8,6 +8,9 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/getdays');
 
+var createEmptyDay = require('./addDay');
+var getDaySeconds = require('./libs/getDaySeconds');
+
 var app = express();
 
 // view engine setup
@@ -44,3 +47,16 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+
+function generateDaily(){
+	var restDay = getDaySeconds();
+	var dayDuration = 86400000;
+	var timeForInterval = dayDuration - restDay;
+	setTimeout(function(){
+		createEmptyDay(Date.now());
+		generateDaily();
+	},timeForInterval);
+};
+
+generateDaily();

@@ -10,8 +10,8 @@ var schema = new Schema({
 		type: Date,
 		default: Date.now,
 		unique: true,
-		get: getFormatData
-		// set: setFormatData
+		get: getFormatData,
+		set: setFormatData
 	},
 	items: [
 		{
@@ -31,7 +31,7 @@ function setFormatData(date){
 }
 
 function getFormatData(date){
-	return moment(date).format('DD.MM.[2к]YY');
+	return moment(date).format('DD.MM.YYYY');
 }
 
 exports.Day = mongoose.model('Day', schema);

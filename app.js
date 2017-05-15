@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var CronJob = require('cron').CronJob;
 
 
 var createEmptyDay = require('./addDay');
@@ -30,6 +31,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/api', api);
 
+// app.post('/api/updatelist', function(req, res, next){
+//  // DaysData.findById
+//  res.send(200, 'ok');
+// });
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -48,17 +54,15 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
-
-
-function generateDaily(){
-	var restDay = getDaySeconds();
-	var dayDuration = 86400000;
-	var timeForInterval = dayDuration - restDay;
-	setTimeout(function(){
+var generateDays = new CronJob({
+  cronTime: '0 30 0 1-31 * *',
+  onTick: function() {
+    console.log('job 1 ticked');
 		createEmptyDay(Date.now());
-		generateDaily();
-	},timeForInterval);
-};
+  },
+  start: false
+});
 
-generateDaily();
+generateDays.start();
+
+module.exports = app;

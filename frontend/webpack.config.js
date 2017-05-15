@@ -9,10 +9,10 @@ const autoprefixer = require('autoprefixer');
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProduction = nodeEnv === 'production';
 
-const jsSourcePath = path.join(__dirname, './src/js');
-const buildPath = path.join(__dirname, './../public');
-const imgPath = path.join(__dirname, './src/assets/img');
-const sourcePath = path.join(__dirname, './src');
+const jsSourcePath = path.join(__dirname, './source/js');
+const buildPath = path.join(__dirname, '../public');
+const imgPath = path.join(__dirname, './source/assets/img');
+const sourcePath = path.join(__dirname, './source');
 
 
 
@@ -28,7 +28,11 @@ const plugins = [
       return context && context.indexOf('node_modules') >= 0;
     },
   }),
- 
+  new HtmlWebpackPlugin({
+    template: path.join(sourcePath, 'index.html'),
+    path: buildPath,
+    filename: 'index.html',
+  }),
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify(nodeEnv),
@@ -134,7 +138,7 @@ module.exports = {
   },
   output: {
     path: buildPath,
-    publicPath: '/',
+    publicPath: '../public/',
     filename: 'app.js',
   },
   module: {
@@ -151,11 +155,15 @@ module.exports = {
   devServer: {
     contentBase: isProduction ? buildPath : sourcePath,
     historyApiFallback: true,
-    port: 8000,
+    port: 3000,
     compress: isProduction,
     inline: !isProduction,
     hot: !isProduction,
     host: '0.0.0.0',
+    proxy: [{
+            path: '/api/*',
+            target: 'http://localhost:3001'
+        }],
     stats: {
       assets: true,
       children: false,

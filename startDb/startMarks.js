@@ -1,7 +1,13 @@
 module.exports = [
 	{
 		title: 'Пиво',
-		defaultItem: true
+		defaultItem: false,
+		create: '10.04.2017'
+	},	
+	{
+		title: 'Пиво',
+		defaultItem: false,
+		create: '10.05.2017'
 	},
 	{
 		title: 'Проезд',

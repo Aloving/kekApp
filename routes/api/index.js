@@ -1,9 +1,13 @@
 let express = require('express');
 var router = express.Router();
 var mongoose = require('../../libs/mongoose');
+var moment = require('../../libs/moment');
 var DaysData = require('../../models/Day').Day;
 var HttpError = require('../../libs/error-handler').HttpError;
 var MarksData = require('../../models/Mark').Mark;
+
+var todayMonth = moment(new Date()).get('month');
+
 
 /* GET days listing. */
 router.get('/getdays', (req, res, next) => {
@@ -37,18 +41,25 @@ router.post('/updatelist/:id', (req, res, next) => {
 router.get('/getmarks', (req, res, next) => {
 	MarksData.find({}, (err, datamarks) => {
 		if(err) return next(err);
-		res.json(sortByDefault(datamarks));
+		res.json(
+			datamarks
+				.filter(sortByMonth)
+				.reduce(sortByDefault, {
+					defaults: [],
+					unDefaults: []
+				})
+			);
 	});
 
-	function sortByDefault(arr){
-		return arr.reduce((prev, current) => {
-			current.defaultItem ? prev.defaults.push(current) : prev.unDefaults.push(current);
-			return prev;
-		}, {
-			defaults: [],
-			unDefaults: []
-		});
+	function sortByMonth(item){
+		return item.defaultItem || moment(item.create, 'DD.MM.YYYY').get('month') == todayMonth;
 	}
+
+	function sortByDefault(prev, current){
+		current.defaultItem ? prev.defaults.push(current) : prev.unDefaults.push(current);
+		return prev;
+	}
+
 });
 
 router.post('/addmark', (req, res, next) => {

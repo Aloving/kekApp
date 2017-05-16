@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var CronJob = require('cron').CronJob;
 
 
-var createEmptyDay = require('./addDay');
+var createEmptyDay = require('./libs/addDay');
 
 var app = express();
 

@@ -1,6 +1,6 @@
 
 function createDailtyItem(fromDate){
-	var mongoose = require('./libs/mongoose');
+	var mongoose = require('../libs/mongoose');
 
 	function open(){
 		return new Promise((resolve, reject) => {

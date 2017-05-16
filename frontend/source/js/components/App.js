@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import update from 'react-addons-update';
 import Container from './Container'
-
+import Modal from './Modal';
 
 var data = [
     {
@@ -155,6 +155,7 @@ class App extends React.Component {
         <div className="App">
             <header className="header"/>
             <Container onDeleteItem={this.deleteItem} cards={this.state.cards}/>
+            <Modal/>
         </div>
 
 

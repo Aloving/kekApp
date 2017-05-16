@@ -11,7 +11,7 @@ var todayMonth = moment(new Date()).get('month');
 
 /* GET days listing. */
 router.get('/getdays', (req, res, next) => {
-	DaysData.find({}, (err, datadays) => {
+	DaysData.find({}).sort({date: -1}).exec((err, datadays) => {
 		if (err) next(err);
 		res.json(datadays);
 	});

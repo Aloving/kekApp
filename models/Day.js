@@ -16,6 +16,7 @@ var schema = new Schema({
 		{
 			title: String,
 			price: Number,
+			unique: false,
 			defaultItem: Boolean
 		}
 	]

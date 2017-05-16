@@ -9,6 +9,7 @@ var schema = new Schema({
 		type: Date,
 		default: Date.now,
 		unique: true,
+		required: true,
 		get: getFormatData,
 		set: setFormatData
 	},
@@ -16,7 +17,6 @@ var schema = new Schema({
 		{
 			title: String,
 			price: Number,
-			unique: false,
 			defaultItem: Boolean
 		}
 	]

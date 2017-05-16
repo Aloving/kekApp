@@ -13,7 +13,7 @@ module.exports = [
 		]
 	},
 	{
-		date: '11.12.2017',
+		date: '08.12.2017',
 		items: [
 			{
 				title: 'Пиво',

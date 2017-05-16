@@ -5,26 +5,33 @@ var startMarks = require('./startDb/startMarks');
 
 
 function createMarks(){
-	require('./models/Mark');
 	return Promise.each(startMarks, (item) => {
-		var saveMark =  mongoose.models.Mark(item);
+		var saveMark = new mongoose.models.Mark(item);
 		return saveMark.save();
 	});
 }
 
 function open(){
-	return new Promise((resolve, reject) => {
+	return new Promise((resolve) => {
 		mongoose.connection.on('open', resolve);
+	});
+}
+
+function requireModels(){
+	require('./models/Day');
+	require('./models/Mark');
+	return Promise.each(Object.keys(mongoose.models), (modelName) =>{
+		return mongoose.models[modelName].ensureIndexes();
 	});
 }
 
 function dropDb() {
 	var db = mongoose.connection.db;
-	return new Promise((resolve, reject) => db.dropDatabase(resolve));
+	return new Promise((resolve) => db.dropDatabase(resolve));
 }
 
 function createDays(marks){
-	require('./models/Day');
+
 	return Promise.each(startDaysData, (day) => {
 		day.items.map((cat) => {
 			cat.defaultItem = marks.some((item) => item.title == cat.title && item.defaultItem);
@@ -36,6 +43,7 @@ function createDays(marks){
 
 open()
 	.then(dropDb)
+	.then(requireModels)
 	.then(createMarks)
 	.then(createDays)
 	.then(() => mongoose.disconnect())

@@ -1,7 +1,6 @@
-var mongoose = require('../libs/mongoose'),
-		Schema = mongoose.Schema;
-
-		mongoose.set('debug', true);
+var mongoose = require('../libs/mongoose');
+var Schema = mongoose.Schema;
+mongoose.set('debug', true);
 
 var schema = new Schema({
 	title: {

@@ -1,4 +1,4 @@
-var express = require('express');
+let express = require('express');
 var router = express.Router();
 var mongoose = require('../../libs/mongoose');
 var DaysData = require('../../models/Day').Day;
@@ -8,22 +8,22 @@ var MarksData = require('../../models/Mark').Mark;
 /* GET days listing. */
 router.get('/getdays', (req, res, next) => {
 	DaysData.find({}, (err, datadays) => {
-		if (err) return next(err);
+		if (err) next(err);
 		res.json(datadays);
 	});
 });
 
 router.post('/updatelist/:id', (req, res, next) => {
 	DaysData.findById(req.params.id, (err, day) => {
-		if (err) next(err);
-
-		if(!day){
-			next(new HttpError(404, "Day not found"));
+		if (err) {
+			next(err);
+		} else if (!day) {
+			next(new HttpError(404, 'Day not found'));
 		}
 
 		day.items.push({
 			title: req.body.title,
-			price: Number(req.body.price)
+			price: Number(req.body.price),
 		});
 
 		day.save((err, updatedDay) => {

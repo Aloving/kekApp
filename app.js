@@ -8,7 +8,6 @@ var CronJob = require('cron').CronJob;
 
 
 var createEmptyDay = require('./addDay');
-var getDaySeconds = require('./libs/getDaySeconds');
 
 var app = express();
 
@@ -33,29 +32,29 @@ app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+	var err = new Error('Not Found');
+	err.status = 404;
+	next(err);
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+	// set locals, only providing error in development
+	res.locals.message = err.message;
+	res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+	// render the error page
+	res.status(err.status || 500);
+	res.render('error');
 });
 
 var generateDays = new CronJob({
-  cronTime: '0 30 0 1-31 * *',
-  onTick: function() {
-    console.log('job 1 ticked');
+	cronTime: '0 30 0 1-31 * *',
+	onTick: function() {
+		console.log('job 1 ticked');
 		createEmptyDay(Date.now());
-  },
-  start: false
+	},
+	start: false
 });
 
 generateDays.start();

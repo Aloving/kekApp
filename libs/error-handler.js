@@ -1,4 +1,3 @@
-var path = require('path');
 var util = require('util');
 var http = require('http');
 
@@ -7,7 +6,7 @@ function HttpError(status, message){
 	Error.captureStackTrace(this, HttpError);
 
 	this.status = status;
-	this.message = message || http.STATUS_CODES[status] || "error";
+	this.message = message || http.STATUS_CODES[status] || 'error';
 }
 
 util.inherits(HttpError, Error);

@@ -1,25 +1,50 @@
-import { createStore } from 'redux';
-import {getdays} from './api';
+import {createStore} from 'redux';
 
+import {action_addmark} from './actions';
+import {action_getdays} from './actions';
+import {addmark} from './api';
 
+const initialState = {
+    days: [],
+    marks: []
+};
 
-
-function counter(state = 0, action) {
+function counter(state = initialState, action) {
     switch (action.type) {
-        case 'INCREMENT':
-            return state + 1
-        case 'DECREMENT':
-            return state - 1
-        case 'GETDAYS':
-             getdays().then( (data) => {return data});
-        default:
-            return state
+    case 'GET_MARKS':
+        return {...state, ...{marks : action.data}};
+    case 'GET_DAYS':
+        return {...state, ...{days : action.data}};
+    case 'ADD_MARK' :
+        return {...state, ...{marks: [
+            ...state.marks,
+            {
+                title: action.title
+            }
+        ]}};
+
+
+    default:
+        return state;
     }
 }
-let store = createStore(counter)
+let store = createStore(counter);
 
 store.subscribe(() =>
-    console.log('store',  store.getState())
-)
+    console.log('store', store.getState())
+);
+
+function middleware(action){
+    return action.promise().then( (data) => store.dispatch({
+        type: action.type,
+        data: data
+    }));
+}
+
+export const middle_getdays = middleware(action_getdays());
+
+
+
+
 
 export default store;

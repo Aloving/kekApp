@@ -1,15 +1,17 @@
 import fetch from 'isomorphic-fetch';
 
+
 export function getdays() {
     return fetch('api/getdays')
-        .then((data) => data.json())
-        .then((data) => console.log(data))
+        .then((data) => data.json());
+
+
 }
 
 export function getmarks() {
     return fetch('api/getmarks')
-        .then((data) => data.json())
-        .then((data) => console.log(data))
+        .then((data) => data.json());
+
 }
 
 export function updatelist(id, data) {
@@ -25,11 +27,11 @@ export function updatelist(id, data) {
             })
         })
         .then(data => data.json())
-        .then(data => console.log(data))
-        .catch(err => console.error(err));
+        .then(data => console.log(data));
+
 }
 
-export function addmark(title){
+export function addmark(title) {
     fetch('/api/addmark',
         {
             method: 'POST',
@@ -41,6 +43,6 @@ export function addmark(title){
             })
         })
         .then(data => data.json())
-        .then(data => console.log(data))
-        .catch(err => console.error(err));
+        .then(data => console.log(data));
+
 }

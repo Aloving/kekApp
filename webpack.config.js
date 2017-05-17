@@ -50,7 +50,7 @@ const plugins = [
 
 // Common rules
 const rules = [
-  {
+    {
     test: /\.(js|jsx)$/,
     exclude: /node_modules/,
     use: [

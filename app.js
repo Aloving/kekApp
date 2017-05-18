@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var CronJob = require('cron').CronJob;
+var moment = require('./libs/moment');
 
 
 var createEmptyDay = require('./libs/addDay');
@@ -51,8 +52,7 @@ app.use(function(err, req, res, next) {
 var generateDays = new CronJob({
 	cronTime: '0 30 0 1-31 * *',
 	onTick: function() {
-		console.log('job 1 ticked');
-		createEmptyDay(Date.now());
+		createEmptyDay( moment(Date.now()).format('DD.MM.YYYY') );
 	},
 	start: false
 });

@@ -1,4 +1,3 @@
-
 function createDailtyItem(fromDate){
 	var mongoose = require('../libs/mongoose');
 
@@ -9,7 +8,7 @@ function createDailtyItem(fromDate){
 	}
 
 	function createData(){
-		require('./models/Day');
+		require('../models/Day');
 		var Day = new mongoose.models.Day({
 			date: fromDate,
 			items:[]

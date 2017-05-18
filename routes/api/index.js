@@ -1,4 +1,5 @@
 let express = require('express');
+var _ = require('lodash');
 var router = express.Router();
 var mongoose = require('../../libs/mongoose');
 var moment = require('../../libs/moment');
@@ -15,6 +16,68 @@ router.get('/getdays', (req, res, next) => {
 		if (err) next(err);
 		res.json(datadays);
 	});
+});
+
+router.get('/getstatistic', (req, res, next) => {
+	DaysData.aggregate([
+			{
+				'$match': {}
+			},
+			{
+				$project: {
+						date: 1,
+						items: 1
+				}
+			},
+			{
+				$group: {
+					_id : {
+							month: { $month: '$date' },
+							year: { $year: '$date' }
+					},
+				items: {$push: '$items'}
+			}
+		}
+	]).exec((err, data) => {
+		if(err) next(err);
+
+		data = data.reduce(function(prev, current){
+			var currentCopy = {
+				data: current._id,
+				copyItems: current.items,
+				items: [] 
+			};
+
+			currentCopy.copyItems.forEach(function(item){
+				return item.forEach(function(item){
+					delete item._id;
+					currentCopy.items.push(item);
+				});
+			});
+
+			currentCopy.items = currentCopy.items.reduce(function(prev, current){
+
+				var haveInArray = prev.filter(function(item){
+					if(item.title == current.title){
+						return item;
+					}else{
+						return false;
+					}
+				});
+
+				haveInArray.length || !haveInArray ? haveInArray[0].price += +current.price : prev.push(current);
+				return prev;
+			},[]);
+
+			delete currentCopy.copyItems;
+			prev.push(currentCopy);
+			
+			return prev;
+		}, []);
+
+		res.json(data);
+	});
+	
 });
 
 router.post('/updatelist/:id', (req, res, next) => {

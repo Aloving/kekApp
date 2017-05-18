@@ -1,0 +1,23 @@
+
+
+const  middleware = store => next => action => {
+    if(action.type !== 'PROMISE'){
+        return next(action);
+    }
+    const [startAction, successAction, failureAction] = action.actions;
+    store.dispatch({
+        type: startAction,
+        payload: 'loading'
+    });
+
+    return action.promise().then( (data) => store.dispatch({
+        type: successAction,
+        data: data
+    }), (error) => store.dispatch({
+        type: failureAction,
+        error: error
+    }));
+
+}
+
+export default middleware;

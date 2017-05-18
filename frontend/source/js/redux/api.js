@@ -39,7 +39,8 @@ export function addmark(title) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                title: 'kkk'
+                title: 'kkk',
+                defaultItem: false,
             })
         })
         .then(data => data.json())

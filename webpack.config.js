@@ -10,7 +10,7 @@ const isProduction = nodeEnv === 'production';
 
 const jsSourcePath = path.join(__dirname, './frontend/source/js');
 const buildPath = path.join(__dirname, './public');
-const imgPath = path.join(__dirname, './source/assets/img');
+const imgPath = path.join(__dirname, './frontend/source/assets/img');
 const sourcePath = path.join(__dirname, './frontend/source');
 
 
@@ -152,6 +152,6 @@ module.exports = {
           path: '/api/*',
           target: 'http://localhost:3001'
       }],
-      port: 8001
+      port: 8002
   }
 };

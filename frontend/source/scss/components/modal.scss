@@ -81,18 +81,21 @@
 }
 
 .mark {
-  background: #929292;
+
   display: inline-block;
   padding: 6px 6px;
   border-radius: 6px;
   color: #fff;
-  width: 130px;
+  min-width: 130px;
   text-align: center;
   line-height: 1;
   border: none;
   cursor: pointer;
   margin:  3px 10px;
   font-size: 16px;
+  &_undefault{
+    background: #929292;
+  }
 }
 
 .add-mark {
@@ -103,7 +106,7 @@
   line-height: 1;
   padding: 4px;
   border-radius: 5px;
-  width: 130px;
+  max-width: 130px;
   text-align: center;
   overflow: hidden;
   vertical-align: top;
@@ -112,6 +115,7 @@
   transition: 0.3s;
   &_active{
     height: 52px;
+
   }
   &__label{
     padding-bottom: 4px;

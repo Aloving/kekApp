@@ -81,13 +81,13 @@ router.get('/getstatistic', (req, res, next) => {
 });
 
 router.post('/updatelist/:id', (req, res, next) => {
-	DaysData.findById(req.params.id, (err, day) => {
+	DaysData.findById(req.params.id, function(err, day){
 		if (err) {
 			next(err);
-		} else if (!day) {
-			next(new HttpError(404, 'Day not found'));
 		}
-
+		if (!day) {
+			return next(new HttpError(404, 'Day not found'));
+		}
 		day.items.push({
 			title: req.body.title,
 			price: Number(req.body.price),

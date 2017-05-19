@@ -31,19 +31,23 @@ export function updatelist(id, data) {
 
 }
 
+
 export function addmark(title) {
-    fetch('/api/addmark',
+   return fetch('/api/addmark',
         {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                title: 'kkk',
+                title: title,
                 defaultItem: false,
             })
         })
-        .then(data => data.json())
-        .then(data => console.log(data));
+        .then(data => data.json());
+
 
 }
+
+
+updatelist('591d7c03159ddc1ab809ce74', {title: 'тестовый заголовок', price: '10000'})

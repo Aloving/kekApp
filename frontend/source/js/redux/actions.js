@@ -4,6 +4,7 @@ import {updatelist} from './api';
 import {addmark} from './api';
 
 
+
 const UPDATE_LIST = 'UPDATE_LIST' ;
 const GET_DAYS = 'GET_DAYS_START';
 const GET_MARKS = 'GET_MARKS';
@@ -21,5 +22,5 @@ export function action_getmarks(){
 }
 
 export function action_addmark(title){
-    return {type: ADD_MARK,promise: addmark, title};
+    return {type: 'PROMISE_DATA', promise: addmark, data: title, actions: ['ADD_MARK_START', 'ADD_MARK_FINISH', 'ADD_MARK_ERROR']};
 }

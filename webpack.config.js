@@ -152,6 +152,6 @@ module.exports = {
           path: '/api/*',
           target: 'http://localhost:3001'
       }],
-      port: 8002
+      port: 8001
   }
 };

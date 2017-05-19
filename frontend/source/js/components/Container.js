@@ -10,7 +10,7 @@ class Container extends React.Component {
 
         var Cards = this.props.cards == 'loading' ? <img src={spinner}/> : this.props.cards.map((item) => {
 
-            return <Card openModal={this.props.openModal} onDeleteItem={this.props.onDeleteItem} id={item.id} date={item.date} items={item.items} key={item.id}/>
+            return <Card number={Math.round(Math.random() * 4) } openModal={this.props.openModal} onDeleteItem={this.props.onDeleteItem} id={item.id} date={item.date} items={item.items} key={item.id}/>
         }) ;
 
         return (

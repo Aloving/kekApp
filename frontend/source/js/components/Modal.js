@@ -21,7 +21,7 @@ class Modal extends React.Component {
     }
 
     closeModal(evt) {
-        if (evt.target.classList.contains('modal') || evt.target.classList.contains('modal__close')) {
+        if (evt == "custom" || evt.target.classList.contains('modal') || evt.target.classList.contains('modal__close')) {
             this.setState({priceValue: ''});
             this.setState({activeButton: ''});
 
@@ -34,7 +34,6 @@ class Modal extends React.Component {
         if (this.state.priceValue != '') {
             this.setState({priceValid: 'valid'});
         }
-
     }
 
     openHint() {
@@ -47,24 +46,22 @@ class Modal extends React.Component {
 
     addMarkChange(evt) {
         this.setState({addMarkValue: evt.target.value});
-        this.setState({activeButton: evt.target.value});
-        if (evt.target.value.length == 1) {
-            var items = document.getElementsByClassName('mark');
-            for (let i = 0; i < items.length; i++) {
-                items[i].classList.remove('mark_active')
-            }
-
-        }
-        if (this.state.activeButton != '') {
-            this.setState({errorMessage: ''})
-            this.setState({buttonValid: 'valid'});
-        }
 
     }
 
     handleSubmit(evt) {
         evt.preventDefault();
-        this.setState({addMarkOpen: false});
+        var search = this.props.marks.unDefaults.filter((item) =>  {
+            return item.title == this.state.addMarkValue;
+
+        })
+        if(!search.length){
+            this.props.addmark(this.state.addMarkValue);
+            this.setState({addMarkOpen: false});
+            this.setState({addMarkValue: ''});
+        }
+       
+       
 
     }
 
@@ -73,12 +70,12 @@ class Modal extends React.Component {
 
         if (this.state.priceValue == '') {
             this.setState({priceValid: 'invalid'});
-            console.log('price invalid')
+        
             this.setState({errorMessage: 'Введите стоимость покупки!'})
         }
         if (this.state.activeButton == '') {
             this.setState({buttonValid: 'invalid'});
-            console.log('button invalid')
+           
             this.setState({errorMessage: 'Выберите раздел!'})
         }
         if (this.state.priceValue == '' && this.state.activeButton == '') {
@@ -86,18 +83,21 @@ class Modal extends React.Component {
         }
         if (this.state.priceValue != '' && this.state.activeButton != '') {
             this.setState({errorMessage: ''});
-            console.log('valid')
-            console.log(this.props.dayId)
+        
             data = {
+                id: this.props.dayId,
                 price: this.state.priceValue,
                 title: this.state.activeButton
             };
+            this.props.updatelist(data);
+            this.closeModal('custom');
+
         }
-
-        console.log(data);
-
-
     }
+    componentDidMount() {
+      
+    }
+
 
     toggleClassActive(evt) {
         this.setState({addMarkValue: ''});
@@ -141,7 +141,7 @@ class Modal extends React.Component {
                         <div onMouseEnter={this.openHint.bind(this)} onMouseLeave={this.closeHint.bind(this)}
                              className={this.state.addMarkOpen ? 'add-mark add-mark_active mark' : 'mark add-mark'}>
                             <div className="add-mark__label"
-                                 onClick={this.handleClick.bind(this)}>{ this.state.addMarkValue != '' ? this.state.addMarkValue : '+'}</div>
+                                 onClick={this.handleClick.bind(this)}>+</div>
                             <form id="addMark" onSubmit={this.handleSubmit.bind(this)}>
                                 <input className="add-mark__input" size="1" onChange={this.addMarkChange.bind(this)} value={this.state.addMarkValue}/>
                             </form>

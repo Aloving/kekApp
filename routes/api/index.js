@@ -94,6 +94,7 @@ router.post('/updatelist/:id', (req, res, next) => {
 		});
 
 		day.save((err, updatedDay) => {
+			console.log(updatedDay);
 			if(err) next(err);
 			res.json(updatedDay);
 		});

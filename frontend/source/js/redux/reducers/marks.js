@@ -5,23 +5,24 @@ export default function reducer(state = {}, action) {
         case 'GET_MARKS_FINISH':
             return {...action.data};
         case 'ADD_MARK_START':
-            return action.payload;
+            return state;
         case 'ADD_MARK_ERROR' :
             console.log(action.error);
             return state;
         case 'ADD_MARK_FINISH' :
-            return {
-                ...state,
-                unDefaults: [
-                    ...state.undefaults,
-                    ...action.data
-
-                ]
-            }
+        console.log('REDUCER', state)
+          
+           return {
+            ...state, 
+            unDefaults: [
+            ...state.unDefaults,
+                 action.data
+            ]
+        
+        };
 
 
         default:
             return state;
     }
 }
-

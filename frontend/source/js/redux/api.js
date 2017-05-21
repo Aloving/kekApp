@@ -1,5 +1,8 @@
 import fetch from 'isomorphic-fetch';
 
+function returnData(data){
+    return data;
+}
 
 export function getdays() {
     return fetch('api/getdays')
@@ -14,8 +17,10 @@ export function getmarks() {
 
 }
 
-export function updatelist(id, data) {
-    return fetch('./api/updatelist/' + id + '',
+export function updatelist(data) {
+
+   
+    return fetch('/api/updatelist/' + data.id,
         {
             method: 'POST',
             headers: {
@@ -26,8 +31,7 @@ export function updatelist(id, data) {
                 price: +data.price,
             })
         })
-        .then(data => data.json())
-        .then(data => console.log(data));
+        .then(data => data.json());
 
 }
 
@@ -41,13 +45,12 @@ export function addmark(title) {
             },
             body: JSON.stringify({
                 title: title,
-                defaultItem: false,
+                defaultItem: false
             })
         })
-        .then(data => data.json());
-
+        .then(data => data.json())
+     
 
 }
 
 
-updatelist('591d7c03159ddc1ab809ce74', {title: 'тестовый заголовок', price: '10000'})

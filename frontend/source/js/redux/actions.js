@@ -4,14 +4,8 @@ import {updatelist} from './api';
 import {addmark} from './api';
 
 
-
-const UPDATE_LIST = 'UPDATE_LIST' ;
-const GET_DAYS = 'GET_DAYS_START';
-const GET_MARKS = 'GET_MARKS';
-const ADD_MARK = 'ADD_MARK';
-
 export function action_updatelist(data){
-    return {type: UPDATE_LIST, promise: updatelist, data};
+    return {type: 'PROMISE_DATA', promise: updatelist, data: data, actions: ['UPDATELIST_START', 'UPDATELIST_FINISH', 'UPDATELIST_ERROR']};
 }
 
 export function action_getdays(){

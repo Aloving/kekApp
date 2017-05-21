@@ -11,21 +11,30 @@ const middleware = store => next => action => {
     });
 
     if (action.type == 'PROMISE_DATA') {
-        return action.promise(action.data).then((data) => store.dispatch({
-            type: successAction,
-            data: data
-        }), (error) => store.dispatch({
-            type: failureAction,
-            error: error
-        }));
+
+        
+        return action.promise(action.data)
+        .then(dataf => {
+
+            return store.dispatch({
+                type: successAction,
+                data: dataf
+            })
+
+            error => store.dispatch({
+                type: failureAction,
+                error: error
+            })
+        });
     } else if(action.type == 'PROMISE' ){
-        return action.promise().then((data) => store.dispatch({
+        return action.promise().then((data) => {
+            return store.dispatch({
             type: successAction,
             data: data
         }), (error) => store.dispatch({
             type: failureAction,
             error: error
-        }));
+        })});
     }
 }
 

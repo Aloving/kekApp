@@ -1,70 +1,100 @@
 module.exports = [
 	{
-		date: '10.12.2017',
+		date: '19.05.2017',
 		items: [
 			{
-				title: 'Элемент-1',
-				price: 500
+				title: 'Обед(Алёша)',
+				price: 300
 			},
 			{
-				title: 'Элемент-1',
-				price: 500
+				title: 'Обед(Рита)',
+				price: 270
 			},
 			{
-				title: 'Элемент-2',
-				price: 500
+				title: 'Продукты',
+				price: 857
 			},
 			{
-				title: 'Элемент-3',
-				price: 500
-			},
+				title: 'Бухло',
+				price: 1000
+			}
+		]
+	},
+	{
+		date: '18.05.2017',
+		items: [
 			{
-				title: 'Элемент-4',
+				title: 'Продукты',
+				price: 300
+			}
+		]
+	},
+	{
+		date: '16.05.2017',
+		items: [
+			{
+				title: 'Продукты',
 				price: 500
 			}
 		]
 	},
 	{
-		date: '08.12.2017',
+		date: '15.05.2017',
 		items: [
 			{
-				title: 'Элемент-1',
-				price: 500
-			},
-			{
-				title: 'Элемент-2',
-				price: 500
+				title: 'Продукты',
+				price: 800
 			}
 		]
 	},
 	{
-		date: '10.06.2017',
+		date: '14.05.2017',
 		items: [
 			{
-				title: 'Элемент-1',
-				price: 500
+				title: 'Работа',
+				price: 200
 			},
 			{
-				title: 'Элемент-2',
-				price: 500
+				title: 'Обед(Алёша)',
+				price: 300
 			},
 			{
-					title: 'Элемент-3',
-					price: 500
-			}
-		]
-	},
-	{
-		date: '09.01.2017',
-		items: [
-			{
-				title: 'Элемент-1',
-				price: 500
+				title: 'Бухло',
+				price: 1000
 			},
 			{
-				title: 'Элемент-2',
-				price: 500
-			}
+				title: 'Бухло',
+				price: 300
+			},
+			{
+				title: 'Продукты',
+				price: 1200
+			},
+			{
+				title: 'Леваяеда',
+				price: 290
+			},
+			{
+				title: 'Шампунь',
+				price: 1000
+			},
+			{
+				title: 'Продукты',
+				price: 700
+			},
+			{
+				title: 'Продукты',
+				price: 200
+			},
+			{
+				title: 'Бухло',
+				price: 300
+			},
+			{
+				title: 'Бухло',
+				price: 300
+			},
+
 		]
 	}
 ];

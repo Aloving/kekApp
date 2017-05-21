@@ -1,25 +1,33 @@
 module.exports = [
     {
-        title: 'Элемент-1',
+        title: 'Обед(Алёша)',
         defaultItem: true,
         create: '10.04.2017'
     },
     {
-        title: 'Элемент-2',
+        title: 'Обед(Рита)',
         defaultItem: true,
         create: '10.04.2017'
     },
     {
-        title: 'Элемент-3',
+        title: 'Продукты',
         defaultItem: true,
         create: '10.04.2017'
     }, {
-        title: 'Необязательный элемент',
-        defaultItem: false,
+        title: 'Бухло',
+        defaultItem: true,
         create: '10.04.2017'
     }, {
-        title: 'Необязательный элемент-2',
-        defaultItem: false,
+        title: 'Квартплата',
+        defaultItem: true,
         create: '10.04.2017'
-    },
+    }, {
+        title: 'Леваяеда',
+        defaultItem: true,
+        create: '10.04.2017'
+    }, {
+        title: 'Шампунь',
+        defaultItem: false,
+        create: '14.05.2017'
+    }
 ];

@@ -10,7 +10,7 @@ const isProduction = nodeEnv === 'production';
 
 const jsSourcePath = path.join(__dirname, './frontend/source/js');
 const buildPath = path.join(__dirname, './public');
-const imgPath = path.join(__dirname, './frontend/source/assets/img');
+const imgPath = path.join(__dirname, './frontend/source/assets');
 const sourcePath = path.join(__dirname, './frontend/source');
 
 
@@ -60,7 +60,7 @@ const rules = [
   {
     test: /\.(png|gif|jpg|svg)$/,
     include: imgPath,
-    use: 'url-loader?limit=20480&name=assets/[name]-[hash].[ext]',
+    use: 'url-loader?limit=20480&name=assets/[name].[ext]',
   },
 ];
 

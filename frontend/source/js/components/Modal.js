@@ -1,5 +1,5 @@
 import React from 'react';
-import spinner from './../../assets/img/spinner.gif';
+import spinner from './../../assets/spinner.gif';
 
 class Modal extends React.Component {
     constructor() {
@@ -17,7 +17,11 @@ class Modal extends React.Component {
     }
 
     handleClick(evt) {
+
         this.setState({addMarkOpen: !this.state.addMarkOpen});
+         if(this.state.addMarkOpen == false){
+            document.getElementsByClassName('add-mark__input')[0].focus()
+         }
     }
 
     closeModal(evt) {
@@ -30,10 +34,14 @@ class Modal extends React.Component {
     }
 
     priceChange(evt) {
-        this.setState({priceValue: evt.target.value});
+        var val = evt.target.value; 
+        if(/^\d+$/.test(val) || val==""){
+            this.setState({priceValue: val});
+        }
         if (this.state.priceValue != '') {
             this.setState({priceValid: 'valid'});
         }
+
     }
 
     openHint() {
@@ -60,9 +68,7 @@ class Modal extends React.Component {
             this.setState({addMarkOpen: false});
             this.setState({addMarkValue: ''});
         }
-       
-       
-
+    
     }
 
     formSubmit() {
@@ -94,10 +100,6 @@ class Modal extends React.Component {
 
         }
     }
-    componentDidMount() {
-      
-    }
-
 
     toggleClassActive(evt) {
         this.setState({addMarkValue: ''});
@@ -159,7 +161,12 @@ class Modal extends React.Component {
                     <button className='modal__add' onClick={this.formSubmit.bind(this)}>+</button>
                     <div className='modal__close' onClick={this.closeModal.bind(this)}>+</div>
                     <div className='modal__content'>
-                        <input type='text' className='modal__input' placeholder="Введите сумму покупки" onChange={this.priceChange.bind(this)} value={this.state.priceValue}/>
+                        <input 
+                            type='text' 
+                            className='modal__input' 
+                            placeholder="Введите сумму покупки" 
+                            onChange={this.priceChange.bind(this)} 
+                            value={this.state.priceValue}/>
                         <span className="modal__error">{this.state.errorMessage}</span>
                         {marks}
                     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Card from './Card';
-import spinner from './../../assets/img/spinner.gif';
+import spinner from './../../assets/spinner.gif';
 
 class Container extends React.Component {
 

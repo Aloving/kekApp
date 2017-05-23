@@ -1,5 +1,6 @@
 import {getdays} from './api';
 import {getmarks} from './api';
+import {getstat} from './api';
 import {updatelist} from './api';
 import {addmark} from './api';
 
@@ -17,4 +18,8 @@ export function action_getmarks(){
 
 export function action_addmark(title){
     return {type: 'PROMISE_DATA', promise: addmark, data: title, actions: ['ADD_MARK_START', 'ADD_MARK_FINISH', 'ADD_MARK_ERROR']};
+}
+
+export function action_getstat(){
+    return {type: 'PROMISE', promise: getstat, actions: ['GET_STAT_START', 'GET_STAT_FINISH', 'GET_STAT_ERROR']};
 }

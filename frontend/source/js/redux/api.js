@@ -16,6 +16,11 @@ export function getmarks() {
         .then((data) => data.json());
 
 }
+export function getstat() {
+    return fetch('api/getstatistic')
+        .then((data) => data.json());
+
+}
 
 export function updatelist(data) {
 

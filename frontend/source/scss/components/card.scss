@@ -1,0 +1,92 @@
+.card {
+
+  color: #fff;
+  border-radius: 10px;
+  vertical-align: top;
+  width: 600px;
+  margin: 15px 0;
+  padding: 5px;
+  display: inline-block;
+  box-shadow: 1px 1px 10px #a4a4a4;
+  text-align: left;
+  @media(max-width: 768px){
+    width: 100%;
+  }
+  &__date {
+    font-size: 16px;
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: 8px;
+  }
+  &__header{
+    padding-bottom: 5px ;
+    padding-left: 15px ;
+    &:after{
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+  &__content {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    transition: 0.8s;
+    &_close{
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 20px;
+      opacity: 0;
+    }
+    &_open{
+      max-height: 1000px;
+      padding: 20px;
+      opacity: 1;
+    }
+  }
+  &__toggle{
+    vertical-align: middle;
+    float: right;
+    border-radius: 5px;
+    border: none;
+    padding: 8px 12px;
+    line-height: 1;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+    background: transparent;
+    font-size: 18px;
+    margin-right: 10px;
+    transition: 0.3s;
+    &_open &{
+      &-icon{
+        transform: rotate(180deg);
+      }
+
+    }
+    &:hover, &:focus {
+      outline: none;
+      background: rgba(0, 0, 0, 0.14);
+    }
+  }
+  &__add {
+
+    vertical-align: middle;
+    float: right;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    padding: 3px 12px;
+    font-size: 29px;
+    line-height: 1;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+    background: transparent;
+    &:hover, &:focus {
+      outline: none;
+      background: rgba(0, 0, 0, 0.14);
+    }
+  }
+}

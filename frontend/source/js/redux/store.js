@@ -10,7 +10,8 @@ const reducer = combineReducers(reducers);
 
 const store = createStoreWithMiddleware(reducer, {
     days: [],
-    marks: {}
+    marks: {},
+    stat: []
 });
 
 

@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import Card from './Card';
 import spinner from './../../assets/spinner.gif';
 
+
+// var spinner = './assets/spinner.gif';
+
 class Container extends React.Component {
 
 

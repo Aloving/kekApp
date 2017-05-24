@@ -59,16 +59,22 @@
     font-size: 18px;
     margin-right: 10px;
     transition: 0.3s;
-    &_open &{
-      &-icon{
+    &_open .card__toggle-icon{
+
         transform: rotate(180deg);
-      }
+
 
     }
+
     &:hover, &:focus {
       outline: none;
       background: rgba(0, 0, 0, 0.14);
     }
+  }
+ &__toggle-icon{
+   display: inline-block;
+   transition: 0.6s;
+
   }
   &__add {
 

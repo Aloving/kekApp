@@ -19,6 +19,7 @@ const sourcePath = path.join(__dirname, './frontend/source');
 
 // Common plugins
 const plugins = [
+
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
     filename: 'vendor.js',
@@ -60,7 +61,7 @@ const rules = [
   {
     test: /\.(png|gif|jpg|svg)$/,
     include: imgPath,
-    use: 'url-loader?limit=20480&name=assets/[name].[ext]',
+    use: 'url-loader?limit=20480&name=./../assets/[name].[ext]',
   },
 ];
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import spinner from './../../assets/spinner.gif';
 
+
 class Modal extends React.Component {
     constructor() {
         super();

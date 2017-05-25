@@ -9,13 +9,15 @@ class Item extends React.Component {
                 width: percent
             }
         }
-
+        var className = this.props.total ? `item_total item color_${this.props.number}` : this.props.stat ? `item_percent item color_${this.props.number}`: `item color_${this.props.number}`;
 
 
         return (
-            <div className={this.props.stat ? 'item_percent item color_' + this.props.number + '' : ' item color_' + this.props.number + ''}>
+
+
+            <div className={className}>
                 <span style={style}
-                      className={'item__title color_' + this.props.number + ''}>{this.props.title}</span>
+                      className={`item__title color_${this.props.number}`}>{this.props.title}</span>
                 <span className='item__price'>{this.props.price}</span>
 
             </div>

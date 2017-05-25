@@ -10,7 +10,9 @@ import {action_getstat} from './../redux/actions';
 class Stat extends React.Component{
     componentDidMount() {
         this.props.getstat();
+        document.title = "Статистика";
     }
+
     render() {
 
         return(

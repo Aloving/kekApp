@@ -15,8 +15,6 @@ const sourcePath = path.join(__dirname, './frontend/source');
 
 
 
-
-
 // Common plugins
 const plugins = [
 
@@ -33,7 +31,7 @@ const plugins = [
       NODE_ENV: JSON.stringify(nodeEnv),
     },
   }),
-
+    new ExtractTextPlugin({ filename: 'style.css', disable: false, allChunks: true }),
   new webpack.LoaderOptionsPlugin({
     options: {
       postcss: [
@@ -61,7 +59,7 @@ const rules = [
   {
     test: /\.(png|gif|jpg|svg)$/,
     include: imgPath,
-    use: 'url-loader?limit=20480&name=./../assets/[name].[ext]',
+    use: 'url-loader?limit=20480&name=/../assets/[name].[ext]',
   },
 ];
 
@@ -84,9 +82,10 @@ if (isProduction) {
       output: {
         comments: false,
       },
-    }),
-    new ExtractTextPlugin('style.css')
+    })
   );
+
+
 
   // Production rules
   rules.push(
@@ -110,7 +109,9 @@ if (isProduction) {
     {
       test: /\.scss$/,
       exclude: /node_modules/,
-      use: [
+
+      use:
+          [
         'style-loader',
         // Using source maps breaks urls in the CSS loader
         // https://github.com/webpack/css-loader/issues/232
@@ -133,7 +134,7 @@ module.exports = {
   },
   output: {
     path: buildPath,
-    publicPath: '/static/',
+    publicPath: '/static',
     filename: 'app.js',
   },
   module: {

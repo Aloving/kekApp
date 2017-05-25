@@ -35,7 +35,7 @@ class Home extends React.Component{
     }
     componentDidMount() {
         this.props.getdays();
-        // this.props.getstat();
+        document.title = "Главная";
 
 
     }

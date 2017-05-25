@@ -1,6 +1,9 @@
 import React from 'react';
 import Header from './Header';
 class Day extends React.Component {
+    componentDidMount() {
+        document.title = "Дата";
+    }
     render() {
 
         return (

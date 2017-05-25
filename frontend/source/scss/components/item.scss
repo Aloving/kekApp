@@ -23,6 +23,11 @@
     margin-right: 15px;
 
   }
+  &_total &{
+    &__price {
+      background: transparent;
+    }
+  }
   &_percent {
     .item__title {
       text-align: left;

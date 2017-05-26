@@ -36,9 +36,22 @@ router.get('/getdays/:cond/:id?', (req, res, next) => {
 					date: 1,
 				}
 			}
-		]).exec((err, datadays) => {
+		])
+		.exec((err, datadays) => {
+
 			if (err) next(err);
+			var datadays = datadays.map(item => {
+				let thisDate = item.date;
+				item.date = {
+					day: moment(thisDate).get('D'),
+					month: moment(thisDate).get('month'),
+					year: moment(thisDate).get('year')
+				}
+				return item;
+			});
+
 			res.json(datadays);
+
 		});
 	}else if(paramsCond == 'byid'){
 

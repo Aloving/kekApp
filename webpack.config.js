@@ -109,7 +109,10 @@ if (isProduction) {
     {
       test: /\.scss$/,
       exclude: /node_modules/,
-
+        // loader: ExtractTextPlugin.extract({
+        //     fallback: 'style-loader',
+        //     use: 'css-loader!postcss-loader!sass-loader',
+        // }),
       use:
           [
         'style-loader',
@@ -152,7 +155,7 @@ module.exports = {
       historyApiFallback: true,
       proxy: [{
           path: '/api/**',
-          target: 'http://localhost:80'
+          target: 'http://localhost:3001'
       }],
       port: 8001
   }

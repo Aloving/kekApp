@@ -1,11 +1,9 @@
 import fetch from 'isomorphic-fetch';
 
-function returnData(data){
-    return data;
-}
+
 
 export function getdays() {
-    return fetch('api/getdays')
+    return fetch('api/getdays/index')
         .then((data) => data.json());
 
 
@@ -21,6 +19,7 @@ export function getstat() {
         .then((data) => data.json());
 
 }
+
 
 export function updatelist(data) {
 
@@ -58,4 +57,9 @@ export function addmark(title) {
 
 }
 
+export function getcalendar() {
+    return fetch('api/getdays/calendar/')
+        .then(data => data.json());
 
+
+}

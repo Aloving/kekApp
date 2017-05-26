@@ -3,7 +3,7 @@ import {getmarks} from './api';
 import {getstat} from './api';
 import {updatelist} from './api';
 import {addmark} from './api';
-
+import {getcalendar} from './api';
 
 export function action_updatelist(data){
     return {type: 'PROMISE_DATA', promise: updatelist, data: data, actions: ['UPDATELIST_START', 'UPDATELIST_FINISH', 'UPDATELIST_ERROR']};
@@ -22,4 +22,8 @@ export function action_addmark(title){
 
 export function action_getstat(){
     return {type: 'PROMISE', promise: getstat, actions: ['GET_STAT_START', 'GET_STAT_FINISH', 'GET_STAT_ERROR']};
+}
+
+export function action_getcalendar(){
+    return {type: 'PROMISE', promise: getcalendar, actions: ['GET_CALENDAR_START', 'GET_CALENDAR_FINISH', 'GET_CALENDAR_ERROR']};
 }

@@ -34,6 +34,7 @@ class Home extends React.Component{
         this.props.getmarks();
     }
     componentDidMount() {
+
         this.props.getdays();
         document.title = "Главная";
 
@@ -72,7 +73,8 @@ const mapDispatchToProps = (dispatch) => {
         },
         updatelist: (data) => {
             dispatch(action_updatelist(data))
-        }
+        },
+
     };
 };
 

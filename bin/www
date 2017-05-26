@@ -8,13 +8,15 @@ var app = require('../app');
 var debug = require('debug')('kekapp:server');
 var http = require('http');
 var config = require('../config');
+var production = process.env.NODE_ENV;
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = config.get('port');
+var port = production ? 80 : config.get('port');
 app.set('port', port);
+
 
 /**
  * Create HTTP server.

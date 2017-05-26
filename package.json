@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "start": "concurrently \"mongod\" \"npm run serverstart\" \"npm run frontstartw\"",
-    "production": "concurrently \"mongod --dbpath ~/database\" \"npm run serverstart\"",
+    "production": "concurrently \"mongod --dbpath ~/database\" \"npm run serverProduction\"",
     "serverstart": "node ./bin/www",
+    "serverProduction": "NODE_ENV=production node bin/www",
     "buildw": "set NODE_ENV=production && webpack",
     "frontstart": "webpack --watch",
     "frontstartw": "webpack-dev-server --hot --inline"

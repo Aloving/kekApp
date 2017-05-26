@@ -1,5 +1,6 @@
 let express = require('express');
 var _ = require('lodash');
+let ObjectID = require('mongodb').ObjectID;
 var router = express.Router();
 var mongoose = require('../../libs/mongoose');
 var moment = require('../../libs/moment');
@@ -11,11 +12,49 @@ var todayMonth = moment(new Date()).get('month');
 
 
 /* GET days listing. */
-router.get('/getdays', (req, res, next) => {
-	DaysData.find({}).sort({date: -1}).limit(7).exec((err, datadays) => {
-		if (err) next(err);
-		res.json(datadays);
-	});
+router.get('/getdays/:cond/:id?', (req, res, next) => {
+
+	var paramsCond = req.params.cond;
+	var paramsId = req.params.id;
+
+	console.log(paramsCond, paramsId);
+	if(paramsCond == 'index'){
+
+		DaysData.find({}).sort({date: -1}).limit(7).exec((err, datadays) => {
+			if (err) next(err);
+			res.json(datadays);
+		});
+
+	}else if(paramsCond == 'calendar'){
+		DaysData.aggregate([
+			{
+				'$match': {}
+			},
+			{
+				$project: {
+					_id: 1,
+					date: 1,
+				}
+			}
+		]).exec((err, datadays) => {
+			if (err) next(err);
+			res.json(datadays);
+		});
+	}else if(paramsCond == 'byid'){
+
+		DaysData.findById(paramsId, function(err, day){
+			if (err) {
+				next(err);
+			}
+			if (!day) {
+				return next(new HttpError(404, 'Day not found'));
+			}
+
+			res.json(day);
+			
+		});
+
+	}
 });
 
 router.get('/getstatistic', (req, res, next) => {
@@ -35,6 +74,7 @@ router.get('/getstatistic', (req, res, next) => {
 							month: { $month: '$date' },
 							year: { $year: '$date' }
 					},
+					id: {$push: '$_id'},
 				items: {$push: '$items'}
 			}
 		}
@@ -43,14 +83,14 @@ router.get('/getstatistic', (req, res, next) => {
 
 		data = data.reduce(function(prev, current){
 			var currentCopy = {
-				data: current._id,
+				date: current._id,
 				copyItems: current.items,
-				items: [] 
+				items: [],
+				_id: new ObjectID
 			};
 
 			currentCopy.copyItems.forEach(function(item){
 				return item.forEach(function(item){
-					delete item._id;
 					currentCopy.items.push(item);
 				});
 			});

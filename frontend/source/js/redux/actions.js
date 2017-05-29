@@ -4,6 +4,8 @@ import {getstat} from './api';
 import {updatelist} from './api';
 import {addmark} from './api';
 import {getcalendar} from './api';
+import {getdayById} from './api';
+
 
 export function action_updatelist(data){
     return {type: 'PROMISE_DATA', promise: updatelist, data: data, actions: ['UPDATELIST_START', 'UPDATELIST_FINISH', 'UPDATELIST_ERROR']};
@@ -11,6 +13,9 @@ export function action_updatelist(data){
 
 export function action_getdays(){
     return {type: 'PROMISE', promise: getdays, actions: ['GET_DAYS_START', 'GET_DAYS_FINISH', 'GET_DAYS_ERROR']};
+}
+export function action_getdayById(id){
+    return {type: 'PROMISE_DATA', promise: getdayById, data: id, actions: ['GET_DAY_BY_ID_START', 'GET_DAY_BY_ID_FINISH', 'GET_DAY_BY_ID_ERROR']};
 }
 export function action_getmarks(){
     return {type: 'PROMISE', promise: getmarks,  actions: ['GET_MARKS_START', 'GET_MARKS_FINISH', 'GET_MARKS_ERROR']};

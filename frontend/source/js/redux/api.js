@@ -3,19 +3,20 @@ import fetch from 'isomorphic-fetch';
 
 
 export function getdays() {
-    return fetch('api/getdays/index')
+    return fetch('/api/getdays/index')
         .then((data) => data.json());
 
 
 }
 
+
 export function getmarks() {
-    return fetch('api/getmarks')
+    return fetch('/api/getmarks')
         .then((data) => data.json());
 
 }
 export function getstat() {
-    return fetch('api/getstatistic')
+    return fetch('/api/getstatistic')
         .then((data) => data.json());
 
 }
@@ -38,7 +39,13 @@ export function updatelist(data) {
         .then(data => data.json());
 
 }
+export function getdayById(id){
 
+    return fetch('/api/getdays/byid/' + id + '')
+        .then(data => data.json());
+
+
+}
 
 export function addmark(title) {
    return fetch('/api/addmark',
@@ -58,7 +65,7 @@ export function addmark(title) {
 }
 
 export function getcalendar() {
-    return fetch('api/getdays/calendar/')
+    return fetch('/api/getdays/calendar/')
         .then(data => data.json());
 
 

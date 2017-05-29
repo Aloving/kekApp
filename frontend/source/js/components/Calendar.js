@@ -5,6 +5,8 @@ import ghost from './../../assets/ghost.png';
 import {action_getcalendar} from '../redux/actions';
 import {connect} from 'react-redux';
 
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 class Calendar extends React.Component {
     constructor() {
         super();
@@ -18,6 +20,7 @@ class Calendar extends React.Component {
             MaxDate: {year: 0, month: 0},
             arrowPrevActive : true,
             arrowNextActive : true,
+            startDays: []
 
         }
 
@@ -30,8 +33,18 @@ class Calendar extends React.Component {
         this.props.getcalendar();
         document.title = "Календарь";
         this.currentDate();
+
+        var startdays = [];
+        for (var i = 0; i < 31; i++) {
+            startdays.push(null);
+        }
+        this.setState({startDays: startdays});
+
+
+
     }
     componentDidUpdate() {
+
         if(typeof this.props.calendar == 'object' && this.props.calendar.length){
             if(this.state.minDate.year == 0){
                 this.minMax();
@@ -71,6 +84,8 @@ class Calendar extends React.Component {
     }
     filterDays(year, month) {
 
+
+
         if(typeof this.state.maxDate == 'undefined' || this.state.maxDate.year == 0){return}
         if(year == this.state.maxDate.year && month == this.state.maxDate.month){
             this.setState({arrowNextActive: false})
@@ -82,12 +97,13 @@ class Calendar extends React.Component {
         }else{
             this.setState({arrowPrevActive: true})
         }
+        var ollDays = [];
+        var dayInMonth = 32 - new Date(year, month, 32).getDate();
+        for (var i = 0; i < dayInMonth; i++) {
+            ollDays.push(null);
+        }
 
-            var ollDays = [];
-            var dayInMonth = 32 - new Date(year, month, 32).getDate();
-            for (var i = 0; i < dayInMonth; i++) {
-                ollDays.push(null);
-            }
+
             var visibleDays = this.props.calendar.filter((item) => {
                 return item.date.year == year;
             })
@@ -137,10 +153,11 @@ class Calendar extends React.Component {
     }
     render() {
        var counter = 0;
-       var items = this.state.visibleDays.length == 0 ? '' :
+       var daysMap = this.state.visibleDays.length == 0 ? this.state.startDays : this.state.visibleDays.length != 0 ?  this.state.visibleDays : [];
+       var items =
            <div>
                {
-                   this.state.visibleDays.map(item => {
+                   daysMap.map(item => {
                        counter++;
                        return item == null ?  <div  key={counter} className="calendar__link calendar__link_disabled" >{counter}</div> : typeof item == 'object' ?
                            <Link  key={item._id} className="calendar__link" to={"calendar/day/" + item._id + ""}>{item.date.day}</Link> : '';
@@ -149,6 +166,12 @@ class Calendar extends React.Component {
            </div>
 
         return (
+        <ReactCSSTransitionGroup  transitionName="animation-opacity"
+                                  transitionAppear={true}
+                                  transitionEnterTimeout={800}
+                                  transitionLeaveTimeout={800}
+                                  transitionAppearTimeout={800}
+        >
             <div className="calendar">
                 <h1>{this.state.currentYear}</h1>
                 <h3>{this.state.stringCurrentMonth}</h3>
@@ -158,6 +181,7 @@ class Calendar extends React.Component {
                 </div>
                 {items}
             </div>
+        </ReactCSSTransitionGroup>
 
         )
 
@@ -171,11 +195,12 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(action_getcalendar());
         },
 
+
     };
 };
 export default connect(
     (state) => {
-        return {calendar: state.calendar};
+        return {calendar: state.calendar}
     },
     mapDispatchToProps
 )(Calendar);

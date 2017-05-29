@@ -1,6 +1,5 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import promisesMiddleware from './middlewares/promises';
-import logger from 'redux-logger';
 import * as reducers from './reducers';
 
 
@@ -12,7 +11,8 @@ const store = createStoreWithMiddleware(reducer, {
     days: [],
     marks: {},
     stat: [],
-    calendar : []
+    calendar : [],
+    dayById: {},
 
 });
 

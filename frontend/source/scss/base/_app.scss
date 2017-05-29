@@ -37,4 +37,37 @@ body.open-modal{
   }
 }
 
+.animation-opacity-enter{
+  opacity: 0;
+}
+.animation-opacity-enter.animation-opacity-enter-active{
+  opacity: 1;
+  transition: 0.3s;
+}
 
+.animation-opacity-leave{
+  opacity: 1;
+}
+.animation-opacity-leave.animation-opacity-leave-active{
+  opacity: 0;
+  transition: 0.3s;
+}
+.animation-opacity-appear {
+  opacity: 0;
+
+}
+.animation-opacity-appear.animation-opacity-appear-active {
+  opacity: 1;
+
+  transition: .5s;
+}
+
+
+.day_loaded{
+  opacity: 1;
+  transition: 0.3s;
+}
+.day_loading{
+  opacity: 0;
+  transition: 0.3s;
+}

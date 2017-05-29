@@ -11,7 +11,6 @@ const middleware = store => next => action => {
     });
 
     if (action.type == 'PROMISE_DATA') {
-
         
         return action.promise(action.data)
         .then(dataf => {
@@ -22,6 +21,7 @@ const middleware = store => next => action => {
             })
 
             error => store.dispatch({
+
                 type: failureAction,
                 error: error
             })

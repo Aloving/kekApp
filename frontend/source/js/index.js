@@ -18,7 +18,7 @@ ReactDOM.render(<Provider store={store}>
         <Route path="/" component={App}>
             <IndexRoute  component={Home}/>
             <Route path="/stat" component={Stat}/>
-            <Route path="/calendar" >
+            <Route path="/calendar"  >
                 <IndexRoute component={Calendar}/>
                 <Route path="day/:dayId" component={Day}/>
             </Route>

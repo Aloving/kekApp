@@ -1,6 +1,6 @@
 import React from 'react';
-import spinner from './../../assets/spinner.gif';
-
+// import spinner from './../../assets/spinner.gif';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Modal extends React.Component {
     constructor() {
@@ -121,7 +121,7 @@ class Modal extends React.Component {
     render() {
         var marks;
         if (this.props.open) {
-            marks = this.props.marks == 'loading' || typeof this.props.marks.defaults == 'undefined' || typeof this.props.marks == 'undefined' ? <img src={spinner}/> :
+            marks = this.props.marks == 'loading' || typeof this.props.marks.defaults == 'undefined' || typeof this.props.marks == 'undefined' ? '' :
                 <div className="modal__marks">
                     <div className="modal__marks modal__marks_default">
                         {
@@ -163,13 +163,21 @@ class Modal extends React.Component {
                     <div className='modal__close' onClick={this.closeModal.bind(this)}>+</div>
                     <div className='modal__content'>
                         <input 
-                            type='text' 
+                            type='number'
                             className='modal__input' 
                             placeholder="Введите сумму покупки" 
                             onChange={this.priceChange.bind(this)} 
                             value={this.state.priceValue}/>
                         <span className="modal__error">{this.state.errorMessage}</span>
-                        {marks}
+                        <ReactCSSTransitionGroup  transitionName="animation-opacity"
+                                                  transitionAppear={true}
+                                                  transitionAppearTimeout={800}
+                                                  transitionEnterTimeout={800}
+                                                  transitionLeaveTimeout={800}
+                        >
+                            {marks}
+                        </ReactCSSTransitionGroup>
+
                     </div>
 
                 </div>

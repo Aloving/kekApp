@@ -100,13 +100,14 @@
 
 @keyframes funbutton{
   0%{
-    transform: scale(1);
+    transform: scale(1)  translateY(0px);
   }
   50%{
     transform: scale(1.1);
   }
   100%{
-    transform: scale(1);
+    transform: scale(1) translateY(-3px);
+
   }
 }
 .mark {
@@ -128,8 +129,10 @@
       min-width: 31%;
     }
   &_active{
-    box-shadow: 3px 1px 8px #30884a;
-    animation: funbutton 0.5s;
+    box-shadow: 2px 3px 0px 2px #157519, inset 0px 0px 10px 2px #83ec87;
+    animation: funbutton 0.5s forwards;
+    background: #33dc68;
+
   }
   &:focus{
     outline: none;

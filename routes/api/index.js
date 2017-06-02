@@ -17,12 +17,21 @@ router.get('/getdays/:cond/:id?', (req, res, next) => {
 	var paramsCond = req.params.cond;
 	var paramsId = req.params.id;
 
-	console.log(paramsCond, paramsId);
 	if(paramsCond == 'index'){
 
 		DaysData.find({}).sort({date: -1}).limit(7).exec((err, datadays) => {
 			if (err) next(err);
-			res.json(datadays);
+			let days = datadays;
+			MarksData.find({}).exec((err, marks) => {	
+				if (err) next(err);
+				days.map(function(day){
+					day.items.map(function(item){
+						item.defaultItem = marks.some(sItem => sItem.title == item.title && sItem.defaultItem);
+					});
+					return day;
+				});
+				res.json(days);
+			});
 		});
 
 	}else if(paramsCond == 'calendar'){
@@ -161,10 +170,10 @@ router.get('/getmarks', (req, res, next) => {
 		res.json(
 			datamarks
 				.filter(sortByMonth)
-				.reduce(sortByDefault, {
-					defaults: [],
-					unDefaults: []
-				})
+				// .reduce(sortByDefault, {
+				// 	defaults: [],
+				// 	unDefaults: []
+				// })
 			);
 	});
 
@@ -173,6 +182,7 @@ router.get('/getmarks', (req, res, next) => {
 	}
 
 	function sortByDefault(prev, current){
+		console.log(prev);
 		current.defaultItem ? prev.defaults.push(current) : prev.unDefaults.push(current);
 		return prev;
 	}

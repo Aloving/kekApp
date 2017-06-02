@@ -100,44 +100,47 @@ router.get('/getstatistic', (req, res, next) => {
 				items: {$push: '$items'}
 			}
 		}
-	]).exec((err, data) => {
+	]).exec((err, months) => {
 		if(err) next(err);
+		MarksData.find({}).exec((err, marks) => {
+			if(err) next(err);
+			data = months.reduce(function(prev, current){
+				var currentCopy = {
+					date: current._id,
+					copyItems: current.items,
+					items: [],
+					_id: new ObjectID
+				};
 
-		data = data.reduce(function(prev, current){
-			var currentCopy = {
-				date: current._id,
-				copyItems: current.items,
-				items: [],
-				_id: new ObjectID
-			};
-
-			currentCopy.copyItems.forEach(function(item){
-				return item.forEach(function(item){
-					currentCopy.items.push(item);
-				});
-			});
-
-			currentCopy.items = currentCopy.items.reduce(function(prev, current){
-
-				var haveInArray = prev.filter(function(item){
-					if(item.title == current.title){
-						return item;
-					}else{
-						return false;
-					}
+				currentCopy.copyItems.forEach(function(item){
+					return item.forEach(function(item){
+						currentCopy.items.push(item);
+					});
 				});
 
-				haveInArray.length || !haveInArray ? haveInArray[0].price += +current.price : prev.push(current);
+				currentCopy.items = currentCopy.items.reduce(function(prev, current){
+
+					var haveInArray = prev.filter(item => item.title == current.title ? item : false);
+
+					haveInArray.length || !haveInArray ? haveInArray[0].price += +current.price : prev.push(current);
+					return prev;
+				},[]);
+
+				delete currentCopy.copyItems;
+				prev.push(currentCopy);
+				
 				return prev;
-			},[]);
+			}, [])
+			.map(function(month){
+					month.items.map(function(item){
+						item.defaultItem = marks.some(sItem => sItem.title == item.title && sItem.defaultItem);
+					});
+					return month;
+				});
 
-			delete currentCopy.copyItems;
-			prev.push(currentCopy);
-			
-			return prev;
-		}, []);
+			res.json(data);
+		});
 
-		res.json(data);
 	});
 	
 });

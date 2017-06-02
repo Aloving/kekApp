@@ -65,15 +65,22 @@ router.get('/getdays/:cond/:id?', (req, res, next) => {
 	}else if(paramsCond == 'byid'){
 
 		DaysData.findById(paramsId, function(err, day){
-			if (err) {
-				next(err);
-			}
+
+			if (err) next(err);
+
 			if (!day) {
 				return next(new HttpError(404, 'Day not found'));
 			}
 
-			res.json(day);
-			
+			MarksData.find({}).exec((err, marks) => {
+				if (err) next(err);
+					day.items.map(function(item){
+						item.defaultItem = marks.some(sItem => sItem.title == item.title && sItem.defaultItem);
+						return item;
+					});
+				res.json(day);
+			});
+		
 		});
 
 	}

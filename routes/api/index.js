@@ -180,10 +180,10 @@ router.get('/getmarks', (req, res, next) => {
 		res.json(
 			datamarks
 				.filter(sortByMonth)
-				// .reduce(sortByDefault, {
-				// 	defaults: [],
-				// 	unDefaults: []
-				// })
+				.reduce(sortByDefault, {
+					defaults: [],
+					unDefaults: []
+				})
 			);
 	});
 
@@ -192,7 +192,6 @@ router.get('/getmarks', (req, res, next) => {
 	}
 
 	function sortByDefault(prev, current){
-		console.log(prev);
 		current.defaultItem ? prev.defaults.push(current) : prev.unDefaults.push(current);
 		return prev;
 	}
@@ -203,10 +202,33 @@ router.post('/addmark', (req, res, next) => {
 	require ('../../models/Mark');
 	
 	MarksData.find({title: req.body.title}, (err, mark) => {
+		let newMark;
+
+		var newDate;
+		var nowDate;
+		var nowDay;
+		var nowMonth;
+		var nowYear;
+
+
 		if (err) return next(err);
 		if(mark.length) res.json(mark);
+
+		newDate = new Date()
+
+		nowDay = moment(nowDate).get('D');
+		nowMonth = moment(nowDate).get('month');
+		nowYear = moment(nowYear).get('year');
+
+		nowDate = `${nowDay}.${nowMonth}.${nowYear}`;
+
+		newMark = {
+			title: req.body.title,
+			defaultItem: req.body.title,
+			create: nowDate
+		}
 		if(!mark.length){
-			var addMark = new mongoose.models.Mark(req.body);
+			var addMark = new mongoose.models.Mark(newMark);
 			addMark.save((err, addedMark) => {
 				if(err) next(err);
 				res.json(addedMark);

@@ -17,8 +17,7 @@ var schema = new Schema({
 	create: {
 		type: Date,
 		required: false,
-		get: getFormatData,
-		set: setFormatData
+		get: getFormatData
 	}
 },
 	{

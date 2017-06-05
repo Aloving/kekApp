@@ -202,30 +202,13 @@ router.post('/addmark', (req, res, next) => {
 	require ('../../models/Mark');
 	
 	MarksData.find({title: req.body.title}, (err, mark) => {
-		let newMark;
-
-		var newDate;
-		var nowDate;
-		var nowDay;
-		var nowMonth;
-		var nowYear;
-
-
 		if (err) return next(err);
 		if(mark.length) res.json(mark);
 
-		newDate = new Date()
-
-		nowDay = moment(nowDate).get('D');
-		nowMonth = moment(nowDate).get('month');
-		nowYear = moment(nowYear).get('year');
-
-		nowDate = `${nowDay}.${nowMonth}.${nowYear}`;
-
 		newMark = {
 			title: req.body.title,
-			defaultItem: req.body.title,
-			create: nowDate
+			defaultItem: req.body.defaultItem,
+			create: new Date()
 		}
 		if(!mark.length){
 			var addMark = new mongoose.models.Mark(newMark);

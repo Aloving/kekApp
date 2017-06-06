@@ -200,32 +200,18 @@ router.get('/getmarks', (req, res, next) => {
 
 router.post('/addmark', (req, res, next) => {
 	require ('../../models/Mark');
-	
-	MarksData.find({title: req.body.title}, (err, mark) => {
-		var addMark;
 
-		if (err) return next(err);
-		if(mark.length) {
-			mark.create = new Date();
-			Mark.update({_id: mark._id}, mark).exec((err, newMark) => {
-				if (err) next(err);
-				res.json(newMark);
-			})
-		}
-
-		newMark = {
+	MarksData.findOneAndUpdate(
+		{title: req.body.title},
+		{
 			title: req.body.title,
-			defaultItem: req.body.defaultItem,
+			defaultItem: false,
 			create: new Date()
-		}
-		if(!mark.length){
-			var addMark = new mongoose.models.Mark(newMark);
-			addMark.save((err, addedMark) => {
-				if(err) next(err);
-				res.json(addedMark);
-			});
-		}
-
+		},
+		{upsert: true},
+		function(err, mark){
+			if (err) next(err);
+			res.json(mark);
 	});
 
 });

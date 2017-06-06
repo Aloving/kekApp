@@ -202,8 +202,15 @@ router.post('/addmark', (req, res, next) => {
 	require ('../../models/Mark');
 	
 	MarksData.find({title: req.body.title}, (err, mark) => {
+
 		if (err) return next(err);
-		if(mark.length) res.json(mark);
+		if(mark.length) {
+			mark.create = new Date();
+			mark.save((err, savedMark) => {
+				if (err) next(err);
+				res.json(savedMark);
+			})
+		}
 
 		newMark = {
 			title: req.body.title,

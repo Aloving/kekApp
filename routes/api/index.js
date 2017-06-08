@@ -63,6 +63,7 @@ router.get('/getdays/:cond/:id?', (req, res, next) => {
 
 		});
 	}else if(paramsCond == 'byid'){
+		let arrayDay = [];
 
 		DaysData.findById(paramsId, function(err, day){
 
@@ -78,7 +79,8 @@ router.get('/getdays/:cond/:id?', (req, res, next) => {
 						item.defaultItem = marks.some(sItem => sItem.title == item.title && sItem.defaultItem);
 						return item;
 					});
-				res.json(day);
+					arrayDay.push(day);
+				res.json(arrayDay);
 			});
 		
 		});

@@ -63,7 +63,7 @@ router.get('/getdays/:cond/:id?', (req, res, next) => {
 
 		});
 	}else if(paramsCond == 'byid'){
-		let arrayDay = [];
+		var arrayDay = [];
 
 		DaysData.findById(paramsId, function(err, day){
 
@@ -210,8 +210,12 @@ router.post('/addmark', (req, res, next) => {
 			defaultItem: false,
 			create: new Date()
 		},
-		{upsert: true},
+		{upsert: true,
+			new: true
+		},
 		function(err, mark){
+			console.log('err', err);
+			console.log('mark', mark);
 			if (err) next(err);
 			res.json(mark);
 	});

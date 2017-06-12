@@ -17,6 +17,7 @@ class Stat extends React.Component{
 
         return(
             <div className="statistic">
+            <Header content="Статистика"/>
                 <Container cards={this.props.stat} stat={true}/>
             </div>
 

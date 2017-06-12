@@ -30,7 +30,7 @@ class Container extends React.Component {
            cards =  ''
        }else if(Object.prototype.toString.call(this.props.cards) == "[object Object]" && this.props.cards.items){
 
-           cards = <Card first={true}  stat={false} number={Math.round(Math.random() * 4) } openModal={this.props.openModal} onDeleteItem={this.props.onDeleteItem} id={this.props.cards.id} date={this.props.cards.date}
+           cards = <Card first={true}  stat={false} number={Math.round(Math.random() * 4) } openModal={this.props.openModal}  id={this.props.cards.id} date={this.props.cards.date}
                             items={this.props.cards.items} key={this.props.cards.id}/>
        }else{
            cards =  ''

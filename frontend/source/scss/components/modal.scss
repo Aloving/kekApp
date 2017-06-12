@@ -21,11 +21,11 @@
     max-height: 100%;
   }
   &__body {
+    background: $mainColor;
     max-width: 600px;
     margin: 0 auto;
-    background: linear-gradient(128deg, #26a65b 11%, #d18b36 24%, #fa9300 33%, #d18b36 42%, rgb(0, 123, 255) 63%, #da3055 91%);
-    margin-top: 100px;
-    padding: 5px;
+        margin-top: 100px;
+    padding: 0px;
     position: relative;
     border-radius: 10px;
      @media(max-width: 768px){
@@ -33,9 +33,10 @@
   }
   }
   &__content {
+     border-radius: 0;
     background: #fff;
     padding: 10px 10px;
-    border-radius: 10px;
+  
   }
   &__add {
     background: rgba(0, 0, 0, 0.14);
@@ -43,34 +44,47 @@
     color: #fff;
     line-height: 1;
     font-size: 29px;
-    border-radius: 10px;
+     border-radius: 10px 10px 10px 0px;
+ 
     padding: 2px 12px;
-    margin-left: 10px;
+    margin-left: 0px;
     transition: 0.3s;
     cursor: pointer;
     &:hover{
       background: rgba(0, 0, 0, 0.24);
     }
-    margin-bottom: 4px;
+    margin-bottom: 0px;
   }
   &__close {
-    position: absolute;
-    right: 0;
-    top: 0;
-    background: #fff;
-    border: 1px solid #000;
-    border-radius: 50%;
-    transform: rotate(45deg) translate(0, -50%);
-    padding: 3px 10px 4px;
+     background: rgba(0, 0, 0, 0.14);
+    border: none;
+    color: #fff;
     line-height: 1;
-    font-size: 35px;
+    float: right;
+    font-size: 29px;
+    position: relative;
+    border-radius: 10px;
+    padding: 2px 12px;
+    margin-left: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+    margin-bottom: 0px;
+    transform: rotate(0deg);
+
+
+  border-radius: 10px 10px 0px 10px;
+    
+    padding: 4px 10px 4px;
+    line-height: 1;
+    font-size: 25px;
     cursor: pointer;
     transition: 0.3s;
     cursor: pointer;
-    @media(max-width: 768px){
-      transform: rotate(45deg) translate(0, 0%);
-    }
-
+  
+& span{
+  display: inline-block;
+  transform: rotate(45deg)
+}
   }
   &__marks{
     padding: 5px 10px 20px;
@@ -98,24 +112,14 @@
 
 }
 
-@keyframes funbutton{
-  0%{
-    transform: scale(1)  translateY(0px);
-  }
-  50%{
-    transform: scale(1.1);
-  }
-  100%{
-    transform: scale(1) translateY(-3px);
 
-  }
-}
 .mark {
+ 
 
   display: inline-block;
     padding: 6px 6px;
     border-radius: 6px;
-    color: #fff;
+   
     min-width: 23%;
     text-align: center;
     line-height: 1;
@@ -123,30 +127,43 @@
     cursor: pointer;
     margin: 3px 1%;
     font-size: 16px;
+     background: transparent;
     transition: 0.3s;
    @media(max-width: 768px){
       font-size: 12px;
       min-width: 31%;
     }
-  &_active{
-    box-shadow: 2px 3px 0px 2px #157519, inset 0px 0px 10px 2px #83ec87;
-    animation: funbutton 0.5s forwards;
-    background: #33dc68;
-
-  }
+  
   &:focus{
     outline: none;
   }
+  &_default{
+
+    background: transparent;
+    border: 1px solid $mainColor;
+    color: $mainColor;
+  }
   &_undefault{
-    background: #929292;
+    color: #a4a4a4;
+        background: transparent;
+        border: 1px solid  #a4a4a4;
+
+  }
+  &_active{
+     background: $mainColor;
+      color: #fff;
+ border: 1px solid $mainColor;
+
+
   }
 }
 
 .add-mark {
+  border: 1px solid $mainColor;
 margin: 3px 1%;
   display: inline-block;
-  background: #26a65b;
-  color: #fff;
+  background: transparent;
+   color: $mainColor;
   line-height: 1;
   padding: 4px;
   border-radius: 5px;
@@ -180,15 +197,22 @@ margin: 3px 1%;
     padding: 0 5px;
   }
 }
-.hint{
-  display: block;
-  background: #adadad;
-  color: #fff;
-  padding: 0 15px;
-  border-radius: 10px;
-  opacity: 0;
-  transition: 0.3s;
-  &_active{
-    opacity: 1;
-  }
-}
+// .hint{
+//   display: block;
+//   background: #adadad;
+//   color: #fff;
+//   padding: 0 15px;
+//   border-radius: 10px;
+//   opacity: 0;
+//   transition: 0.3s;
+//   &_active{
+//     opacity: 1;
+//   }
+// }
+
+
+
+
+
+
+

@@ -1,13 +1,9 @@
 .card {
+  padding: 0;
 
-  color: #fff;
-  border-radius: 10px;
   vertical-align: top;
-  width: 600px;
-  margin: 15px 0;
-  padding: 5px;
-  display: inline-block;
-  box-shadow: 1px 1px 10px #a4a4a4;
+  margin: 10px 0;
+  display: block;
   text-align: left;
   @media(max-width: 768px){
     width: 100%;
@@ -17,10 +13,15 @@
     vertical-align: middle;
     display: inline-block;
     margin-top: 8px;
+    margin-top: 9px;
   }
   &__header{
-    padding-bottom: 5px ;
-    padding-left: 15px ;
+     text-align: center;
+    font-size: 12px;
+    padding: 0;
+    color: #fff;
+   
+      background: $mainColor;
     &:after{
       content: '';
       display: table;
@@ -28,10 +29,10 @@
     }
   }
   &__content {
-    background: #fff;
+    background: transparent;
     border-radius: 10px;
     width: 100%;
-    padding: 20px;
+   
 
     &_close{
       max-height: 0;
@@ -46,22 +47,25 @@
     }
   }
   &__toggle{
+    padding: 8px 12px 13px;
+    
+    margin: 0;
     vertical-align: middle;
     float: right;
     border-radius: 5px;
     border: none;
-    padding: 8px 12px;
+
     line-height: 1;
     color: #fff;
     cursor: pointer;
     transition: 0.3s;
     background: transparent;
-    font-size: 18px;
-    margin-right: 10px;
+ 
+  
     transition: 0.3s;
     &_open .card__toggle-icon{
-
-        transform: rotate(180deg);
+    transform-origin: -4px 12px;
+        transform: rotate(45deg);
 
 
     }
@@ -74,16 +78,23 @@
  &__toggle-icon{
    display: inline-block;
    transition: 0.6s;
+       border: 2px solid rgba(255, 255, 255, 0);
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    width: 15px;
+    height: 15px;
+    transform: rotate(225deg);
 
   }
   &__add {
+     padding: 4px 15px;
 
     vertical-align: middle;
-    float: right;
-    padding: 5px;
+    float: left;
+    
     border-radius: 5px;
     border: none;
-    padding: 3px 12px;
+   
     font-size: 29px;
     line-height: 1;
     color: #fff;
@@ -101,22 +112,22 @@
 .toggle-enter {
   max-height: 0;
   overflow: hidden;
-  padding: 0 20px;
+
 
 }
 .toggle-enter.toggle-enter-active {
   max-height: 1000px;
-  padding: 20px;
+ 
   transition: 0.6s ease-in;
 }
 .toggle-leave {
   max-height: 1000px;
-  padding: 20px;
+  
 
 }
 .toggle-leave.toggle-leave-active {
   max-height: 0;
   overflow: hidden;
-  padding: 0 20px;
+
   transition: 0.6s ease-out;
 }

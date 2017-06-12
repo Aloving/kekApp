@@ -1,44 +1,10 @@
-.header {
-  background: #26a65b;
-  background: -moz-linear-gradient(left, #26a65b 0%, #d18b36 20%, #fa9300 33%, #d18b36 45%, #017cff 71%, #b45469 99%);
-  background: -webkit-linear-gradient(left, #26a65b 0%, #d18b36 20%, #fa9300 33%, #d18b36 45%, #017cff 71%, #b45469 99%);
-  background: linear-gradient(to right, #26a65b 0%, #d18b36 20%, #fa9300 33%, #d18b36 45%, #017cff 71%, #b45469 99%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#26a65b', endColorstr='#b45469', GradientType=1);
-
-  padding: 20px 0;
-  text-align: center;
-  height: auto;
-}
-.nav-item{
-  position: relative;
-  display: inline-block;
-  &__img{
-    margin: 0 20px;
-    width: 50px;
-    height: 50px;
-    position: relative;
-    z-index: 5;
+.header{width: 100%;
+  
+    margin-bottom: 30px;
+    border-radius: 5px 0 0 5px;
+    font-size: 15px;
+    background-color: $mainColor;
+    font-weight: 600;
+    color: #fff;
+    padding: 15px 0px 15px 20px;
   }
-  &:after{
-    content: '';
-    width: 80px;
-    height: 80px;
-    background: rgba(255, 255, 255, 0.13);
-    position: absolute;
-    top: -11px;
-    left: 5px;
-    border-radius: 50%;
-    z-index: 1;
-    transition: 0.3s;
-    opacity: 0;
-  }
-
-  &_active{
-    &:after{
-     opacity: 1;
-    }
-
-  }
-
-
-}

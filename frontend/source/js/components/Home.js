@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from './Container';
 import Modal from './Modal';
-import Header from './Header';
+import Header from './Header'
 import {connect} from 'react-redux';
 
 
@@ -44,6 +44,7 @@ class Home extends React.Component{
 
         return(
         <div className="home">
+        <Header content='За последние 7 дней'/>
             <Container openModal={this.openModal.bind(this)} cards={this.props.days}/>
             <Modal
                 dayId={this.state.dayId}

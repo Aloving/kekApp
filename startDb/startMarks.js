@@ -28,6 +28,6 @@ module.exports = [
     }, {
         title: 'Шампунь',
         defaultItem: false,
-        create: '14.05.2017'
+        create: '10.04.2017'
     }
 ];

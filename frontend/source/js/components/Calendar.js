@@ -1,6 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router'
 import Header from './Header';
+import {Link} from 'react-router'
 import ghost from './../../assets/ghost.png';
 import {action_getcalendar} from '../redux/actions';
 import {connect} from 'react-redux';
@@ -166,19 +166,34 @@ class Calendar extends React.Component {
            </div>
 
         return (
+
         <ReactCSSTransitionGroup  transitionName="animation-opacity"
                                   transitionAppear={true}
                                   transitionEnterTimeout={800}
                                   transitionLeaveTimeout={800}
                                   transitionAppearTimeout={800}
         >
+          <Header content='Календарь'/>
             <div className="calendar">
-                <h1>{this.state.currentYear}</h1>
-                <h3>{this.state.stringCurrentMonth}</h3>
-                <div className="nav-arrows">
-                    <div onClick={this.showPrevMonth.bind(this)} className={this.state.arrowPrevActive ? "nav-arrows__item nav-arrows__item_prev" : "nav-arrows__item nav-arrows__item_disable nav-arrows__item_prev"}>🡄</div>
-                    <div onClick={this.showNextMonth.bind(this)} className={this.state.arrowNextActive ? "nav-arrows__item nav-arrows__item_next" : "nav-arrows__item nav-arrows__item_disable nav-arrows__item_next"}>🡆</div>
+             
+                {/* <h1>{this.state.currentYear}</h1> */}
+                <div className="nav">
+                 <div onClick={this.showPrevMonth.bind(this)} 
+                 className={this.state.arrowPrevActive ?
+                  "nav__arrow nav__arrow_prev" :
+                   "nav__arrow  nav__arrow_disable nav__arrow_prev"}></div>
+                   
+                    <span className="nav__text">{this.state.stringCurrentMonth}</span>
+                    <div onClick={this.showNextMonth.bind(this)} 
+                    className={this.state.arrowNextActive ? 
+                        "nav__arrow nav__arrow_next"
+                         : "nav__arrow  nav__arrow_disable nav__arrow_next"}></div>
+                    
+
                 </div>
+               
+
+           
                 {items}
             </div>
         </ReactCSSTransitionGroup>

@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "start": "concurrently \"mongod\" \"npm run serverstart\" \"npm run frontstartw\"",
+    "ritahome": "concurrently \"mongod --dbpath ~/data/ --port 15151\" \"npm run serverstart\" \"npm run frontstart\"",
     "production": "concurrently \"mongod --dbpath ~/database\" \"npm run serverProduction\"",
     "serverstart": "node ./bin/www",
     "serverProduction": "NODE_ENV=production node bin/www",
     "buildw": "set NODE_ENV=production && webpack",
-    "frontstart": "webpack --watch",
-    "frontstartw": "webpack-dev-server --hot --inline"
+    "frontstart": "webpack-dev-server --hot --inline --watch-poll",
+    "frontstartw": "webpack-dev-server --hot --inline --watch-poll"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.3",

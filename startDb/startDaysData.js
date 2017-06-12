@@ -47,56 +47,7 @@ module.exports = [
 			}
 		]
 	},
-	{
-		date: '14.05.2017',
-		items: [
-			{
-				title: 'Работа',
-				price: 200
-			},
-			{
-				title: 'Обед(Алёша)',
-				price: 300
-			},
-			{
-				title: 'Бухло',
-				price: 1000
-			},
-			{
-				title: 'Бухло',
-				price: 300
-			},
-			{
-				title: 'Продукты',
-				price: 1200
-			},
-			{
-				title: 'Леваяеда',
-				price: 290
-			},
-			{
-				title: 'Шампунь',
-				price: 1000
-			},
-			{
-				title: 'Продукты',
-				price: 700
-			},
-			{
-				title: 'Продукты',
-				price: 200
-			},
-			{
-				title: 'Бухло',
-				price: 300
-			},
-			{
-				title: 'Бухло',
-				price: 300
-			},
 
-		]
-	},
     {
         date: '13.05.2017',
         items: [
@@ -145,56 +96,8 @@ module.exports = [
             }
         ]
     },
-    {
-        date: '14.04.2017',
-        items: [
-            {
-                title: 'Работа',
-                price: 200
-            },
-            {
-                title: 'Обед(Алёша)',
-                price: 300
-            },
-            {
-                title: 'Бухло',
-                price: 1000
-            },
-            {
-                title: 'Бухло',
-                price: 300
-            },
-            {
-                title: 'Продукты',
-                price: 1200
-            },
-            {
-                title: 'Леваяеда',
-                price: 290
-            },
-            {
-                title: 'Шампунь',
-                price: 1000
-            },
-            {
-                title: 'Продукты',
-                price: 700
-            },
-            {
-                title: 'Продукты',
-                price: 200
-            },
-            {
-                title: 'Бухло',
-                price: 300
-            },
-            {
-                title: 'Бухло',
-                price: 300
-            },
-
-        ]
-    }, {
+   
+     {
         date: '12.04.2017',
         items: [
             {
@@ -245,7 +148,7 @@ module.exports = [
         ]
     },
     {
-        date: '10.05.2016',
+        date: '10.09.2016',
         items: [
             {
                 title: 'Продукты',

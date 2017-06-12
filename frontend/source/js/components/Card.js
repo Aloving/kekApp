@@ -35,11 +35,11 @@ class Card extends React.Component {
 
 
         var items = this.props.items.map((item) => {
+            
 
             return <Item stat={this.props.stat}
-
-                         percent={this.props.stat ? Math.round((item.price / (summ / 67) )) : null}
-                         number={Math.round(Math.random() * 4)}
+                        defaultItem = {item.defaultItem}
+                         percent={this.props.stat ? Math.round((item.price / (summ / 100) )) : null}
                          price={item.price}
                          title={item.title}
                          key={this.props.id ? item._id : counter++}
@@ -63,13 +63,20 @@ class Card extends React.Component {
 
 
         return (
-            <div className={"card color_" + this.props.number + ""} ref="card" id={this.props.id}>
+            <div className={"card"} ref="card" id={this.props.id}>
                 <div className="card__header">
-                    <span
-                        className="card__date">{typeof this.props.date == 'object' ? `${this.props.date.month < 10 ? '0' + this.props.date.month : this.props.date.month}.${this.props.date.year}` : this.props.date}</span>
-                    {this.props.openModal ? <button onClick={this.openModal.bind(this)} className="card__add">+</button> : null}
-                    <button onClick={this.toggle.bind(this)} className={this.state.open ? 'card__toggle card__toggle_open' : 'card__toggle card__toggle_close' }><span
-                        className="card__toggle-icon">▼</span></button>
+ {
+                        this.props.openModal ? 
+                        <button onClick={this.openModal.bind(this)} className="card__add">+</button> : null
+                    }
+                    <span className="card__date">
+                    {typeof this.props.date == 'object' ? `${this.props.date.month < 10 ? '0' + this.props.date.month : this.props.date.month}.${this.props.date.year}` : this.props.date}
+                    </span>
+
+                  
+                      <button
+                     onClick={this.toggle.bind(this)}
+                      className={this.state.open ? 'card__toggle card__toggle_open' : 'card__toggle card__toggle_close' }><span className="card__toggle-icon"></span></button>
                 </div>
                 <ReactCSSTransitionGroup transitionName="toggle"
                                          transitionAppear={true}

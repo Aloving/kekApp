@@ -12,7 +12,7 @@ class Modal extends React.Component {
             priceValid: '',
             buttonValid: '',
             activeButton: '',
-            hintActive: false,
+           
             errorMessage: ''
         };
     }
@@ -45,13 +45,7 @@ class Modal extends React.Component {
 
     }
 
-    openHint() {
-        this.setState({hintActive: true})
-    }
-
-    closeHint() {
-        this.setState({hintActive: false})
-    }
+   
 
     addMarkChange(evt) {
         this.setState({addMarkValue: evt.target.value});
@@ -141,7 +135,7 @@ class Modal extends React.Component {
                                 return <button onClick={this.toggleClassActive.bind(this)} key={item.id} className="mark mark_undefault">{item.title}</button>;
                             })
                         }
-                        <div onMouseEnter={this.openHint.bind(this)} onMouseLeave={this.closeHint.bind(this)}
+                        <div 
                              className={this.state.addMarkOpen ? 'add-mark add-mark_active mark' : 'mark add-mark'}>
                             <div className="add-mark__label"
                                  onClick={this.handleClick.bind(this)}>+</div>
@@ -149,7 +143,7 @@ class Modal extends React.Component {
                                 <input className="add-mark__input" size="1" onChange={this.addMarkChange.bind(this)} value={this.state.addMarkValue}/>
                             </form>
                         </div>
-                        <div className={this.state.hintActive ? 'hint hint_active' : 'hint'}>Введите значение в поле, чтобы добавить новый раздел</div>
+                       
                     </div>
                 </div>;
 
@@ -160,7 +154,7 @@ class Modal extends React.Component {
             <div onClick={this.closeModal.bind(this)} className={this.props.open ? 'modal modal_open' : 'modal'}>
                 <div className='modal__body'>
                     <button className='modal__add' onClick={this.formSubmit.bind(this)}>+</button>
-                    <div className='modal__close' onClick={this.closeModal.bind(this)}>+</div>
+                    <div className='modal__close' onClick={this.closeModal.bind(this)}><span>+</span></div>
                     <div className='modal__content'>
                         <input 
                             type='number'

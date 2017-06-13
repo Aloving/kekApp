@@ -77,27 +77,24 @@
     visible: hidden;
      opacity: 0;
 }
-&__arrow_next {
+  &__arrow{
     display: inline-block;
     transition: 0.6s;
+    margin-top: 3px;
     border: 2px solid rgba(255, 255, 255, 0);
     border-top: 2px solid #fff;
     border-left: 2px solid #fff;
     width: 15px;
     height: 15px;
-    -ms-transform: rotate(225deg);
+    cursor: pointer
+  }
+&__arrow_next {
+
     float: right;
-    transform: rotate(138deg);
+    transform: rotate(135deg);
 }
 &__arrow_prev {
-    display: inline-block;
-    transition: 0.6s;
-    border: 2px solid rgba(255, 255, 255, 0);
-    border-top: 2px solid #fff;
-    border-left: 2px solid #fff;
-    width: 15px;
-    height: 15px;
-    -ms-transform: rotate(225deg);
+
     transform: rotate(-45deg);
     float: left;
    

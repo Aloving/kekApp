@@ -19,8 +19,9 @@ class Calendar extends React.Component {
             minDate: {year: 0, month: 0},
             MaxDate: {year: 0, month: 0},
             arrowPrevActive : true,
-            arrowNextActive : true,
-            startDays: []
+            arrowNextActive : false,
+            startDays: [],
+            dateNow: {year: 0, month: 0},
 
         }
 
@@ -30,7 +31,7 @@ class Calendar extends React.Component {
         this.minMax = this.minMax.bind(this);
     }
     componentWillMount() {
-        this.props.getcalendar();
+        this.props.getcalendar()
         document.title = "Календарь";
         this.currentDate();
 
@@ -39,9 +40,6 @@ class Calendar extends React.Component {
             startdays.push(null);
         }
         this.setState({startDays: startdays});
-
-
-
     }
     componentDidUpdate() {
 
@@ -65,8 +63,14 @@ class Calendar extends React.Component {
             return item.date.year == maxYear;
         })
         var maxMonth = Math.max.apply(Math,maxYearMonths.map(function(item){return item.date.month}))
+
+
+        this.state.dateNow.year >= maxYear &&  this.state.dateNow.month >= maxMonth ?
+            this.setState({maxDate: {year:this.state.dateNow.year, month: this.state.dateNow.month}})
+            :  this.setState({maxDate: {year:maxYear, month: maxMonth}});
+
         this.setState({minDate: {year:minYear, month: minMonth}})
-        this.setState({maxDate: {year:maxYear, month: maxMonth}})
+
 
     }
     dateToString(month) {
@@ -78,7 +82,7 @@ class Calendar extends React.Component {
         var date = new Date();
         var year = date.getFullYear();
         var month = date.getMonth();
-
+        this.setState({dateNow:{year: year, month: month}});
         this.setState({currentYear: year, currentMonth: month})
         this.dateToString(month)
     }
@@ -87,7 +91,7 @@ class Calendar extends React.Component {
 
 
         if(typeof this.state.maxDate == 'undefined' || this.state.maxDate.year == 0){return}
-        if(year == this.state.maxDate.year && month == this.state.maxDate.month){
+        if(year >= this.state.maxDate.year && month >= this.state.maxDate.month){
             this.setState({arrowNextActive: false})
         }else{
             this.setState({arrowNextActive: true})
@@ -153,7 +157,7 @@ class Calendar extends React.Component {
     }
     render() {
        var counter = 0;
-       var daysMap = this.state.visibleDays.length == 0 ? this.state.startDays : this.state.visibleDays.length != 0 ?  this.state.visibleDays : [];
+       var daysMap = this.state.visibleDays.length == 0 ? this.state.startDays :   this.state.visibleDays;
        var items =
            <div>
                {

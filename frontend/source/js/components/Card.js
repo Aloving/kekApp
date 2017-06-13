@@ -23,6 +23,9 @@ class Card extends React.Component {
             this.setState({open: true})
         }
 
+
+
+
     }
 
     render() {

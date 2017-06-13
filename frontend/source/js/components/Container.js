@@ -16,6 +16,8 @@ class Container extends React.Component {
 
         var counter = 0;
         var cards;
+        
+        console.log('CONATINER',this.props.cards);
 
        if(Array.isArray(this.props.cards)){
 

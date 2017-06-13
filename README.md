@@ -13,3 +13,4 @@ App for lulz
 | api/getmarks | Route for get marks | GET|
 | api/addmark | Route for add common mark(example of request here: https://gist.github.com/Aloving/cbcb5ade0533fe3be918eeba2f2f2697) | POST|
 | api/getstatistic | Route for get statictic | GET |
+| api/updateday/:id | Route for update day task (example of request here: https://gist.github.com/Aloving/116854d0eafa9f144635bdd1394d7ab9) | Post

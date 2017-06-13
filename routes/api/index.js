@@ -16,6 +16,14 @@ router.get('/getdays/:cond/:id?', (req, res, next) => {
 
 	var paramsCond = req.params.cond;
 	var paramsId = req.params.id;
+	var paramsUpdate = req.params.update;
+
+	var dayUpdateParams = paramsUpdate ? {
+		dayId: req.body.dayId,
+		taskId: req.body.taskId,
+		title: req.body.title,
+		price: Number(req.body.price)
+	} : false;
 
 	if(paramsCond == 'index'){
 
@@ -63,8 +71,8 @@ router.get('/getdays/:cond/:id?', (req, res, next) => {
 
 		});
 	}else if(paramsCond == 'byid'){
-		var arrayDay = [];
 
+		var arrayDay = [];
 		DaysData.findById(paramsId, function(err, day){
 
 			if (err) next(err);
@@ -86,6 +94,33 @@ router.get('/getdays/:cond/:id?', (req, res, next) => {
 		});
 
 	}
+});
+
+router.post('/updateday/:id', (req, res, next) => {
+
+	var updateInfo = {
+		title: req.body.title,
+		price: req.body.price,
+		dayid: req.params.id,
+		taskid: req.body.taskid
+	}
+
+	DaysData.update({"_id": ObjectID(updateInfo.dayid),
+	 "items._id": ObjectID(updateInfo.taskid)},
+	{"$set":{
+		"items.$.price": updateInfo.price,
+		"items.$.title": updateInfo.title
+	 }},
+	 function(err, data){
+	 	if(err) {
+	 		res.json({status: 'err'});
+	 		next(err);
+	 	}
+	 	
+	 	res.json(data);
+	 	
+	 });
+
 });
 
 router.get('/getstatistic', (req, res, next) => {

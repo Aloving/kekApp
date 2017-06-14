@@ -1,67 +1,19 @@
 webpackJsonp([0],{
 
-/***/ 13:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["e"] = action_updatelist;
-/* harmony export (immutable) */ __webpack_exports__["b"] = action_getdays;
-/* harmony export (immutable) */ __webpack_exports__["a"] = action_getdayById;
-/* harmony export (immutable) */ __webpack_exports__["c"] = action_getmarks;
-/* harmony export (immutable) */ __webpack_exports__["d"] = action_addmark;
-/* harmony export (immutable) */ __webpack_exports__["g"] = action_getstat;
-/* harmony export (immutable) */ __webpack_exports__["f"] = action_getcalendar;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api__ = __webpack_require__(22);
-
-
-
-
-
-
-
-
-function action_updatelist(data) {
-    return { type: 'PROMISE_DATA', promise: __WEBPACK_IMPORTED_MODULE_0__api__["a" /* updatelist */], data: data, actions: ['UPDATELIST_START', 'UPDATELIST_FINISH', 'UPDATELIST_ERROR'] };
-}
-
-function action_getdays() {
-    return { type: 'PROMISE', promise: __WEBPACK_IMPORTED_MODULE_0__api__["b" /* getdays */], actions: ['GET_DAYS_START', 'GET_DAYS_FINISH', 'GET_DAYS_ERROR'] };
-}
-function action_getdayById(id) {
-    return { type: 'PROMISE_DATA', promise: __WEBPACK_IMPORTED_MODULE_0__api__["c" /* getdayById */], data: id, actions: ['GET_DAY_BY_ID_START', 'GET_DAY_BY_ID_FINISH', 'GET_DAY_BY_ID_ERROR'] };
-}
-function action_getmarks() {
-    return { type: 'PROMISE', promise: __WEBPACK_IMPORTED_MODULE_0__api__["d" /* getmarks */], actions: ['GET_MARKS_START', 'GET_MARKS_FINISH', 'GET_MARKS_ERROR'] };
-}
-
-function action_addmark(title) {
-    return { type: 'PROMISE_DATA', promise: __WEBPACK_IMPORTED_MODULE_0__api__["e" /* addmark */], data: title, actions: ['ADD_MARK_START', 'ADD_MARK_FINISH', 'ADD_MARK_ERROR'] };
-}
-
-function action_getstat() {
-    return { type: 'PROMISE', promise: __WEBPACK_IMPORTED_MODULE_0__api__["f" /* getstat */], actions: ['GET_STAT_START', 'GET_STAT_FINISH', 'GET_STAT_ERROR'] };
-}
-
-function action_getcalendar() {
-    return { type: 'PROMISE', promise: __WEBPACK_IMPORTED_MODULE_0__api__["g" /* getcalendar */], actions: ['GET_CALENDAR_START', 'GET_CALENDAR_FINISH', 'GET_CALENDAR_ERROR'] };
-}
-
-/***/ }),
-
-/***/ 145:
+/***/ 144:
 /***/ (function(module, exports) {
 
 module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNjAgNjAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDYwIDYwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8Zz4NCgk8cGF0aCBkPSJNMTQsMzYuMTgyaDE0di0xMEgxNFYzNi4xODJ6IE0xNiwzNC4xODJ2LTNoMTB2M0gxNnogTTI2LDI4LjE4MnYxSDE2di0xSDI2eiIvPg0KCTxwYXRoIGQ9Ik0xNCw0MC4xODJ2MTJoMTR2LTEySDE0eiBNMjAsNDIuMTgydjNoLTR2LTNIMjB6IE0xNiw0Ny4xODJoNHYzaC00VjQ3LjE4MnogTTIyLDUwLjE4MnYtM2g0djNIMjJ6IE0yNiw0NS4xODJoLTR2LTNoNA0KCQlWNDUuMTgyeiIvPg0KCTxwYXRoIGQ9Ik0zMiwzNi4xODJoMTR2LTEwSDMyVjM2LjE4MnogTTM0LDM0LjE4MnYtMWgxMHYxSDM0eiBNNDQsMjguMTgydjNIMzR2LTNINDR6Ii8+DQoJPHBhdGggZD0iTTU5LDQ4LjE4MmMtMC41NTMsMC0xLDAuNDQ4LTEsMXYxaC0xdi0xYzAtMC41NTItMC40NDctMS0xLTFzLTEsMC40NDgtMSwxdjFoLTFWMjkuOTc4DQoJCWMwLjUyMSwwLjIzNCwxLjA3MywwLjM2MywxLjYyNiwwLjM2M2MxLjA3MywwLDIuMTM5LTAuNDM2LDIuOTI3LTEuMjg0YzAuNzYtMC44MTgsMS4xNDUtMS45MjUsMS4wNTctMy4wMzgNCgkJYy0wLjA4OS0xLjExMi0wLjY0NC0yLjE0NS0xLjUyMi0yLjgzM0wzMi43MjIsMy4zNDVMMzAsMC44MThMMjcuMzQzLDMuMjlMMS45MTMsMjMuMTg2Yy0wLjg3OSwwLjY4OC0xLjQzNCwxLjcyMS0xLjUyMiwyLjgzMw0KCQljLTAuMDg4LDEuMTEzLDAuMjk3LDIuMjIsMS4wNTcsMy4wMzhjMS4xOTQsMS4yODYsMy4wMjEsMS42MSw0LjU1MywwLjkyMnYyMC4yMDRINXYtMWMwLTAuNTUyLTAuNDQ3LTEtMS0xcy0xLDAuNDQ4LTEsMXYxSDJ2LTENCgkJYzAtMC41NTItMC40NDctMS0xLTFzLTEsMC40NDgtMSwxdjljMCwwLjU1MiwwLjQ0NywxLDEsMXMxLTAuNDQ4LDEtMXYtMWgxdjFjMCwwLjU1MiwwLjQ0NywxLDEsMXMxLTAuNDQ4LDEtMXYtMWgxdjJoMjZoMTRoOHYtMmgxDQoJCXYxYzAsMC41NTIsMC40NDcsMSwxLDFzMS0wLjQ0OCwxLTF2LTFoMXYxYzAsMC41NTIsMC40NDcsMSwxLDFzMS0wLjQ0OCwxLTF2LTlDNjAsNDguNjMsNTkuNTUzLDQ4LjE4Miw1OSw0OC4xODJ6IE0yLjkxMiwyNy42OTUNCgkJYy0wLjM4NS0wLjQxNS0wLjU3Mi0wLjk1NC0wLjUyNy0xLjUxOGMwLjA0NS0wLjU2NCwwLjMxNC0xLjA2NywwLjc2MS0xLjQxNkwyOC42NCw0LjgxMWwxLjM2MS0xLjI2NWwxLjQyNCwxLjMxOWwyNS40MywxOS44OTYNCgkJYzAuNDQ2LDAuMzQ5LDAuNzE2LDAuODUyLDAuNzYxLDEuNDE2YzAuMDQ1LDAuNTY0LTAuMTQzLDEuMTA0LTAuNTI3LDEuNTE4Yy0wLjcwOCwwLjc2Mi0xLjg2MSwwLjg1OC0yLjY4NiwwLjIyM0w1NCwyNy42MDh2MA0KCQlsLTI0LTE4LjVsLTIzLjYxLDE4LjJsLTAuMDAxLDAuMDAxbC0wLjc5MSwwLjYwOUM0Ljc3MiwyOC41NTMsMy42MiwyOC40NTcsMi45MTIsMjcuNjk1eiBNMiw1NS4xODJ2LTNoMXYzSDJ6IE01LDU1LjE4MnYtM2gxdjNINXoNCgkJIE0zNCw1Ny4xODJ2LTE1aDEwdjE1SDM0eiBNNTIsNTcuMTgyaC02di0xN0gzMnYxN0g4VjI4LjU5MWwyMi0xNi45NTlsMjIsMTYuOTU5VjU3LjE4MnogTTU0LDU1LjE4MnYtM2gxdjNINTR6IE01Nyw1NS4xODJ2LTNoMXYzDQoJCUg1N3oiLz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K"
 
 /***/ }),
 
-/***/ 146:
+/***/ 145:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Sidebar__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Sidebar__ = __webpack_require__(155);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -213,17 +165,17 @@ var App = function (_React$Component) {
 
 /***/ }),
 
-/***/ 147:
+/***/ 146:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Header__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Header__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_ghost_png__ = __webpack_require__(322);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_ghost_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__assets_ghost_png__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__redux_actions__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__redux_actions__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_redux__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react_redux__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_addons_css_transition_group__ = __webpack_require__(38);
@@ -246,6 +198,29 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+var StateObject = {
+    minDate: { year: 0, month: 0 },
+    dateNow: { year: 0, month: 0 },
+    startDays: [],
+    months: {},
+    currentYear: 0,
+    currentMonth: 0
+};
+
+var currentDate = function () {
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth();
+    StateObject.dateNow = { year: year, month: month };
+    var dayInMonth = 32 - new Date(year, month, 32).getDate();
+    for (var i = 0; i < dayInMonth; i++) {
+        StateObject.startDays.push(null);
+    }
+    StateObject.currentYear = year;
+    StateObject.currentMonth = month;
+}();
+
+// currentDate();
 
 var Calendar = function (_React$Component) {
     _inherits(Calendar, _React$Component);
@@ -256,21 +231,11 @@ var Calendar = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (Calendar.__proto__ || Object.getPrototypeOf(Calendar)).call(this));
 
         _this.state = {
-            currentYear: 0,
-            currentMonth: 0,
-            stringCurrentMonth: '',
-            stringCurrentYear: '',
             visibleDays: [],
-            minDate: { year: 0, month: 0 },
-            MaxDate: { year: 0, month: 0 },
             arrowPrevActive: true,
-            arrowNextActive: false,
-            startDays: [],
-            dateNow: { year: 0, month: 0 }
-
+            arrowNextActive: false
         };
 
-        _this.currentDate = _this.currentDate.bind(_this);
         _this.dateToString = _this.dateToString.bind(_this);
         _this.filterDays = _this.filterDays.bind(_this);
         _this.minMax = _this.minMax.bind(_this);
@@ -282,24 +247,22 @@ var Calendar = function (_React$Component) {
         value: function componentWillMount() {
             this.props.getcalendar();
             document.title = "Календарь";
-            this.currentDate();
-
-            var startdays = [];
-            for (var i = 0; i < 31; i++) {
-                startdays.push(null);
-            }
-            this.setState({ startDays: startdays });
         }
     }, {
         key: 'componentDidUpdate',
         value: function componentDidUpdate() {
-
             if (_typeof(this.props.calendar) == 'object' && this.props.calendar.length) {
-                if (this.state.minDate.year == 0) {
+                if (StateObject.minDate.year == 0) {
                     this.minMax();
                 }
-                this.state.visibleDays.length == 0 ? this.filterDays(this.state.currentYear, this.state.currentMonth) : null;
+                this.state.visibleDays.length == 0 ? this.filterDays(StateObject.dateNow.year, StateObject.dateNow.month) : null;
             }
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            StateObject.currentMonth = StateObject.dateNow.month;
+            StateObject.currentYear = StateObject.dateNow.year;
         }
     }, {
         key: 'minMax',
@@ -308,112 +271,86 @@ var Calendar = function (_React$Component) {
             var minYear = Math.min.apply(Math, this.props.calendar.map(function (item) {
                 return item.date.year;
             }));
-            var maxYear = Math.max.apply(Math, this.props.calendar.map(function (item) {
-                return item.date.year;
-            }));
             var minYearMonths = this.props.calendar.filter(function (item) {
                 return item.date.year == minYear;
             });
             var minMonth = Math.min.apply(Math, minYearMonths.map(function (item) {
                 return item.date.month;
             }));
-
-            var maxYearMonths = this.props.calendar.filter(function (item) {
-                return item.date.year == maxYear;
-            });
-            var maxMonth = Math.max.apply(Math, maxYearMonths.map(function (item) {
-                return item.date.month;
-            }));
-
-            this.state.dateNow.year >= maxYear && this.state.dateNow.month >= maxMonth ? this.setState({ maxDate: { year: this.state.dateNow.year, month: this.state.dateNow.month } }) : this.setState({ maxDate: { year: maxYear, month: maxMonth } });
-
-            this.setState({ minDate: { year: minYear, month: minMonth } });
+            StateObject.minDate = { year: minYear, month: minMonth };
         }
     }, {
         key: 'dateToString',
         value: function dateToString(month) {
             var monthsArray = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентабрь", "Октябрь", "Ноябрь", "Декабрь"];
-            this.setState({ stringCurrentMonth: monthsArray[month] });
-            this.setState({ stringCurrentYear: this.state.currentYear });
-        }
-    }, {
-        key: 'currentDate',
-        value: function currentDate() {
-            var date = new Date();
-            var year = date.getFullYear();
-            var month = date.getMonth();
-            this.setState({ dateNow: { year: year, month: month } });
-            this.setState({ currentYear: year, currentMonth: month });
-            this.dateToString(month);
+            return monthsArray[month];
         }
     }, {
         key: 'filterDays',
         value: function filterDays(year, month) {
+            var max = year >= StateObject.dateNow.year && month >= StateObject.dateNow.month ? false : true;
+            var min = year <= StateObject.minDate.year && month <= StateObject.minDate.month ? false : true;
+            this.setState({ arrowNextActive: max });
+            this.setState({ arrowPrevActive: min });
 
-            if (typeof this.state.maxDate == 'undefined' || this.state.maxDate.year == 0) {
-                return;
-            }
-            if (year >= this.state.maxDate.year && month >= this.state.maxDate.month) {
-                this.setState({ arrowNextActive: false });
+            if (StateObject.months[year + ' ' + month]) {
+                this.setState({ visibleDays: StateObject.months[year + ' ' + month] });
             } else {
-                this.setState({ arrowNextActive: true });
-            }
-            if (year == this.state.minDate.year && month == this.state.minDate.month) {
-                this.setState({ arrowPrevActive: false });
-            } else {
-                this.setState({ arrowPrevActive: true });
-            }
-            var ollDays = [];
-            var dayInMonth = 32 - new Date(year, month, 32).getDate();
-            for (var i = 0; i < dayInMonth; i++) {
-                ollDays.push(null);
-            }
 
-            var visibleDays = this.props.calendar.filter(function (item) {
-                return item.date.year == year;
-            }).filter(function (item) {
-                return item.date.month == month;
-            }).map(function (item) {
+                var ollDays = [];
+                var dayInMonth = 32 - new Date(year, month, 32).getDate();
+                for (var i = 0; i < dayInMonth; i++) {
+                    ollDays.push(null);
+                }
 
-                var index = item.date.day - 1;
-                ollDays.splice(index, 1, item);
-            });
-            this.setState({ visibleDays: ollDays });
-            this.dateToString(month);
+                this.props.calendar.filter(function (item) {
+                    return item.date.year == year;
+                }).filter(function (item) {
+                    return item.date.month == month;
+                }).map(function (item) {
+
+                    var index = item.date.day - 1;
+                    ollDays.splice(index, 1, item);
+                });
+                this.setState({ visibleDays: ollDays });
+
+                StateObject.months[year + ' ' + month] = ollDays;
+            }
         }
     }, {
         key: 'showPrevMonth',
         value: function showPrevMonth() {
-            var year = this.state.currentYear;
-            var month = this.state.currentMonth;
-            if (this.state.currentMonth == 0) {
+            var year = StateObject.currentYear;
+            var month = StateObject.currentMonth;
 
-                year = this.state.currentYear - 1;
+            if (month == 0) {
+                year -= 1;
                 month = 11;
-                this.setState({ currentYear: this.state.currentYear - 1 });
-                this.setState({ currentMonth: 11 });
+
+                StateObject.currentYear = year;
+                StateObject.currentMonth = month;
                 this.filterDays(year, month);
             } else {
-
-                month = this.state.currentMonth - 1;
-                this.setState({ currentMonth: this.state.currentMonth - 1 });
+                month -= 1;
+                StateObject.currentMonth = month;
                 this.filterDays(year, month);
             }
         }
     }, {
         key: 'showNextMonth',
         value: function showNextMonth() {
-            var year = this.state.currentYear;
-            var month = this.state.currentMonth;
-            if (this.state.currentMonth == 11) {
-                year = this.state.currentYear + 1;
+            var year = StateObject.currentYear;
+            var month = StateObject.currentMonth;
+            if (month == 11) {
+                year += 1;
                 month = 0;
-                this.setState({ currentYear: this.state.currentYear + 1 });
-                this.setState({ currentMonth: 0 });
+
+                StateObject.currentYear = year;
+                StateObject.currentMonth = month;
                 this.filterDays(year, month);
             } else {
-                month = this.state.currentMonth + 1;
-                this.setState({ currentMonth: this.state.currentMonth + 1 });
+                month += 1;
+                StateObject.currentMonth = month;
                 this.filterDays(year, month);
             }
         }
@@ -421,7 +358,7 @@ var Calendar = function (_React$Component) {
         key: 'render',
         value: function render() {
             var counter = 0;
-            var daysMap = this.state.visibleDays.length == 0 ? this.state.startDays : this.state.visibleDays;
+            var daysMap = this.state.visibleDays.length == 0 ? StateObject.startDays : this.state.visibleDays;
             var items = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 null,
@@ -459,7 +396,7 @@ var Calendar = function (_React$Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'span',
                             { className: 'nav__text' },
-                            this.state.stringCurrentMonth
+                            this.dateToString(StateObject.currentMonth)
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { onClick: this.showNextMonth.bind(this),
                             className: this.state.arrowNextActive ? "nav__arrow nav__arrow_next" : "nav__arrow  nav__arrow_disable nav__arrow_next" })
@@ -487,18 +424,18 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ 148:
+/***/ 147:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Container__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Modal__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Header__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Container__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Modal__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Header__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_redux__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_redux__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__redux_actions__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__redux_actions__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_addons_css_transition_group__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_addons_css_transition_group___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react_addons_css_transition_group__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -647,18 +584,18 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ 149:
+/***/ 148:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Container__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Modal__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Header__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Container__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Modal__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Header__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_redux__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_redux__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__redux_actions__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__redux_actions__ = __webpack_require__(17);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -666,9 +603,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
 
 
 
@@ -717,7 +651,15 @@ var Home = function (_React$Component) {
         value: function componentDidMount() {
 
             this.props.getdays();
+
             document.title = "Главная";
+        }
+    }, {
+        key: 'deleteItem',
+        value: function deleteItem(data) {
+            this.props.deleteItem({ dayId: data.dayId,
+                itemId: data.itemId
+            });
         }
     }, {
         key: 'render',
@@ -727,7 +669,7 @@ var Home = function (_React$Component) {
                 'div',
                 { className: 'home' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Header__["a" /* default */], { content: '\u0417\u0430 \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u0438\u0435 7 \u0434\u043D\u0435\u0439' }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Container__["a" /* default */], { openModal: this.openModal.bind(this), cards: this.props.days }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Container__["a" /* default */], { openModal: this.openModal.bind(this), cards: this.props.days, onDeleteItem: this.deleteItem.bind(this) }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Modal__["a" /* default */], {
                     dayId: this.state.dayId,
                     addmark: this.props.addmark,
@@ -751,13 +693,16 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
         },
 
         getmarks: function getmarks() {
-            dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__redux_actions__["c" /* action_getmarks */])());
+            dispatch(action_getmarks());
         },
         addmark: function addmark(title) {
-            dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__redux_actions__["d" /* action_addmark */])(title));
+            dispatch(action_addmark(title));
         },
         updatelist: function updatelist(data) {
             dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__redux_actions__["e" /* action_updatelist */])(data));
+        },
+        deleteItem: function deleteItem(data) {
+            dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__redux_actions__["h" /* action_deleteItem */])(data));
         }
 
     };
@@ -769,7 +714,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ 150:
+/***/ 149:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -826,17 +771,17 @@ var NotFound = function (_React$Component) {
 
 /***/ }),
 
-/***/ 151:
+/***/ 150:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Container__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Header__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Container__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Header__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_redux__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__redux_actions__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__redux_actions__ = __webpack_require__(17);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -899,11 +844,11 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ 152:
+/***/ 151:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(142);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__middlewares_promises__ = __webpack_require__(158);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reducers__ = __webpack_require__(162);
 
@@ -931,13 +876,13 @@ store.subscribe(function () {
 
 /***/ }),
 
-/***/ 153:
+/***/ 152:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(54);
+var content = __webpack_require__(53);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(315)(content, {});
@@ -946,8 +891,8 @@ if(content.locals) module.exports = content.locals;
 if(true) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept(54, function() {
-			var newContent = __webpack_require__(54);
+		module.hot.accept(53, function() {
+			var newContent = __webpack_require__(53);
 			if(typeof newContent === 'string') newContent = [[module.i, newContent, '']];
 			update(newContent);
 		});
@@ -958,15 +903,15 @@ if(true) {
 
 /***/ }),
 
-/***/ 154:
+/***/ 153:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Item__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Item__ = __webpack_require__(154);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_addons_css_transition_group__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_addons_css_transition_group___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_addons_css_transition_group__);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -1033,6 +978,9 @@ var Card = function (_React$Component) {
                     percent: _this2.props.stat ? Math.round(item.price / (summ / 100)) : null,
                     price: item.price,
                     title: item.title,
+                    onDeleteItem: _this2.props.onDeleteItem,
+                    parentId: _this2.props.id,
+                    id: item._id,
                     key: _this2.props.id ? item._id : counter++
                 });
             });
@@ -1099,11 +1047,11 @@ var Card = function (_React$Component) {
 
 /***/ }),
 
-/***/ 155:
+/***/ 154:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_home_svg__ = __webpack_require__(145);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_home_svg__ = __webpack_require__(144);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__assets_home_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__assets_home_svg__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_update_svg__ = __webpack_require__(325);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_update_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__assets_update_svg__);
@@ -1182,7 +1130,7 @@ var Item = function (_React$Component) {
                     ),
                     __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
                         'span',
-                        { className: 'item__delete' },
+                        { onClick: this.props.onDeleteItem({ dayId: this.props.parentId, itemId: this.props.id }), className: 'item__delete' },
                         __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement('img', { src: this.props.defaultItem ? __WEBPACK_IMPORTED_MODULE_3__assets_del_svg___default.a : __WEBPACK_IMPORTED_MODULE_4__assets_del_grey_svg___default.a })
                     )
                 )
@@ -1197,18 +1145,18 @@ var Item = function (_React$Component) {
 
 /***/ }),
 
-/***/ 156:
+/***/ 155:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_calendar_svg__ = __webpack_require__(319);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_calendar_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__assets_calendar_svg__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_stat_svg__ = __webpack_require__(324);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_stat_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__assets_stat_svg__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__assets_home_svg__ = __webpack_require__(145);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__assets_home_svg__ = __webpack_require__(144);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__assets_home_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__assets_home_svg__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -1265,27 +1213,29 @@ var Sidebar = function (_React$Component) {
 
 /***/ }),
 
-/***/ 157:
+/***/ 156:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_redux__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__scss_app_scss__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__scss_app_scss__ = __webpack_require__(152);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__scss_app_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__scss_app_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__redux_store__ = __webpack_require__(152);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_App__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Home__ = __webpack_require__(149);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_Stat__ = __webpack_require__(151);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_Calendar__ = __webpack_require__(147);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_NotFound__ = __webpack_require__(150);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_Day__ = __webpack_require__(148);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__redux_store__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_App__ = __webpack_require__(145);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Home__ = __webpack_require__(148);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_Stat__ = __webpack_require__(150);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_Calendar__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_NotFound__ = __webpack_require__(149);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_Day__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_Header__ = __webpack_require__(34);
+
 
 
 
@@ -1325,6 +1275,96 @@ __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
 
 /***/ }),
 
+/***/ 157:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["c"] = getdays;
+/* harmony export (immutable) */ __webpack_exports__["e"] = getmarks;
+/* harmony export (immutable) */ __webpack_exports__["g"] = getstat;
+/* harmony export (immutable) */ __webpack_exports__["a"] = updatelist;
+/* harmony export (immutable) */ __webpack_exports__["d"] = getdayById;
+/* harmony export (immutable) */ __webpack_exports__["f"] = addmark;
+/* harmony export (immutable) */ __webpack_exports__["b"] = deleteItem;
+/* harmony export (immutable) */ __webpack_exports__["h"] = getcalendar;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch__);
+
+
+function getdays() {
+    return __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch___default()('/api/getdays/index').then(function (data) {
+        return data.json();
+    });
+}
+
+function getmarks() {
+    return __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch___default()('/api/getmarks').then(function (data) {
+        return data.json();
+    });
+}
+function getstat() {
+    return __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch___default()('/api/getstatistic').then(function (data) {
+        return data.json();
+    });
+}
+
+function updatelist(data) {
+
+    return __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch___default()('/api/updatelist/' + data.id, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            title: data.title,
+            price: +data.price
+        })
+    }).then(function (data) {
+        return data.json();
+    });
+}
+function getdayById(id) {
+
+    return __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch___default()('/api/getdays/byid/' + id + '').then(function (data) {
+        return data.json();
+    });
+}
+
+function addmark(title) {
+    return __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch___default()('/api/addmark', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            title: title,
+            defaultItem: false
+        })
+    }).then(function (data) {
+        return data.json();
+    });
+}
+
+function deleteItem(data) {
+    return __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch___default()('/api/updateday/' + data.dayId + '/remove', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            taskid: data.itemId
+        })
+    });
+}
+
+function getcalendar() {
+    return __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch___default()('/api/getdays/calendar/').then(function (data) {
+        return data.json();
+    });
+}
+
+/***/ }),
+
 /***/ 158:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1354,6 +1394,7 @@ var middleware = function middleware(store) {
 
                     return store.dispatch({
                         type: successAction,
+                        dataFront: action.data,
                         data: dataf
                     });
 
@@ -1445,6 +1486,8 @@ function reducer() {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = reducer;
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function reducer() {
@@ -1457,13 +1500,18 @@ function reducer() {
         case 'GET_DAYS_FINISH':
             return [].concat(_toConsumableArray(action.data));
         case 'UPDATELIST_FINISH':
+            console.log('REDUCER', action);
             var g = state.concat();
             var h = state.findIndex(function (item) {
-                return item.id == action.data.id;
+                return item.id == action.dataFront.id;
             });
-            g.splice(h, 1, action.data);
+
+            g.splice(h, 1, _extends({}, g[h], { items: [].concat(_toConsumableArray(g[h].items), [action.dataFront]) }));
 
             return g;
+        case 'DELETE_ITEM_FINISH':
+            console.log(action);
+            return state;
         default:
             return state;
     }
@@ -1561,79 +1609,48 @@ function reducer() {
 
 /***/ }),
 
-/***/ 22:
+/***/ 17:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["b"] = getdays;
-/* harmony export (immutable) */ __webpack_exports__["d"] = getmarks;
-/* harmony export (immutable) */ __webpack_exports__["f"] = getstat;
-/* harmony export (immutable) */ __webpack_exports__["a"] = updatelist;
-/* harmony export (immutable) */ __webpack_exports__["c"] = getdayById;
-/* harmony export (immutable) */ __webpack_exports__["e"] = addmark;
-/* harmony export (immutable) */ __webpack_exports__["g"] = getcalendar;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch__);
+/* harmony export (immutable) */ __webpack_exports__["e"] = action_updatelist;
+/* harmony export (immutable) */ __webpack_exports__["h"] = action_deleteItem;
+/* harmony export (immutable) */ __webpack_exports__["b"] = action_getdays;
+/* harmony export (immutable) */ __webpack_exports__["a"] = action_getdayById;
+/* harmony export (immutable) */ __webpack_exports__["c"] = action_getmarks;
+/* harmony export (immutable) */ __webpack_exports__["d"] = action_addmark;
+/* harmony export (immutable) */ __webpack_exports__["g"] = action_getstat;
+/* harmony export (immutable) */ __webpack_exports__["f"] = action_getcalendar;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api__ = __webpack_require__(157);
 
 
-function getdays() {
-    return __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch___default()('/api/getdays/index').then(function (data) {
-        return data.json();
-    });
+function action_updatelist(data) {
+    return { type: 'PROMISE_DATA', promise: __WEBPACK_IMPORTED_MODULE_0__api__["a" /* updatelist */], data: data, actions: ['UPDATELIST_START', 'UPDATELIST_FINISH', 'UPDATELIST_ERROR'] };
+}
+function action_deleteItem(data) {
+    return { type: 'PROMISE_DATA', promise: __WEBPACK_IMPORTED_MODULE_0__api__["b" /* deleteItem */], data: data, actions: ['DELETE_ITEM_START', 'DELETE_ITEM_FINISH', 'DELETE_ITEM_ERROR'] };
 }
 
-function getmarks() {
-    return __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch___default()('/api/getmarks').then(function (data) {
-        return data.json();
-    });
+function action_getdays() {
+    return { type: 'PROMISE', promise: __WEBPACK_IMPORTED_MODULE_0__api__["c" /* getdays */], actions: ['GET_DAYS_START', 'GET_DAYS_FINISH', 'GET_DAYS_ERROR'] };
 }
-function getstat() {
-    return __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch___default()('/api/getstatistic').then(function (data) {
-        return data.json();
-    });
+function action_getdayById(id) {
+    return { type: 'PROMISE_DATA', promise: __WEBPACK_IMPORTED_MODULE_0__api__["d" /* getdayById */], data: id, actions: ['GET_DAY_BY_ID_START', 'GET_DAY_BY_ID_FINISH', 'GET_DAY_BY_ID_ERROR'] };
 }
-
-function updatelist(data) {
-
-    return __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch___default()('/api/updatelist/' + data.id, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            title: data.title,
-            price: +data.price
-        })
-    }).then(function (data) {
-        return data.json();
-    });
-}
-function getdayById(id) {
-
-    return __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch___default()('/api/getdays/byid/' + id + '').then(function (data) {
-        return data.json();
-    });
+function action_getmarks() {
+    return { type: 'PROMISE', promise: __WEBPACK_IMPORTED_MODULE_0__api__["e" /* getmarks */], actions: ['GET_MARKS_START', 'GET_MARKS_FINISH', 'GET_MARKS_ERROR'] };
 }
 
-function addmark(title) {
-    return __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch___default()('/api/addmark', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            title: title,
-            defaultItem: false
-        })
-    }).then(function (data) {
-        return data.json();
-    });
+function action_addmark(title) {
+    return { type: 'PROMISE_DATA', promise: __WEBPACK_IMPORTED_MODULE_0__api__["f" /* addmark */], data: title, actions: ['ADD_MARK_START', 'ADD_MARK_FINISH', 'ADD_MARK_ERROR'] };
 }
 
-function getcalendar() {
-    return __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch___default()('/api/getdays/calendar/').then(function (data) {
-        return data.json();
-    });
+function action_getstat() {
+    return { type: 'PROMISE', promise: __WEBPACK_IMPORTED_MODULE_0__api__["g" /* getstat */], actions: ['GET_STAT_START', 'GET_STAT_FINISH', 'GET_STAT_ERROR'] };
+}
+
+function action_getcalendar() {
+    return { type: 'PROMISE', promise: __WEBPACK_IMPORTED_MODULE_0__api__["h" /* getcalendar */], actions: ['GET_CALENDAR_START', 'GET_CALENDAR_FINISH', 'GET_CALENDAR_ERROR'] };
 }
 
 /***/ }),
@@ -1694,7 +1711,7 @@ module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGlu
 
 /***/ }),
 
-/***/ 43:
+/***/ 34:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1737,15 +1754,15 @@ var Header = function (_React$Component) {
 
 /***/ }),
 
-/***/ 53:
+/***/ 52:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Card__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Card__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_spinner_gif__ = __webpack_require__(323);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__assets_spinner_gif___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__assets_spinner_gif__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_addons_css_transition_group__ = __webpack_require__(38);
@@ -1794,15 +1811,11 @@ var Container = function (_React$Component) {
 
                 cards = this.props.cards.map(function (item) {
                     counter++;
-                    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Card__["a" /* default */], { first: counter == 1 ? true : false, stat: _this2.props.stat ? true : false, number: Math.round(Math.random() * 4), openModal: _this2.props.openModal, onDeleteItem: _this2.props.onDeleteItem, id: item.id, date: item.data || item.date,
+                    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Card__["a" /* default */], { onDeleteItem: _this2.props.onDeleteItem, first: counter == 1 ? true : false, stat: _this2.props.stat ? true : false, number: Math.round(Math.random() * 4), openModal: _this2.props.openModal, id: item.id, date: item.data || item.date,
                         items: item.items, key: item.id ? item.id : counter });
                 });
             } else if (this.props.cards == 'loading') {
                 cards = '';
-            } else if (Object.prototype.toString.call(this.props.cards) == "[object Object]" && this.props.cards.items) {
-
-                cards = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Card__["a" /* default */], { first: true, stat: false, number: Math.round(Math.random() * 4), openModal: this.props.openModal, id: this.props.cards.id, date: this.props.cards.date,
-                    items: this.props.cards.items, key: this.props.cards.id });
             } else {
                 cards = '';
             }
@@ -1831,15 +1844,15 @@ var Container = function (_React$Component) {
 
 /***/ }),
 
-/***/ 54:
+/***/ 53:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(166)();
-exports.push([module.i, "/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */\n/**\r\n * 1. Change the default font family in all browsers (opinionated).\r\n * 2. Prevent adjustments of font size after orientation changes in IE and iOS.\r\n */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\r\n * Remove the margin in all browsers (opinionated).\r\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\r\n   ========================================================================== */\n/**\r\n * Add the correct display in IE 9-.\r\n * 1. Add the correct display in Edge, IE, and Firefox.\r\n * 2. Add the correct display in IE.\r\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  /* 1 */\n  display: block; }\n\n/**\r\n * Add the correct display in IE 9-.\r\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block; }\n\n/**\r\n * Add the correct display in iOS 4-7.\r\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\r\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\r\n */\nprogress {\n  vertical-align: baseline; }\n\n/**\r\n * Add the correct display in IE 10-.\r\n * 1. Add the correct display in IE.\r\n */\ntemplate,\n[hidden] {\n  display: none; }\n\n/* Links\r\n   ========================================================================== */\n/**\r\n * 1. Remove the gray background on active links in IE 10.\r\n * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.\r\n */\na {\n  background-color: transparent;\n  /* 1 */\n  -webkit-text-decoration-skip: objects;\n  /* 2 */ }\n\n/**\r\n * Remove the outline on focused links when they are also active or hovered\r\n * in all browsers (opinionated).\r\n */\na:active,\na:hover {\n  outline-width: 0; }\n\n/* Text-level semantics\r\n   ========================================================================== */\n/**\r\n * 1. Remove the bottom border in Firefox 39-.\r\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\r\n */\nabbr[title] {\n  border-bottom: none;\n  /* 1 */\n  text-decoration: underline;\n  /* 2 */\n  text-decoration: underline dotted;\n  /* 2 */ }\n\n/**\r\n * Prevent the duplicate application of `bolder` by the next rule in Safari 6.\r\n */\nb,\nstrong {\n  font-weight: inherit; }\n\n/**\r\n * Add the correct font weight in Chrome, Edge, and Safari.\r\n */\nb,\nstrong {\n  font-weight: bolder; }\n\n/**\r\n * Add the correct font style in Android 4.3-.\r\n */\ndfn {\n  font-style: italic; }\n\n/**\r\n * Correct the font size and margin on `h1` elements within `section` and\r\n * `article` contexts in Chrome, Firefox, and Safari.\r\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\r\n * Add the correct background and color in IE 9-.\r\n */\nmark {\n  background-color: #ff0;\n  color: #000; }\n\n/**\r\n * Add the correct font size in all browsers.\r\n */\nsmall {\n  font-size: 80%; }\n\n/**\r\n * Prevent `sub` and `sup` elements from affecting the line height in\r\n * all browsers.\r\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsub {\n  bottom: -0.25em; }\n\nsup {\n  top: -0.5em; }\n\n/* Embedded content\r\n   ========================================================================== */\n/**\r\n * Remove the border on images inside links in IE 10-.\r\n */\nimg {\n  border-style: none;\n  max-width: 100%; }\n\n/**\r\n * Hide the overflow in IE.\r\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\r\n   ========================================================================== */\n/**\r\n * 1. Correct the inheritance and scaling of font size in all browsers.\r\n * 2. Correct the odd `em` font sizing in all browsers.\r\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  /* 1 */\n  font-size: 1em;\n  /* 2 */ }\n\n/**\r\n * Add the correct margin in IE 8.\r\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\r\n * 1. Add the correct box sizing in Firefox.\r\n * 2. Show the overflow in Edge and IE.\r\n */\nhr {\n  box-sizing: content-box;\n  /* 1 */\n  height: 0;\n  /* 1 */\n  overflow: visible;\n  /* 2 */ }\n\n/* Forms\r\n   ========================================================================== */\n/**\r\n * 1. Change font properties to `inherit` in all browsers (opinionated).\r\n * 2. Remove the margin in Firefox and Safari.\r\n */\nbutton,\ninput,\nselect,\ntextarea {\n  font: inherit;\n  /* 1 */\n  margin: 0;\n  /* 2 */ }\n\n/**\r\n * Restore the font weight unset by the previous rule.\r\n */\noptgroup {\n  font-weight: bold; }\n\n/**\r\n * Show the overflow in IE.\r\n * 1. Show the overflow in Edge.\r\n */\nbutton,\ninput {\n  /* 1 */\n  overflow: visible; }\n\n/**\r\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\r\n * 1. Remove the inheritance of text transform in Firefox.\r\n */\nbutton,\nselect {\n  /* 1 */\n  text-transform: none; }\n\n/**\r\n * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`\r\n *    controls in Android 4.\r\n * 2. Correct the inability to style clickable types in iOS and Safari.\r\n */\nbutton,\nhtml [type=\"button\"],\n[type=\"reset\"],\n[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */ }\n\n/**\r\n * Remove the inner border and padding in Firefox.\r\n */\nbutton::-moz-focus-inner,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0; }\n\n/**\r\n * Restore the focus styles unset by the previous rule.\r\n */\nbutton:-moz-focusring,\n[type=\"button\"]:-moz-focusring,\n[type=\"reset\"]:-moz-focusring,\n[type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText; }\n\n/**\r\n * Change the border, margin, and padding in all browsers (opinionated).\r\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\r\n * 1. Correct the text wrapping in Edge and IE.\r\n * 2. Correct the color inheritance from `fieldset` elements in IE.\r\n * 3. Remove the padding so developers are not caught out when they zero out\r\n *    `fieldset` elements in all browsers.\r\n */\nlegend {\n  box-sizing: border-box;\n  /* 1 */\n  color: inherit;\n  /* 2 */\n  display: table;\n  /* 1 */\n  max-width: 100%;\n  /* 1 */\n  padding: 0;\n  /* 3 */\n  white-space: normal;\n  /* 1 */ }\n\n/**\r\n * Remove the default vertical scrollbar in IE.\r\n */\ntextarea {\n  overflow: auto;\n  resize: none; }\n\n/**\r\n * 1. Add the correct box sizing in IE 10-.\r\n * 2. Remove the padding in IE 10-.\r\n */\n[type=\"checkbox\"],\n[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\r\n * Correct the cursor style of increment and decrement buttons in Chrome.\r\n */\n[type=\"number\"]::-webkit-inner-spin-button,\n[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\r\n * 1. Correct the odd appearance in Chrome and Safari.\r\n * 2. Correct the outline style in Safari.\r\n */\n[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  outline-offset: -2px;\n  /* 2 */ }\n\n/**\r\n * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.\r\n */\n[type=\"search\"]::-webkit-search-cancel-button,\n[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\r\n * Correct the text style of placeholders in Chrome, Edge, and Safari.\r\n */\n::-webkit-input-placeholder {\n  color: inherit;\n  opacity: 0.54; }\n\n/**\r\n * 1. Correct the inability to style clickable types in iOS and Safari.\r\n * 2. Change font properties to `inherit` in Safari.\r\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button;\n  /* 1 */\n  font: inherit;\n  /* 2 */ }\n\n*,\n*::after,\n*::before {\n  box-sizing: border-box; }\n\nsvg {\n  max-width: 100%; }\n\n/**\r\n * Hack to remove Chrome's yellow background on autofilling inputs\r\n */\ninput:-webkit-autofill,\ninput:-webkit-autofill:hover,\ninput:-webkit-autofill:focus,\ninput:-webkit-autofill:active {\n  transition: background-color 500000s ease-in-out 0s, color 500000s ease-in-out 0s; }\n\n/**\r\n * Fix for IE select bars\r\n */\nselect::-ms-value,\nselect:focus::-ms-value {\n  background: none; }\n\ntable {\n  border-collapse: collapse; }\n\np {\n  margin: 0 0 1em 0; }\n\nbody {\n  background: #ffffff;\n  color: #252525;\n  font-family: 'Roboto', sans-serif; }\n\n.main {\n  padding-left: 130px;\n  max-width: 800px; }\n  @media (max-width: 991px) {\n    .main {\n      padding-left: 70px; } }\n\nbody.open-modal {\n  overflow: hidden; }\n\n.wrapper {\n  max-width: 992px;\n  margin: 0 auto; }\n  @media (max-width: 991px) {\n    .wrapper {\n      max-width: 400px; } }\n\n.animation-opacity-enter {\n  opacity: 0; }\n\n.animation-opacity-enter.animation-opacity-enter-active {\n  opacity: 1;\n  transition: 0.3s; }\n\n.animation-opacity-leave {\n  opacity: 1; }\n\n.animation-opacity-leave.animation-opacity-leave-active {\n  opacity: 0;\n  transition: 0.3s; }\n\n.animation-opacity-appear {\n  opacity: 0; }\n\n.animation-opacity-appear.animation-opacity-appear-active {\n  opacity: 1;\n  transition: .5s; }\n\n.day_loaded {\n  opacity: 1;\n  transition: 0.3s; }\n\n.day_loading {\n  opacity: 0;\n  transition: 0.3s; }\n\n.modal {\n  position: fixed;\n  background: rgba(0, 0, 0, 0.49);\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  max-height: 0;\n  overflow: hidden;\n  transition: 0.3s; }\n  .modal__error {\n    display: block;\n    color: #f91f1f;\n    font-weight: 600;\n    text-align: center;\n    height: 20px;\n    margin-top: 5px; }\n  .modal_open {\n    max-height: 100%; }\n  .modal__body {\n    background: #25ba9a;\n    max-width: 600px;\n    margin: 0 auto;\n    margin-top: 100px;\n    padding: 0px;\n    position: relative;\n    border-radius: 10px; }\n    @media (max-width: 768px) {\n      .modal__body {\n        width: 100%; } }\n  .modal__content {\n    border-radius: 0;\n    background: #fff;\n    padding: 10px 10px; }\n  .modal__add {\n    background: rgba(0, 0, 0, 0.14);\n    border: none;\n    color: #fff;\n    line-height: 1;\n    font-size: 29px;\n    border-radius: 10px 10px 10px 0px;\n    padding: 2px 12px;\n    margin-left: 0px;\n    transition: 0.3s;\n    cursor: pointer;\n    margin-bottom: 0px; }\n    .modal__add:hover {\n      background: rgba(0, 0, 0, 0.24); }\n  .modal__close {\n    background: rgba(0, 0, 0, 0.14);\n    border: none;\n    color: #fff;\n    line-height: 1;\n    float: right;\n    font-size: 29px;\n    position: relative;\n    border-radius: 10px;\n    padding: 2px 12px;\n    margin-left: 10px;\n    transition: 0.3s;\n    cursor: pointer;\n    margin-bottom: 0px;\n    -ms-transform: rotate(0deg);\n        transform: rotate(0deg);\n    border-radius: 10px 10px 0px 10px;\n    padding: 4px 10px 4px;\n    line-height: 1;\n    font-size: 25px;\n    cursor: pointer;\n    transition: 0.3s;\n    cursor: pointer; }\n    .modal__close span {\n      display: inline-block;\n      -ms-transform: rotate(45deg);\n          transform: rotate(45deg); }\n  .modal__marks {\n    padding: 5px 10px 20px; }\n    .modal__marks_undefault {\n      border-top: solid 2px #757575; }\n  .modal__input {\n    width: 100%;\n    border: transparent;\n    border-bottom: 2px solid #757575;\n    height: 40px;\n    text-align: center;\n    font-size: 31px;\n    color: #757575; }\n    @media (max-width: 768px) {\n      .modal__input {\n        font-size: 20px; } }\n    .modal__input:focus {\n      outline: none; }\n\n.mark {\n  display: inline-block;\n  padding: 6px 6px;\n  border-radius: 6px;\n  min-width: 23%;\n  text-align: center;\n  line-height: 1;\n  border: none;\n  cursor: pointer;\n  margin: 3px 1%;\n  font-size: 16px;\n  background: transparent;\n  transition: 0.3s; }\n  @media (max-width: 768px) {\n    .mark {\n      font-size: 12px;\n      min-width: 31%; } }\n  .mark:focus {\n    outline: none; }\n  .mark_default {\n    background: transparent;\n    border: 1px solid #25ba9a;\n    color: #25ba9a; }\n  .mark_undefault {\n    color: #a4a4a4;\n    background: transparent;\n    border: 1px solid  #a4a4a4; }\n  .mark_active {\n    background: #25ba9a;\n    color: #fff;\n    border: 1px solid #25ba9a; }\n\n.add-mark {\n  border: 1px solid #25ba9a;\n  margin: 3px 1%;\n  display: inline-block;\n  background: transparent;\n  color: #25ba9a;\n  line-height: 1;\n  padding: 4px;\n  border-radius: 5px;\n  min-width: 23%;\n  text-align: center;\n  overflow: hidden;\n  vertical-align: top;\n  height: 27px;\n  cursor: pointer;\n  transition: 0.3s; }\n  @media (max-width: 768px) {\n    .add-mark {\n      min-width: 31%; } }\n  .add-mark_active {\n    height: 52px;\n    max-width: 100%; }\n  .add-mark__label {\n    padding-bottom: 4px;\n    font-size: 20px;\n    line-height: 1; }\n  .add-mark .add-mark__input {\n    width: 100%;\n    border: none;\n    border-radius: 7px;\n    height: 20px;\n    padding: 0 5px; }\n\n.sidebar {\n  top: 0;\n  width: 100px;\n  display: inline-block;\n  height: 100%;\n  background: #25ba9a;\n  padding: 0;\n  position: fixed; }\n  @media (max-width: 991px) {\n    .sidebar {\n      width: 52px; } }\n\n.nav-item {\n  transition: 0.3s;\n  position: relative;\n  display: inline-block;\n  padding: 10px 0;\n  width: 106px;\n  background: transparent;\n  border-radius: 0 5px 5px 0; }\n  .nav-item__img {\n    margin: 0 20px;\n    width: 50px;\n    height: 50px;\n    position: relative;\n    z-index: 5; }\n  .nav-item:after {\n    opacity: 0;\n    transition: 0.3s;\n    width: 0;\n    content: '';\n    background: transparent;\n    height: 0;\n    right: -18px;\n    left: auto;\n    position: absolute;\n    top: calc(50% - 10px);\n    border: 10px solid transparent;\n    border-radius: 0;\n    border-left: #088a6e 8px solid; }\n  .nav-item_active {\n    background: #088a6e; }\n    .nav-item_active:after {\n      opacity: 1; }\n  @media (max-width: 991px) {\n    .nav-item {\n      width: 55px; }\n      .nav-item__img {\n        margin: 0 5px;\n        width: 40px;\n        height: 40px; } }\n\n.card {\n  padding: 0;\n  vertical-align: top;\n  margin: 10px 0;\n  display: block;\n  text-align: left; }\n  @media (max-width: 768px) {\n    .card {\n      width: 100%; } }\n  .card__date {\n    font-size: 16px;\n    vertical-align: middle;\n    display: inline-block;\n    margin-top: 8px;\n    margin-top: 9px; }\n  .card__header {\n    text-align: center;\n    font-size: 12px;\n    padding: 0;\n    color: #fff;\n    background: #25ba9a; }\n    .card__header:after {\n      content: '';\n      display: table;\n      clear: both; }\n  .card__content {\n    background: transparent;\n    border-radius: 10px;\n    width: 100%; }\n    .card__content_close {\n      max-height: 0;\n      overflow: hidden;\n      padding: 0 20px;\n      opacity: 0; }\n    .card__content_open {\n      max-height: 1000px;\n      padding: 20px;\n      opacity: 1; }\n  .card__toggle {\n    padding: 8px 12px 13px;\n    margin: 0;\n    vertical-align: middle;\n    float: right;\n    border-radius: 5px;\n    border: none;\n    line-height: 1;\n    color: #fff;\n    cursor: pointer;\n    transition: 0.3s;\n    background: transparent;\n    transition: 0.3s; }\n    .card__toggle_open .card__toggle-icon {\n      -ms-transform-origin: -4px 12px;\n          transform-origin: -4px 12px;\n      -ms-transform: rotate(45deg);\n          transform: rotate(45deg); }\n    .card__toggle:hover, .card__toggle:focus {\n      outline: none;\n      background: rgba(0, 0, 0, 0.14); }\n  .card__toggle-icon {\n    display: inline-block;\n    transition: 0.6s;\n    border: 2px solid rgba(255, 255, 255, 0);\n    border-top: 2px solid #fff;\n    border-left: 2px solid #fff;\n    width: 15px;\n    height: 15px;\n    -ms-transform: rotate(225deg);\n        transform: rotate(225deg); }\n  .card__add {\n    padding: 4px 15px;\n    vertical-align: middle;\n    float: left;\n    border-radius: 5px;\n    border: none;\n    font-size: 29px;\n    line-height: 1;\n    color: #fff;\n    cursor: pointer;\n    transition: 0.3s;\n    background: transparent; }\n    .card__add:hover, .card__add:focus {\n      outline: none;\n      background: rgba(0, 0, 0, 0.14); }\n\n.toggle-enter {\n  max-height: 0;\n  overflow: hidden; }\n\n.toggle-enter.toggle-enter-active {\n  max-height: 1000px;\n  transition: 0.6s ease-in; }\n\n.toggle-leave {\n  max-height: 1000px; }\n\n.toggle-leave.toggle-leave-active {\n  max-height: 0;\n  overflow: hidden;\n  transition: 0.6s ease-out; }\n\n.header {\n  width: 100%;\n  margin-top: 34px;\n  margin-bottom: 30px;\n  border-radius: 5px 0 0 5px;\n  font-size: 15px;\n  background-color: #25ba9a;\n  font-weight: 600;\n  color: #fff;\n  padding: 15px 0px 15px 20px; }\n\n.item {\n  display: block;\n  position: relative;\n  margin: 5px 0;\n  border-radius: 10px;\n  font-size: 12px;\n  color: #a4a4a4;\n  border: solid 2px #ececec;\n  border-radius: 3px;\n  padding: 2px 0; }\n  .item__title {\n    display: inline-block;\n    padding: 5px 5px;\n    min-width: 0;\n    text-align: left; }\n  .item__price {\n    background: transparent;\n    display: inline-block;\n    width: 75px;\n    padding-left: 13px; }\n  .item_default {\n    border-color: #25ba9a;\n    color: #25ba9a; }\n  .item_total {\n    color: #fff;\n    background: #65e0c6;\n    font-weight: 700;\n    border-color: #25ba9a; }\n  .item_default .item__percent {\n    background: #a8ffec; }\n  .item__percent {\n    content: '';\n    top: 0;\n    bottom: 0;\n    z-index: -1;\n    background: #f5f5f5;\n    left: 0;\n    width: 0%;\n    height: 100%;\n    position: absolute; }\n  .item__update img {\n    height: 13px;\n    width: 13px;\n    vertical-align: middle;\n    cursor: pointer; }\n  .item__delete img {\n    height: 10px;\n    width: 11px;\n    vertical-align: middle;\n    cursor: pointer; }\n  .item__delete {\n    margin-left: 17px; }\n  .item__right {\n    float: right;\n    padding: 5px 10px 0 0; }\n\n.error404 {\n  text-align: center; }\n  .error404__title {\n    font-size: 80px;\n    line-height: 1;\n    margin: 20px 0 0;\n    color: #1eafaf; }\n  .error404__description {\n    line-height: 1;\n    margin: 0;\n    color: #229090; }\n\n.calendar {\n  width: 100%;\n  margin: 0;\n  text-align: left; }\n  .calendar__link {\n    width: 87px;\n    text-align: center;\n    height: 90px;\n    background: #f1f1f1;\n    cursor: pointer;\n    padding: 34px 0;\n    margin-bottom: 10px;\n    margin-right: 9px;\n    color: #a4a4a4;\n    display: inline-block;\n    text-decoration: none; }\n    .calendar__link:nth-child(7n) {\n      margin-right: 0; }\n    .calendar__link_disabled {\n      color: #e2e2e2;\n      background: #cacaca;\n      cursor: auto; }\n  @media (max-width: 991px) {\n    .calendar__link {\n      background: transparent;\n      color: #949494;\n      width: calc(100% /7);\n      height: auto;\n      padding: 0;\n      margin-right: 0px; }\n    .calendar__link_disabled {\n      color: #ececec; } }\n\n.nav {\n  background: #25ba9a;\n  padding: 8px 20px;\n  width: 100%;\n  color: #fff;\n  text-align: center;\n  margin-bottom: 20px; }\n  .nav__arrow_disable {\n    visible: hidden;\n    opacity: 0; }\n  .nav__arrow {\n    display: inline-block;\n    transition: 0.6s;\n    margin-top: 3px;\n    border: 2px solid rgba(255, 255, 255, 0);\n    border-top: 2px solid #fff;\n    border-left: 2px solid #fff;\n    width: 15px;\n    height: 15px;\n    cursor: pointer; }\n  .nav__arrow_next {\n    float: right;\n    -ms-transform: rotate(135deg);\n        transform: rotate(135deg); }\n  .nav__arrow_prev {\n    -ms-transform: rotate(-45deg);\n        transform: rotate(-45deg);\n    float: left; }\n", ""]);
+exports.push([module.i, "/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */\n/**\r\n * 1. Change the default font family in all browsers (opinionated).\r\n * 2. Prevent adjustments of font size after orientation changes in IE and iOS.\r\n */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\r\n * Remove the margin in all browsers (opinionated).\r\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\r\n   ========================================================================== */\n/**\r\n * Add the correct display in IE 9-.\r\n * 1. Add the correct display in Edge, IE, and Firefox.\r\n * 2. Add the correct display in IE.\r\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  /* 1 */\n  display: block; }\n\n/**\r\n * Add the correct display in IE 9-.\r\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block; }\n\n/**\r\n * Add the correct display in iOS 4-7.\r\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\r\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\r\n */\nprogress {\n  vertical-align: baseline; }\n\n/**\r\n * Add the correct display in IE 10-.\r\n * 1. Add the correct display in IE.\r\n */\ntemplate,\n[hidden] {\n  display: none; }\n\n/* Links\r\n   ========================================================================== */\n/**\r\n * 1. Remove the gray background on active links in IE 10.\r\n * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.\r\n */\na {\n  background-color: transparent;\n  /* 1 */\n  -webkit-text-decoration-skip: objects;\n  /* 2 */ }\n\n/**\r\n * Remove the outline on focused links when they are also active or hovered\r\n * in all browsers (opinionated).\r\n */\na:active,\na:hover {\n  outline-width: 0; }\n\n/* Text-level semantics\r\n   ========================================================================== */\n/**\r\n * 1. Remove the bottom border in Firefox 39-.\r\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\r\n */\nabbr[title] {\n  border-bottom: none;\n  /* 1 */\n  text-decoration: underline;\n  /* 2 */\n  text-decoration: underline dotted;\n  /* 2 */ }\n\n/**\r\n * Prevent the duplicate application of `bolder` by the next rule in Safari 6.\r\n */\nb,\nstrong {\n  font-weight: inherit; }\n\n/**\r\n * Add the correct font weight in Chrome, Edge, and Safari.\r\n */\nb,\nstrong {\n  font-weight: bolder; }\n\n/**\r\n * Add the correct font style in Android 4.3-.\r\n */\ndfn {\n  font-style: italic; }\n\n/**\r\n * Correct the font size and margin on `h1` elements within `section` and\r\n * `article` contexts in Chrome, Firefox, and Safari.\r\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\r\n * Add the correct background and color in IE 9-.\r\n */\nmark {\n  background-color: #ff0;\n  color: #000; }\n\n/**\r\n * Add the correct font size in all browsers.\r\n */\nsmall {\n  font-size: 80%; }\n\n/**\r\n * Prevent `sub` and `sup` elements from affecting the line height in\r\n * all browsers.\r\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsub {\n  bottom: -0.25em; }\n\nsup {\n  top: -0.5em; }\n\n/* Embedded content\r\n   ========================================================================== */\n/**\r\n * Remove the border on images inside links in IE 10-.\r\n */\nimg {\n  border-style: none;\n  max-width: 100%; }\n\n/**\r\n * Hide the overflow in IE.\r\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\r\n   ========================================================================== */\n/**\r\n * 1. Correct the inheritance and scaling of font size in all browsers.\r\n * 2. Correct the odd `em` font sizing in all browsers.\r\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  /* 1 */\n  font-size: 1em;\n  /* 2 */ }\n\n/**\r\n * Add the correct margin in IE 8.\r\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\r\n * 1. Add the correct box sizing in Firefox.\r\n * 2. Show the overflow in Edge and IE.\r\n */\nhr {\n  box-sizing: content-box;\n  /* 1 */\n  height: 0;\n  /* 1 */\n  overflow: visible;\n  /* 2 */ }\n\n/* Forms\r\n   ========================================================================== */\n/**\r\n * 1. Change font properties to `inherit` in all browsers (opinionated).\r\n * 2. Remove the margin in Firefox and Safari.\r\n */\nbutton,\ninput,\nselect,\ntextarea {\n  font: inherit;\n  /* 1 */\n  margin: 0;\n  /* 2 */ }\n\n/**\r\n * Restore the font weight unset by the previous rule.\r\n */\noptgroup {\n  font-weight: bold; }\n\n/**\r\n * Show the overflow in IE.\r\n * 1. Show the overflow in Edge.\r\n */\nbutton,\ninput {\n  /* 1 */\n  overflow: visible; }\n\n/**\r\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\r\n * 1. Remove the inheritance of text transform in Firefox.\r\n */\nbutton,\nselect {\n  /* 1 */\n  text-transform: none; }\n\n/**\r\n * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`\r\n *    controls in Android 4.\r\n * 2. Correct the inability to style clickable types in iOS and Safari.\r\n */\nbutton,\nhtml [type=\"button\"],\n[type=\"reset\"],\n[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */ }\n\n/**\r\n * Remove the inner border and padding in Firefox.\r\n */\nbutton::-moz-focus-inner,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0; }\n\n/**\r\n * Restore the focus styles unset by the previous rule.\r\n */\nbutton:-moz-focusring,\n[type=\"button\"]:-moz-focusring,\n[type=\"reset\"]:-moz-focusring,\n[type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText; }\n\n/**\r\n * Change the border, margin, and padding in all browsers (opinionated).\r\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\r\n * 1. Correct the text wrapping in Edge and IE.\r\n * 2. Correct the color inheritance from `fieldset` elements in IE.\r\n * 3. Remove the padding so developers are not caught out when they zero out\r\n *    `fieldset` elements in all browsers.\r\n */\nlegend {\n  box-sizing: border-box;\n  /* 1 */\n  color: inherit;\n  /* 2 */\n  display: table;\n  /* 1 */\n  max-width: 100%;\n  /* 1 */\n  padding: 0;\n  /* 3 */\n  white-space: normal;\n  /* 1 */ }\n\n/**\r\n * Remove the default vertical scrollbar in IE.\r\n */\ntextarea {\n  overflow: auto;\n  resize: none; }\n\n/**\r\n * 1. Add the correct box sizing in IE 10-.\r\n * 2. Remove the padding in IE 10-.\r\n */\n[type=\"checkbox\"],\n[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\r\n * Correct the cursor style of increment and decrement buttons in Chrome.\r\n */\n[type=\"number\"]::-webkit-inner-spin-button,\n[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\r\n * 1. Correct the odd appearance in Chrome and Safari.\r\n * 2. Correct the outline style in Safari.\r\n */\n[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  outline-offset: -2px;\n  /* 2 */ }\n\n/**\r\n * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.\r\n */\n[type=\"search\"]::-webkit-search-cancel-button,\n[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\r\n * Correct the text style of placeholders in Chrome, Edge, and Safari.\r\n */\n::-webkit-input-placeholder {\n  color: inherit;\n  opacity: 0.54; }\n\n/**\r\n * 1. Correct the inability to style clickable types in iOS and Safari.\r\n * 2. Change font properties to `inherit` in Safari.\r\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button;\n  /* 1 */\n  font: inherit;\n  /* 2 */ }\n\n*,\n*::after,\n*::before {\n  box-sizing: border-box; }\n\nsvg {\n  max-width: 100%; }\n\n/**\r\n * Hack to remove Chrome's yellow background on autofilling inputs\r\n */\ninput:-webkit-autofill,\ninput:-webkit-autofill:hover,\ninput:-webkit-autofill:focus,\ninput:-webkit-autofill:active {\n  transition: background-color 500000s ease-in-out 0s, color 500000s ease-in-out 0s; }\n\n/**\r\n * Fix for IE select bars\r\n */\nselect::-ms-value,\nselect:focus::-ms-value {\n  background: none; }\n\ntable {\n  border-collapse: collapse; }\n\np {\n  margin: 0 0 1em 0; }\n\nbody {\n  background: #ffffff;\n  color: #252525;\n  font-family: 'Roboto', sans-serif; }\n\n.main {\n  padding-left: 130px;\n  max-width: 800px; }\n  @media (max-width: 991px) {\n    .main {\n      padding-left: 70px; } }\n\nbody.open-modal {\n  overflow: hidden; }\n\n.wrapper {\n  max-width: 992px;\n  margin: 0 auto; }\n  @media (max-width: 991px) {\n    .wrapper {\n      max-width: 400px; } }\n\n.animation-opacity-enter {\n  opacity: 0; }\n\n.animation-opacity-enter.animation-opacity-enter-active {\n  opacity: 1;\n  transition: 0.3s; }\n\n.animation-opacity-leave {\n  opacity: 1; }\n\n.animation-opacity-leave.animation-opacity-leave-active {\n  opacity: 0;\n  transition: 0.3s; }\n\n.animation-opacity-appear {\n  opacity: 0; }\n\n.animation-opacity-appear.animation-opacity-appear-active {\n  opacity: 1;\n  transition: .5s; }\n\n.day_loaded {\n  opacity: 1;\n  transition: 0.3s; }\n\n.day_loading {\n  opacity: 0;\n  transition: 0.3s; }\n\n.modal {\n  position: fixed;\n  background: rgba(0, 0, 0, 0.49);\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  max-height: 0;\n  overflow: hidden;\n  transition: 0.3s; }\n  .modal__error {\n    display: block;\n    color: #f91f1f;\n    font-weight: 600;\n    text-align: center;\n    height: 20px;\n    margin-top: 5px; }\n  .modal_open {\n    max-height: 100%; }\n  .modal__body {\n    background: #25ba9a;\n    max-width: 600px;\n    margin: 0 auto;\n    margin-top: 100px;\n    padding: 0px;\n    position: relative;\n    border-radius: 10px; }\n    @media (max-width: 768px) {\n      .modal__body {\n        width: 100%; } }\n  .modal__content {\n    border-radius: 0;\n    background: #fff;\n    padding: 10px 10px; }\n  .modal__add {\n    background: rgba(0, 0, 0, 0.14);\n    border: none;\n    color: #fff;\n    line-height: 1;\n    font-size: 29px;\n    border-radius: 10px 10px 10px 0px;\n    padding: 2px 12px;\n    margin-left: 0px;\n    transition: 0.3s;\n    cursor: pointer;\n    margin-bottom: 0px; }\n    .modal__add:hover {\n      background: rgba(0, 0, 0, 0.24); }\n  .modal__close {\n    background: rgba(0, 0, 0, 0.14);\n    border: none;\n    color: #fff;\n    line-height: 1;\n    float: right;\n    font-size: 29px;\n    position: relative;\n    border-radius: 10px;\n    padding: 2px 12px;\n    margin-left: 10px;\n    transition: 0.3s;\n    cursor: pointer;\n    margin-bottom: 0px;\n    -ms-transform: rotate(0deg);\n        transform: rotate(0deg);\n    border-radius: 10px 10px 0px 10px;\n    padding: 4px 10px 4px;\n    line-height: 1;\n    font-size: 25px;\n    cursor: pointer;\n    transition: 0.3s;\n    cursor: pointer; }\n    .modal__close span {\n      display: inline-block;\n      -ms-transform: rotate(45deg);\n          transform: rotate(45deg); }\n  .modal__marks {\n    padding: 5px 10px 20px; }\n    .modal__marks_undefault {\n      border-top: solid 2px #757575; }\n  .modal__input {\n    width: 100%;\n    border: transparent;\n    border-bottom: 2px solid #757575;\n    height: 40px;\n    text-align: center;\n    font-size: 31px;\n    color: #757575; }\n    @media (max-width: 768px) {\n      .modal__input {\n        font-size: 20px; } }\n    .modal__input:focus {\n      outline: none; }\n\n.mark {\n  display: inline-block;\n  padding: 6px 6px;\n  border-radius: 6px;\n  min-width: 23%;\n  text-align: center;\n  line-height: 1;\n  border: none;\n  cursor: pointer;\n  margin: 3px 1%;\n  font-size: 16px;\n  background: transparent;\n  transition: 0.3s; }\n  @media (max-width: 768px) {\n    .mark {\n      font-size: 12px;\n      min-width: 31%; } }\n  .mark:focus {\n    outline: none; }\n  .mark_default {\n    background: transparent;\n    border: 1px solid #25ba9a;\n    color: #25ba9a; }\n  .mark_undefault {\n    color: #a4a4a4;\n    background: transparent;\n    border: 1px solid  #a4a4a4; }\n  .mark_active {\n    background: #25ba9a;\n    color: #fff;\n    border: 1px solid #25ba9a; }\n\n.add-mark {\n  border: 1px solid #25ba9a;\n  margin: 3px 1%;\n  display: inline-block;\n  background: transparent;\n  color: #25ba9a;\n  line-height: 1;\n  padding: 4px;\n  border-radius: 5px;\n  min-width: 23%;\n  text-align: center;\n  overflow: hidden;\n  vertical-align: top;\n  height: 27px;\n  cursor: pointer;\n  transition: 0.3s; }\n  @media (max-width: 768px) {\n    .add-mark {\n      min-width: 31%; } }\n  .add-mark_active {\n    height: 52px;\n    max-width: 100%; }\n  .add-mark__label {\n    padding-bottom: 4px;\n    font-size: 20px;\n    line-height: 1; }\n  .add-mark .add-mark__input {\n    width: 100%;\n    border: none;\n    border-radius: 7px;\n    height: 20px;\n    padding: 0 5px; }\n\n.sidebar {\n  top: 0;\n  width: 100px;\n  display: inline-block;\n  height: 100%;\n  background: #25ba9a;\n  padding: 0;\n  position: fixed; }\n  @media (max-width: 991px) {\n    .sidebar {\n      width: 52px; } }\n\n.nav-item {\n  transition: 0.3s;\n  position: relative;\n  display: inline-block;\n  padding: 10px 0;\n  width: 106px;\n  background: transparent;\n  border-radius: 0 5px 5px 0; }\n  .nav-item__img {\n    margin: 0 20px;\n    width: 50px;\n    height: 50px;\n    position: relative;\n    z-index: 5; }\n  .nav-item:after {\n    opacity: 0;\n    transition: 0.3s;\n    width: 0;\n    content: '';\n    background: transparent;\n    height: 0;\n    right: -18px;\n    left: auto;\n    position: absolute;\n    top: calc(50% - 10px);\n    border: 10px solid transparent;\n    border-radius: 0;\n    border-left: #088a6e 8px solid; }\n  .nav-item_active {\n    background: #088a6e; }\n    .nav-item_active:after {\n      opacity: 1; }\n  @media (max-width: 991px) {\n    .nav-item {\n      width: 55px; }\n      .nav-item__img {\n        margin: 0 5px;\n        width: 40px;\n        height: 40px; } }\n\n.card {\n  padding: 0;\n  vertical-align: top;\n  margin: 10px 0;\n  display: block;\n  text-align: left; }\n  @media (max-width: 768px) {\n    .card {\n      width: 100%; } }\n  .card__date {\n    font-size: 16px;\n    vertical-align: middle;\n    display: inline-block;\n    margin-top: 8px;\n    margin-top: 9px; }\n  .card__header {\n    text-align: center;\n    font-size: 12px;\n    padding: 0;\n    color: #fff;\n    background: #25ba9a; }\n    .card__header:after {\n      content: '';\n      display: table;\n      clear: both; }\n  .card__content {\n    background: transparent;\n    border-radius: 10px;\n    width: 100%; }\n    .card__content_close {\n      max-height: 0;\n      overflow: hidden;\n      padding: 0 20px;\n      opacity: 0; }\n    .card__content_open {\n      max-height: 1000px;\n      padding: 20px;\n      opacity: 1; }\n  .card__toggle {\n    padding: 8px 12px 13px;\n    margin: 0;\n    vertical-align: middle;\n    float: right;\n    border-radius: 5px;\n    border: none;\n    line-height: 1;\n    color: #fff;\n    cursor: pointer;\n    transition: 0.3s;\n    background: transparent;\n    transition: 0.3s; }\n    .card__toggle_open .card__toggle-icon {\n      -ms-transform-origin: -4px 12px;\n          transform-origin: -4px 12px;\n      -ms-transform: rotate(45deg);\n          transform: rotate(45deg); }\n    .card__toggle:hover, .card__toggle:focus {\n      outline: none;\n      background: rgba(0, 0, 0, 0.14); }\n  .card__toggle-icon {\n    display: inline-block;\n    transition: 0.6s;\n    border: 2px solid rgba(255, 255, 255, 0);\n    border-top: 2px solid #fff;\n    border-left: 2px solid #fff;\n    width: 15px;\n    height: 15px;\n    -ms-transform: rotate(225deg);\n        transform: rotate(225deg); }\n  .card__add {\n    padding: 4px 15px;\n    vertical-align: middle;\n    float: left;\n    border-radius: 5px;\n    border: none;\n    font-size: 29px;\n    line-height: 1;\n    color: #fff;\n    cursor: pointer;\n    transition: 0.3s;\n    background: transparent; }\n    .card__add:hover, .card__add:focus {\n      outline: none;\n      background: rgba(0, 0, 0, 0.14); }\n\n.toggle-enter {\n  max-height: 0;\n  overflow: hidden; }\n\n.toggle-enter.toggle-enter-active {\n  max-height: 1000px;\n  transition: 0.6s ease-in; }\n\n.toggle-leave {\n  max-height: 1000px; }\n\n.toggle-leave.toggle-leave-active {\n  max-height: 0;\n  overflow: hidden;\n  transition: 0.6s ease-out; }\n\n.header {\n  width: 100%;\n  margin-top: 34px;\n  margin-bottom: 30px;\n  border-radius: 5px 0 0 5px;\n  font-size: 15px;\n  background-color: #25ba9a;\n  font-weight: 600;\n  color: #fff;\n  padding: 15px 0px 15px 20px; }\n\n.item {\n  display: block;\n  position: relative;\n  margin: 5px 0;\n  border-radius: 10px;\n  font-size: 12px;\n  color: #a4a4a4;\n  border: solid 2px #ececec;\n  border-radius: 3px;\n  padding: 2px 0; }\n  .item__title {\n    display: inline-block;\n    padding: 5px 5px;\n    min-width: 0;\n    text-align: left; }\n  .item__price {\n    background: transparent;\n    display: inline-block;\n    width: 75px;\n    padding-left: 13px; }\n  .item_default {\n    border-color: #25ba9a;\n    color: #25ba9a; }\n  .item_total {\n    color: #fff;\n    background: #65e0c6;\n    font-weight: 700;\n    border-color: #25ba9a; }\n  .item_default .item__percent {\n    background: #a8ffec; }\n  .item__percent {\n    content: '';\n    top: 0;\n    bottom: 0;\n    z-index: -1;\n    background: #f5f5f5;\n    left: 0;\n    width: 0%;\n    height: 100%;\n    position: absolute; }\n  .item__update img {\n    height: 13px;\n    width: 13px;\n    vertical-align: middle;\n    cursor: pointer; }\n  .item__delete img {\n    height: 10px;\n    width: 11px;\n    vertical-align: middle;\n    cursor: pointer; }\n  .item__delete {\n    margin-left: 17px; }\n  .item__right {\n    float: right;\n    padding: 5px 10px 0 0; }\n\n.error404 {\n  text-align: center; }\n  .error404__title {\n    font-size: 80px;\n    line-height: 1;\n    margin: 20px 0 0;\n    color: #1eafaf; }\n  .error404__description {\n    line-height: 1;\n    margin: 0;\n    color: #229090; }\n\n.calendar {\n  width: 100%;\n  margin: 0;\n  text-align: left; }\n  .calendar__link {\n    width: 87px;\n    text-align: center;\n    height: 90px;\n    background: #f1f1f1;\n    cursor: pointer;\n    padding: 34px 0;\n    margin-bottom: 10px;\n    margin-right: 9px;\n    color: #a4a4a4;\n    display: inline-block;\n    text-decoration: none; }\n    .calendar__link:nth-child(7n) {\n      margin-right: 0; }\n    .calendar__link_disabled {\n      color: #e2e2e2;\n      background: #cacaca;\n      cursor: auto; }\n  @media (max-width: 991px) {\n    .calendar__link {\n      background: transparent;\n      color: #949494;\n      width: calc(100% /7);\n      height: auto;\n      padding: 0;\n      margin-right: 0px; }\n    .calendar__link_disabled {\n      color: #ececec; } }\n\n.nav {\n  background: #25ba9a;\n  padding: 8px 20px;\n  width: 100%;\n  color: #fff;\n  text-align: center;\n  margin-bottom: 20px; }\n  .nav__arrow_disable {\n    visibility: hidden;\n    opacity: 0; }\n  .nav__arrow {\n    display: inline-block;\n    transition: 0.6s;\n    margin-top: 3px;\n    border: 2px solid rgba(255, 255, 255, 0);\n    border-top: 2px solid #fff;\n    border-left: 2px solid #fff;\n    width: 15px;\n    height: 15px;\n    cursor: pointer; }\n  .nav__arrow_next {\n    float: right;\n    -ms-transform: rotate(135deg);\n        transform: rotate(135deg); }\n  .nav__arrow_prev {\n    -ms-transform: rotate(-45deg);\n        transform: rotate(-45deg);\n    float: left; }\n", ""]);
 
 /***/ }),
 
-/***/ 83:
+/***/ 82:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2086,5 +2099,5 @@ var Modal = function (_React$Component) {
 
 /***/ })
 
-},[157]);
+},[156]);
 //# sourceMappingURL=app.js.map

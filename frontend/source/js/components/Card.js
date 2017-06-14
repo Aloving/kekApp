@@ -45,6 +45,9 @@ class Card extends React.Component {
                          percent={this.props.stat ? Math.round((item.price / (summ / 100) )) : null}
                          price={item.price}
                          title={item.title}
+                         onDeleteItem={this.props.onDeleteItem}
+                         parentId={this.props.id}
+                         id={item._id}
                          key={this.props.id ? item._id : counter++}
             />;
         })

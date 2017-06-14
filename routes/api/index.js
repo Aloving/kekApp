@@ -96,7 +96,7 @@ router.get('/getdays/:cond/:id?', (req, res, next) => {
 	}
 });
 
-router.post('/updateday/:id', (req, res, next) => {
+router.post('/updateday/:id/:remove?', (req, res, next) => {
 
 	var updateInfo = {
 		title: req.body.title,
@@ -105,21 +105,41 @@ router.post('/updateday/:id', (req, res, next) => {
 		taskid: req.body.taskid
 	}
 
-	DaysData.update({"_id": ObjectID(updateInfo.dayid),
-	 "items._id": ObjectID(updateInfo.taskid)},
-	{"$set":{
-		"items.$.price": updateInfo.price,
-		"items.$.title": updateInfo.title
-	 }},
-	 function(err, data){
-	 	if(err) {
-	 		res.json({status: 'err'});
-	 		next(err);
-	 	}
-	 	
-	 	res.json(data);
-	 	
-	 });
+	var remove = req.params.remove;
+
+	if(remove){
+
+		DaysData.update(
+			{"_id": ObjectID(updateInfo.dayid)},
+			{"$pull": 
+				{"items": 
+					{"_id": ObjectID(updateInfo.taskid)}
+				}
+			},{
+				"upsert": false,
+				"multi": false
+			}, function(err, data){
+				res.json(data);
+			});
+
+	} else {
+		DaysData.update({"_id": ObjectID(updateInfo.dayid),
+		 "items._id": ObjectID(updateInfo.taskid)},
+		{"$set":{
+			"items.$.price": updateInfo.price,
+			"items.$.title": updateInfo.title
+		 }},
+		 function(err, data){
+		 	if(err) {
+		 		res.json({status: 'err'});
+		 		next(err);
+		 	}
+		 	
+		 	res.json(data);
+		 	
+		 });
+	}
+
 
 });
 
@@ -203,9 +223,8 @@ router.post('/updatelist/:id', (req, res, next) => {
 		});
 
 		day.save((err, updatedDay) => {
-			console.log(updatedDay);
 			if(err) next(err);
-			res.json(updatedDay);
+			res.json({success: true});
 		});
 		
 	});

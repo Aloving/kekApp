@@ -210,6 +210,7 @@ router.get('/getstatistic', (req, res, next) => {
 });
 
 router.post('/updatelist/:id', (req, res, next) => {
+
 	DaysData.findById(req.params.id, function(err, day){
 		if (err) {
 			next(err);
@@ -224,7 +225,13 @@ router.post('/updatelist/:id', (req, res, next) => {
 
 		day.save((err, updatedDay) => {
 			if(err) next(err);
-			res.json({success: true});
+			var task = updatedDay;
+			MarksData.find({}, function(err, marks){
+				updatedDay.items.map(mItem => {
+					mItem.defaultItem = marks.some(sItem => sItem.title == mItem.title && sItem.defaultItem);
+				});
+				res.json(updatedDay);
+			})
 		});
 		
 	});

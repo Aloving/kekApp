@@ -106,6 +106,7 @@ if (isProduction) {
 
   // Development rules
   rules.push(
+
     {
       test: /\.scss$/,
       exclude: /node_modules/,
@@ -137,7 +138,7 @@ module.exports = {
   },
   output: {
     path: buildPath,
-    publicPath: '/static',
+    publicPath:  isProduction ? '' : '/static',
     filename: 'app.js',
   },
   module: {

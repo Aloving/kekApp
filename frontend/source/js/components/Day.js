@@ -2,6 +2,8 @@ import React from 'react';
 import Container from './Container';
 import Modal from './Modal';
 
+import Header from './Header'
+
 import {connect} from 'react-redux';
 
 import {action_getdays} from './../redux/actions';
@@ -19,7 +21,8 @@ class Day extends React.Component {
         this.state = {
             openModal: false,
             dayId: '',
-            loaded: false
+            loaded: false,
+
         };
     }
 
@@ -40,24 +43,28 @@ class Day extends React.Component {
     }
 
     componentWillMount() {
+
         this.props.getdayById(this.props.params.dayId);
     }
 
     componentDidUpdate() {
 
 
-        if (document.title == this.props.day.date) {
+        if (document.title == this.props.day[0].date) {
             return;
         }
-        else if (this.props.day.date != undefined) {
-            document.title = this.props.day.date;
+        else if (this.props.day[0].date != undefined) {
+            document.title = this.props.day[0].date;
             this.setState({loaded: true});
         }
     }
 
     render() {
+
         var content = this.state.loaded ?
+
             <div>
+                <Header content={this.props.day[0].date}/>
               <Container openModal={this.openModal.bind(this)} cards={this.props.day}/>
             < Modal
         dayId = {this.state.dayId}
@@ -79,6 +86,7 @@ class Day extends React.Component {
                                           transitionLeaveTimeout={800}
                                           transitionAppearTimeout={800}
                 >
+
                     {content}
                 </ReactCSSTransitionGroup>
 

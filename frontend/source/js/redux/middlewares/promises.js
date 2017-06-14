@@ -17,6 +17,7 @@ const middleware = store => next => action => {
 
             return store.dispatch({
                 type: successAction,
+                dataFront : action.data,
                 data: dataf
             })
 

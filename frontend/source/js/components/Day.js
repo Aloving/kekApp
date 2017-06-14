@@ -64,7 +64,7 @@ class Day extends React.Component {
         var content = this.state.loaded ?
 
             <div>
-                <Header content={this.props.day[0].date}/>
+              <Header content={this.props.day[0].date}/>
               <Container openModal={this.openModal.bind(this)} cards={this.props.day}/>
             < Modal
         dayId = {this.state.dayId}

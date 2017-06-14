@@ -27,6 +27,7 @@ class Item extends React.Component {
         return (
 
 
+
             <div className={className}>
             { 
                 this.props.percent ? 
@@ -40,7 +41,8 @@ class Item extends React.Component {
                     this.props.total ? '' :
                         <div className='item__right'>
                             <span  className='item__update'><img src={this.props.defaultItem ? update_img : update_img_grey}/></span>
-                            <span  className='item__delete'><img src={this.props.defaultItem ? del_img : del_img_grey}/></span>
+                            <span  onClick={this.props.onDeleteItem({dayId:
+                               this.props.parentId, itemId: this.props.id})} className='item__delete'><img src={this.props.defaultItem ? del_img : del_img_grey}/></span>
                         </div>
 
 

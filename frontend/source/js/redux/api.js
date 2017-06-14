@@ -64,6 +64,18 @@ export function addmark(title) {
 
 }
 
+export function deleteItem(data){
+    return fetch('/api/updateday/' + data.dayId +'/remove', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            taskid: data.itemId
+        })
+    });
+}
+
 export function getcalendar() {
     return fetch('/api/getdays/calendar/')
         .then(data => data.json());

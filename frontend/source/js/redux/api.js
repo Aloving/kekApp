@@ -21,7 +21,20 @@ export function getstat() {
 
 }
 
+export function updateItem(data){
+    return fetch("/api/updateday/" + data.dayId,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                taskid: data.itemId,
+                title: data.title,
+                price: data.price,
+            })
+        })
 
+}
 export function updatelist(data) {
 
    
@@ -46,6 +59,8 @@ export function getdayById(id){
 
 
 }
+
+
 
 export function addmark(title) {
    return fetch('/api/addmark',

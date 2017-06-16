@@ -6,11 +6,9 @@ import Header from './Header'
 
 import {connect} from 'react-redux';
 
-import {action_getdays} from './../redux/actions';
-import {action_getdayById} from './../redux/actions';
-import {action_getmarks} from './../redux/actions';
-import {action_addmark} from './../redux/actions';
-import {action_updatelist} from './../redux/actions';
+import {action_getdays, action_deleteItem, action_getdayById, action_getmarks, action_addmark, action_updatelist} from './../redux/actions';
+
+
 
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 var counter = 0;
@@ -65,7 +63,7 @@ class Day extends React.Component {
 
             <div>
               <Header content={this.props.day[0].date}/>
-              <Container openModal={this.openModal.bind(this)} cards={this.props.day}/>
+              <Container openModal={this.openModal.bind(this)} cards={this.props.day} onDeleteItem={ this.deleteItem.bind(this)}/>
             < Modal
         dayId = {this.state.dayId}
         addmark={this.props.addmark}
@@ -115,6 +113,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         updatelist: (data) => {
             dispatch(action_updatelist(data))
+        },
+        deleteItem: (data) => {
+            dispatch(action_deleteItem(data))
         },
 
     };

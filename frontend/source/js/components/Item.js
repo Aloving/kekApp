@@ -1,12 +1,26 @@
-import home_img from '../../assets/home.svg';
 import update_img from '../../assets/update.svg';
-import update_img_grey from '../../assets/update_grey.svg';
 import del_img from '../../assets/del.svg';
-import del_img_grey from '../../assets/del_grey.svg';
 import React from 'react';
+import Icon from './Icon'
+
 
 class Item extends React.Component {
+
+    onDeleteItem(evt){
+
+        this.item.classList.add('item_leave')
+       var self = this;
+        setTimeout(function(){
+            self.props.onDeleteItem({dayId:
+            self.props.parentId, itemId: self.props.id});
+        }, 300)
+    }
+onUpdateItem(){
+        this.props.openModal({id: this.props.parentId, type: 'update', itemId: this.props.id});
+}
     render() {
+
+
 
         var classNames = [];
 
@@ -26,23 +40,22 @@ class Item extends React.Component {
 
         return (
 
+        
+            <div className={className}  ref={(item) => { this.item = item; }}>
 
-
-            <div className={className}>
-            { 
-                this.props.percent ? 
-
-                <span className="item__percent" style = {style}></span>
-                : ''
-            }
-                <span className='item__price'>{this.props.price}</span>
-                 <span className='item__title'>{this.props.title}</span>
                 {
-                    this.props.total ? '' :
+                    this.props.percent ?
+
+                        <span className="item__percent" style = {style}></span>
+                        : ''
+                }
+                <span className='item__price'>{this.props.price}</span>
+                <span className='item__title'>{this.props.title}</span>
+              {
+                    this.props.total || this.props.stat ? '' :
                         <div className='item__right'>
-                            <span  className='item__update'><img src={this.props.defaultItem ? update_img : update_img_grey}/></span>
-                            <span  onClick={this.props.onDeleteItem({dayId:
-                               this.props.parentId, itemId: this.props.id})} className='item__delete'><img src={this.props.defaultItem ? del_img : del_img_grey}/></span>
+                            <span  onClick={this.onUpdateItem.bind(this)} className={ this.props.defaultItem  ? 'item__update item__update_green' : 'item__update item__update_grey'}><Icon id={update_img.id}/></span>
+                            <span  onClick={this.onDeleteItem.bind(this)} className={ this.props.defaultItem  ? 'item__delete item__delete_green' : 'item__delete item__delete_grey'}><Icon id={del_img.id}/></span>
                         </div>
 
 
@@ -50,6 +63,9 @@ class Item extends React.Component {
 
 
             </div>
+      
+
+
         )
     }
 }

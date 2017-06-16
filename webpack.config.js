@@ -13,10 +13,11 @@ const buildPath = path.join(__dirname, './public');
 const imgPath = path.join(__dirname, './frontend/source/assets');
 const sourcePath = path.join(__dirname, './frontend/source');
 
-
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 // Common plugins
 const plugins = [
+    new SpriteLoaderPlugin(),
 
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
@@ -56,11 +57,18 @@ const rules = [
       'babel-loader',
     ],
   },
+    {
+        test: /\.svg$/,
+       loader: 'svg-sprite-loader'
+
+    },
   {
-    test: /\.(png|gif|jpg|svg)$/,
+    test: /\.(png|gif|jpg)$/,
     include: imgPath,
     use: 'url-loader?limit=20480&name=/../assets/[name].[ext]',
   },
+
+
 ];
 
 if (isProduction) {

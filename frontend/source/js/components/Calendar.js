@@ -57,8 +57,8 @@ class Calendar extends React.Component {
             }
             this.state.visibleDays.length == 0 ? this.filterDays(StateObject.dateNow.year, StateObject.dateNow.month) : null;
         }
-    }
-    componentWillUnmount(){
+
+
         StateObject.currentMonth =  StateObject.dateNow.month;
         StateObject.currentYear =  StateObject.dateNow.year;
 

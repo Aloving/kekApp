@@ -17,8 +17,35 @@ export default function reducer(state = [], action) {
 
             return g;
         case 'DELETE_ITEM_FINISH':
-            console.log(action);
-            return state
+
+            var g = state.concat();
+            var h = g.findIndex((item) => {
+                return item.id == action.dataFront.dayId;
+            });
+
+            var j = g[h].items.filter(item => {
+                return item._id != action.dataFront.itemId;
+            })
+
+            var k = {...g[h], items: j};
+            g.splice(h, 1, k)
+
+            return g
+
+        case 'UPDATE_ITEM_FINISH':
+            var g = state.concat();
+            var h = g.findIndex((item) => {
+                return item.id == action.dataFront.dayId;
+            });
+
+            var j = g[h].items.findIndex(item => {
+                return item._id == action.dataFront.itemId;
+            })
+            var newItem = {defaultItem : action.dataFront.default, _id: action.dataFront.itemId,  price: action.dataFront.price, title: action.dataFront.title}
+            g[h].items.slice(j, 1, newItem);
+            return g ;
+
+
         default:
             return state;
     }

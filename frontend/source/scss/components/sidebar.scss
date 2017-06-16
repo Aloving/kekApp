@@ -27,6 +27,10 @@
     height: 50px;
     position: relative;
     z-index: 5;
+    display: block;
+    & svg{
+      fill: #fff;
+    }
   }
   &:after{
     opacity: 0;

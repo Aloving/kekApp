@@ -11,7 +11,7 @@ class Card extends React.Component {
     }
 
     openModal() {
-        this.props.openModal(this.props.id);
+        this.props.openModal({id: this.props.id, type: 'add'});
     }
 
     toggle() {
@@ -49,6 +49,7 @@ class Card extends React.Component {
                          parentId={this.props.id}
                          id={item._id}
                          key={this.props.id ? item._id : counter++}
+                         openModal={this.props.openModal}
             />;
         })
         var total = <Item

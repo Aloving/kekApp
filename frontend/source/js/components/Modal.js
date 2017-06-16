@@ -17,8 +17,17 @@ class Modal extends React.Component {
         };
     }
 
-    handleClick(evt) {
+    defaultTesting(title){
+        var g = this.props.marks.defaults.filter(item => {
+            return item.title == title
+        })
+        console.log(g);
 
+    }
+
+
+    handleClick(evt) {
+        this.defaultTesting('Обед(Алёша)');
         this.setState({addMarkOpen: !this.state.addMarkOpen});
          if(this.state.addMarkOpen == false){
             document.getElementsByClassName('add-mark__input')[0].focus()
@@ -68,6 +77,7 @@ class Modal extends React.Component {
 
     formSubmit() {
         var data = {};
+        console.log(this.props);
 
         if (this.state.priceValue == '') {
             this.setState({priceValid: 'invalid'});

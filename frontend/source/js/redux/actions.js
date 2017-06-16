@@ -1,4 +1,4 @@
-import {getdays, getmarks, getstat, updatelist, addmark, getcalendar, getdayById, deleteItem } from './api';
+import {getdays, getmarks, getstat, updatelist, addmark, getcalendar, getdayById, deleteItem, updateItem } from './api';
 
 
 
@@ -8,6 +8,9 @@ export function action_updatelist(data){
 }
 export function action_deleteItem(data){
     return {type: 'PROMISE_DATA', promise: deleteItem, data: data, actions: ['DELETE_ITEM_START', 'DELETE_ITEM_FINISH', 'DELETE_ITEM_ERROR']};
+}
+export function action_updateItem(data){
+    return {type: 'PROMISE_DATA', promise: updateItem, data: data, actions: ['UPDATE_ITEM_START', 'UPDATE_ITEM_FINISH', 'UPDATE_ITEM_ERROR']};
 }
 
 export function action_getdays(){

@@ -5,7 +5,7 @@ import Header from './Header'
 import {connect} from 'react-redux';
 
 
-import {action_getdays, action_getmark, action_addmarks, action_updatelist, action_deleteItem} from './../redux/actions';
+import {action_getdays, action_getmarks, action_addmark, action_updatelist, action_deleteItem, action_updateItem} from './../redux/actions';
 
 
 class Home extends React.Component {
@@ -13,13 +13,19 @@ class Home extends React.Component {
         super();
         this.state = {
             openModal: false,
-            dayId: ''
+            dayId: '',
+            openModalUpdate: false
         };
     }
 
-    openModal(id) {
-
-        this.setState({openModal: true, dayId: id});
+    openModal(data) {
+        console.log(data);
+        if(data.type == 'update'){
+            this.setState({ openModalUpdate: true, dayId: data.id, itemId: data.itemId});
+        }
+       if(data.type == 'add'){
+           this.setState({ openModal: true, dayId: data.id});
+       }
         document.body.classList.add('open-modal');
         this.props.getmarks();
     }
@@ -42,10 +48,10 @@ class Home extends React.Component {
 
     }
     deleteItem(data){
-        this.props.deleteItem(
-            {dayId: data.dayId,
-                itemId : data.itemId
-            })
+        this.props.deleteItem(data)
+    }
+   updateItem(data){
+        this.props.updateItem(data)
     }
 
     render() {
@@ -62,6 +68,19 @@ class Home extends React.Component {
                     open={this.state.openModal}
                     closeModal={this.closeModal.bind(this)}
                     updatelist={this.props.updatelist}
+                    type="add"
+                />
+                <Modal
+                    dayId={this.state.dayId}
+                    addmark={this.props.addmark}
+                    marks={this.props.marks}
+                    getmarks={this.props.getmarks}
+                    open={this.state.openModalUpdate}
+                    closeModal={this.closeModal.bind(this)}
+                    updateItem={this.props.updateItem}
+                    itemId= {this.state.itemId}
+                    type="update"
+
                 />
             </div>
 
@@ -85,6 +104,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         deleteItem: (data) => {
             dispatch(action_deleteItem(data))
+        },
+       updateItem: (data) => {
+            dispatch(action_updateItem(data))
         },
 
     };

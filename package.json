@@ -73,6 +73,8 @@
     "react-router-native": "^4.1.1",
     "redux": "^3.3.1",
     "redux-thunk": "^2.0.1",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "svg-sprite-loader": "^3.0.5",
+    "svgo-loader": "^1.2.1"
   }
 }

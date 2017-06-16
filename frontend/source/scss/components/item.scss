@@ -1,9 +1,28 @@
 
+@keyframes leave{
+  90%{
+    padding: 0;
+
+    margin: 0;
+    max-height: 0;
+    border-width: 2px;
+  }
+  100%{
+
+    margin: 0;
+    border-width: 0;
+    padding: 0;
+    margin: 0;
+    max-height: 0;
+  }
+}
 
 .item {
+  max-height: 70px;
+  transition: 0.6s ease-in;
   display: block;
   position: relative;
-  margin: 5px 0;
+  margin: 5px 0 0;
   border-radius: 10px;
 font-size: 12px;
      color: #a4a4a4;
@@ -11,7 +30,14 @@ font-size: 12px;
     border: solid 2px $greyColor;
     border-radius: 3px;
     padding: 2px 0;
+  svg path {
+    fill: inherit;
+  }
+  &_leave{
+  overflow: hidden;
+  animation: leave 0.5s forwards;
 
+}
   &__title {
     display: inline-block;
     padding: 5px 5px;
@@ -59,18 +85,42 @@ font-size: 12px;
     height: 100%;
     position: absolute;
 }
-  &__update img {
+  &__update {
     height: 13px;
-    width: 13px;
-    vertical-align: middle;
-    cursor: pointer
+    width: 14px;
+    vertical-align: top;
+    cursor: pointer;
+    display: inline-block;
+    &_green{
+      & svg{
+        fill: $mainColor
+      }
+    }
+    &_grey{
+      & svg{
+        color: #a4a4a4;
+      }
+
+    }
   }
 
-  &__delete img {
-    height: 10px;
-    width: 11px;
-    vertical-align: middle;
-    cursor: pointer
+  &__delete {
+    height: 11px;
+    width: 12px;
+    vertical-align: top;
+    cursor: pointer;
+    display: inline-block;
+    &_green{
+      & svg{
+        fill: $mainColor
+      }
+    }
+    &_grey{
+      & svg{
+        color: #a4a4a4;
+      }
+
+    }
   }
   &__delete{margin-left: 17px;}
   &__right{
@@ -79,3 +129,4 @@ font-size: 12px;
   }
 
 }
+

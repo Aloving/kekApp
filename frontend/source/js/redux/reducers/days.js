@@ -41,11 +41,18 @@ export default function reducer(state = [], action) {
             var j = g[h].items.findIndex(item => {
                 return item._id == action.dataFront.itemId;
             })
-            var newItem = {defaultItem : action.dataFront.default, _id: action.dataFront.itemId,  price: action.dataFront.price, title: action.dataFront.title}
-            g[h].items.slice(j, 1, newItem);
+            var newItem = {defaultItem : action.dataFront.defaultItem, _id: action.dataFront.itemId,  price: action.dataFront.price, title: action.dataFront.title}
+            g[h].items.splice(j, 1, newItem);
+
             return g ;
 
+ case 'GET_DAY_BY_ID_START':
+            return action.payload;
+        case 'GET_DAY_BY_ID_ERROR':
+            return state;
+        case 'GET_DAY_BY_ID_FINISH':
 
+            return action.data;
         default:
             return state;
     }

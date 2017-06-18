@@ -30,7 +30,7 @@
   }
   &__content {
     background: transparent;
-    border-radius: 10px;
+    border-radius: 0px;
     width: 100%;
    
 
@@ -47,8 +47,8 @@
     }
   }
   &__toggle{
-    padding: 8px 12px 13px;
-    
+
+     padding: 8px 11px 4px;
     margin: 0;
     vertical-align: middle;
     float: right;
@@ -63,12 +63,11 @@
  
   
     transition: 0.3s;
-    &_open .card__toggle-icon{
-    transform-origin: -4px 12px;
-        transform: rotate(45deg);
-
-
-    }
+    &_open .card__toggle-icon {
+    transform: rotate(180deg);
+    transform-origin: center;
+}
+  
 
     &:hover, &:focus {
       outline: none;
@@ -76,14 +75,17 @@
     }
   }
  &__toggle-icon{
+transform: none;
+    border: none;
+    padding: 0;
+        width: 23px;
+    height: 21px;
+
    display: inline-block;
    transition: 0.6s;
-       border: 2px solid rgba(255, 255, 255, 0);
-    border-top: 2px solid #fff;
-    border-left: 2px solid #fff;
-    width: 15px;
-    height: 15px;
-    transform: rotate(225deg);
+   & svg {
+    fill: #fff;
+}
 
   }
   &__add {

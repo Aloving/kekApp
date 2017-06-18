@@ -1,7 +1,7 @@
 import React from 'react';
 // import spinner from './../../assets/spinner.gif';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 class Modal extends React.Component {
     constructor() {
         super();
@@ -21,13 +21,14 @@ class Modal extends React.Component {
         var g = this.props.marks.defaults.filter(item => {
             return item.title == title
         })
-        console.log(g);
+        var result = g.length == 0 ? false : true
+        return result;
 
     }
 
 
     handleClick(evt) {
-        this.defaultTesting('Обед(Алёша)');
+     
         this.setState({addMarkOpen: !this.state.addMarkOpen});
          if(this.state.addMarkOpen == false){
             document.getElementsByClassName('add-mark__input')[0].focus()
@@ -35,7 +36,8 @@ class Modal extends React.Component {
     }
 
     closeModal(evt) {
-        if (evt == "custom" || evt.target.classList.contains('modal') || evt.target.classList.contains('modal__close')) {
+    
+        if (evt == "custom" || evt.target.classList.contains('modal') || evt.target.classList.contains('modal__close') || evt.target.parentElement.classList.contains('modal__close')  )  {
             this.setState({priceValue: ''});
             this.setState({activeButton: ''});
 
@@ -77,31 +79,50 @@ class Modal extends React.Component {
 
     formSubmit() {
         var data = {};
-        console.log(this.props);
 
-        if (this.state.priceValue == '') {
+           if (this.state.priceValue == '' && this.state.activeButton == '') {
+            this.setState({errorMessage: 'Введите стоимость покупки и выберите раздел!'})
+        }else if(this.state.priceValue == '') {
             this.setState({priceValid: 'invalid'});
         
             this.setState({errorMessage: 'Введите стоимость покупки!'})
-        }
-        if (this.state.activeButton == '') {
+        }else if(this.state.activeButton == '') {
             this.setState({buttonValid: 'invalid'});
            
             this.setState({errorMessage: 'Выберите раздел!'})
         }
-        if (this.state.priceValue == '' && this.state.activeButton == '') {
-            this.setState({errorMessage: 'Введите стоимость покупки и выберите раздел!'})
-        }
+      
+    
+     
         if (this.state.priceValue != '' && this.state.activeButton != '') {
             this.setState({errorMessage: ''});
         
-            data = {
+           if( this.props.type == 'add'){
+                 data = {
                 id: this.props.dayId,
                 price: this.state.priceValue,
                 title: this.state.activeButton
+
             };
-            this.props.updatelist(data);
-            this.closeModal('custom');
+
+                this.props.updatelist(data);
+                this.closeModal('custom');
+           } else if(this.props.type == "update"){
+                data = {
+                    dayId: this.props.dayId,
+                price: this.state.priceValue,
+                title: this.state.activeButton,
+                itemId: this.props.itemId,
+                defaultItem: this.defaultTesting(this.state.activeButton)
+                }
+
+               this.props.updateItem(data);
+                 this.closeModal('custom');
+              
+           }
+
+
+           
 
         }
     }
@@ -123,6 +144,7 @@ class Modal extends React.Component {
     }
 
     render() {
+
         var marks;
         if (this.props.open) {
             marks = this.props.marks == 'loading' || typeof this.props.marks.defaults == 'undefined' || typeof this.props.marks == 'undefined' ? '' :

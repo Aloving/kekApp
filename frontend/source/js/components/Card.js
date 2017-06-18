@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Item from './Item';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import arrow from '../../assets/arrow.svg';
+import Icon from './Icon'
 class Card extends React.Component {
     constructor() {
         super();
@@ -73,8 +75,9 @@ class Card extends React.Component {
             <div className={"card"} ref="card" id={this.props.id}>
                 <div className="card__header">
  {
-                        this.props.openModal ? 
-                        <button onClick={this.openModal.bind(this)} className="card__add">+</button> : null
+                        this.props.stat ? 
+                        '':
+                        <button onClick={this.openModal.bind(this)} className="card__add">+</button>
                     }
                     <span className="card__date">
                     {typeof this.props.date == 'object' ? `${this.props.date.month < 10 ? '0' + this.props.date.month : this.props.date.month}.${this.props.date.year}` : this.props.date}
@@ -83,7 +86,7 @@ class Card extends React.Component {
                   
                       <button
                      onClick={this.toggle.bind(this)}
-                      className={this.state.open ? 'card__toggle card__toggle_open' : 'card__toggle card__toggle_close' }><span className="card__toggle-icon"></span></button>
+                      className={this.state.open ? 'card__toggle card__toggle_open' : 'card__toggle card__toggle_close' }><span className="card__toggle-icon"><Icon id={arrow.id} /></span></button>
                 </div>
                 <ReactCSSTransitionGroup transitionName="toggle"
                                          transitionAppear={true}

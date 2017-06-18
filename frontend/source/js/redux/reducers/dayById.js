@@ -13,6 +13,21 @@ export default function reducer(state = {}, action) {
         case 'UPDATELIST_FINISH':
             return action.data;
 
+  case 'DELETE_ITEM_FINISH':
+
+            var g = state.concat();
+            var h = g.findIndex((item) => {
+                return item.id == action.dataFront.dayId;
+            });
+
+            var j = g[h].items.filter(item => {
+                return item._id != action.dataFront.itemId;
+            })
+
+            var k = {...g[h], items: j};
+            g.splice(h, 1, k)
+
+            return g
 
         default:
             return state;

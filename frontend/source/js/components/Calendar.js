@@ -5,7 +5,8 @@ import ghost from './../../assets/ghost.png';
 import {action_getcalendar} from '../redux/actions';
 import {connect} from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-
+import arrow from '../../assets/arrow.svg';
+import Icon from './Icon';
 
 var StateObject = {
     minDate: {year: 0, month: 0},
@@ -59,8 +60,7 @@ class Calendar extends React.Component {
         }
 
 
-        StateObject.currentMonth =  StateObject.dateNow.month;
-        StateObject.currentYear =  StateObject.dateNow.year;
+       
 
     }
     minMax(){
@@ -116,6 +116,8 @@ class Calendar extends React.Component {
 
     }
     showPrevMonth(){
+
+
         var year = StateObject.currentYear;
         var month = StateObject.currentMonth;
 
@@ -179,13 +181,13 @@ class Calendar extends React.Component {
                  <div onClick={this.showPrevMonth.bind(this)} 
                  className={this.state.arrowPrevActive ?
                   "nav__arrow nav__arrow_prev" :
-                   "nav__arrow  nav__arrow_disable nav__arrow_prev"}></div>
+                   "nav__arrow  nav__arrow_disable nav__arrow_prev"}><Icon id={arrow.id} /></div>
                    
                     <span className="nav__text">{this.dateToString(StateObject.currentMonth)}</span>
                     <div onClick={this.showNextMonth.bind(this)} 
                     className={this.state.arrowNextActive ? 
                         "nav__arrow nav__arrow_next"
-                         : "nav__arrow  nav__arrow_disable nav__arrow_next"}></div>
+                         : "nav__arrow  nav__arrow_disable nav__arrow_next"}><Icon id={arrow.id} /></div>
                     
 
                 </div>

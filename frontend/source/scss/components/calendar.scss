@@ -8,25 +8,18 @@
     margin: 0;
     text-align: left;
   &__link {
-
+   border: 1px solid #a4a4a4;
       width: 87px;
     text-align: center;
     height: 90px;
-    background: #f1f1f1;
+    background: #25ba9a;
     cursor: pointer;
     padding: 34px 0;
     margin-bottom: 10px;
 
- // width: auto;
- //    height: auto;
- //    box-shadow: none;
- //    padding: 0;
     margin-right: 9px;
- //    border-radius: 0;
- //    width: 30px;
- //    background: transparent;
 
-  color: #a4a4a4;
+  color: #fff;
     display: inline-block;
     
     
@@ -40,10 +33,11 @@
     
     &_disabled {
 
-       color: #e2e2e2;
-    background: #cacaca;
+     color: #afafaf;
+    background: #cccccc;
+ 
     cursor: auto;
-         // color: #ececec;
+
       
     
 
@@ -52,9 +46,9 @@
     @media(max-width: 991px){
 
 
-&__link{background: transparent; color: #949494;  width: calc(100% /7); height: auto; padding: 0; margin-right: 0px}
+&__link{background: transparent; border: none; color: #616161;  width: calc(100% /7); height: auto; padding: 0; margin-right: 0px}
 &__link_disabled{
-   color: #ececec; 
+   color: #c5c5c5; 
 }
 
 }
@@ -68,7 +62,7 @@
 
 .nav {
     background: #25ba9a;
-    padding: 8px 20px;
+    padding: 0px 20px;
    width: 100%;
     color: #fff;
   text-align: center;
@@ -77,25 +71,40 @@
       visibility: hidden;
      opacity: 0;
 }
+&__text{
+      display: inline-block;
+    padding: 8px 0;
+}
   &__arrow{
+
+border: none;
+    transform: rotate(90deg);
+    height: 19px;
+    vertical-align: top;
+    width: 24px;
+    margin-top: 8px;
+    transform-origin: center;
+
+
+
     display: inline-block;
     transition: 0.6s;
-    margin-top: 3px;
-    border: 2px solid rgba(255, 255, 255, 0);
-    border-top: 2px solid #fff;
-    border-left: 2px solid #fff;
-    width: 15px;
-    height: 15px;
-    cursor: pointer
+
+
+    
+    cursor: pointer;
+    & svg{
+      fill: #fff;
+    }
   }
 &__arrow_next {
 
     float: right;
-    transform: rotate(135deg);
+    transform: rotate(-90deg);
 }
 &__arrow_prev {
 
-    transform: rotate(-45deg);
+    transform: rotate(90deg);
     float: left;
    
 }

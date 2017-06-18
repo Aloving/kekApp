@@ -54,8 +54,10 @@ onUpdateItem(){
               {
                     this.props.total || this.props.stat ? '' :
                         <div className='item__right'>
+                        
                             <span  onClick={this.onUpdateItem.bind(this)} className={ this.props.defaultItem  ? 'item__update item__update_green' : 'item__update item__update_grey'}><Icon id={update_img.id}/></span>
                             <span  onClick={this.onDeleteItem.bind(this)} className={ this.props.defaultItem  ? 'item__delete item__delete_green' : 'item__delete item__delete_grey'}><Icon id={del_img.id}/></span>
+                      
                         </div>
 
 

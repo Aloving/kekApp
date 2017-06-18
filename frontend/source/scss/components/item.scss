@@ -25,40 +25,70 @@
   margin: 5px 0 0;
   border-radius: 10px;
 font-size: 12px;
-     color: #a4a4a4;
+   color: #909090;
+  
 
     border: solid 2px $greyColor;
     border-radius: 3px;
-    padding: 2px 0;
-  svg path {
-    fill: inherit;
-  }
+    padding: 0;
+
+
+
+
   &_leave{
   overflow: hidden;
   animation: leave 0.5s forwards;
 
 }
   &__title {
-    display: inline-block;
-    padding: 5px 5px;
+    vertical-align: middle;
 
+    padding: 7px 5px;
+
+    max-width: calc(100% - 75px - 80px);
     min-width: 0;
     text-align: left;
+     display: inline-block;
+
+
+ 
+  
   }
   &__price {
+      vertical-align: middle;
     background: transparent;
-    display: inline-block;
 
-    width: 75px;
+
     padding-left: 13px;
   
 
+     display:inline-block;
+
   }
+
 
 
 &_default{
     border-color: $mainColor;
     color: $mainColor;
+
+
+       @media(min-width: 1200px){
+       
+.item__delete:hover {
+    background: rgba(37, 186, 154, 0.46);
+  }
+  .item__update:hover {
+    background: rgba(37, 186, 154, 0.46);
+  }
+       }
+
+
+
+
+
+
+
 }
 &_total{
   color: #fff;
@@ -66,6 +96,8 @@ font-size: 12px;
       font-weight: 700;
   
     border-color: $mainColor;
+
+
 }
 
 &_default &{
@@ -76,21 +108,30 @@ font-size: 12px;
 
 &__percent{
     content: '';
-    top: 0;
-    bottom: 0;
+    top: -1px;
+    bottom: -2px;
     z-index: -1;
-    background: #f5f5f5;
-    left: 0;
+    background: #dedede;
+    left: -1px;
     width: 0%;
-    height: 100%;
+    height: auto;
     position: absolute;
 }
   &__update {
-    height: 13px;
-    width: 14px;
+  
     vertical-align: top;
     cursor: pointer;
     display: inline-block;
+
+    padding: 7px;
+    width: 40px;
+    height: 29px;
+   
+    transition: 0.3s;
+& svg{
+  transition: 0.3s;
+}
+
     &_green{
       & svg{
         fill: $mainColor
@@ -98,18 +139,38 @@ font-size: 12px;
     }
     &_grey{
       & svg{
-        color: #a4a4a4;
+        fill: #a4a4a4;
       }
 
     }
+    @media(min-width: 1200px){
+    &:hover {
+     background: rgba(165, 165, 165, 0.56);
+    & svg{
+      fill: #fff;
+    }
+    }
+  }
   }
 
   &__delete {
-    height: 11px;
-    width: 12px;
+    & svg{
+  transition: 0.3s;
+}
+
+   
     vertical-align: top;
     cursor: pointer;
     display: inline-block;
+
+
+    padding: 8px;
+    width: 40px;
+    height: 29px;
+    transition: 0.3s;
+
+
+
     &_green{
       & svg{
         fill: $mainColor
@@ -117,16 +178,31 @@ font-size: 12px;
     }
     &_grey{
       & svg{
-        color: #a4a4a4;
+        fill: #a4a4a4;
       }
 
     }
+      @media(min-width: 1200px){
+       &:hover {
+    background: rgba(165, 165, 165, 0.56);
+    & svg{
+      fill: #fff;
+    }
+    }
   }
-  &__delete{margin-left: 17px;}
-  &__right{
+  }
+
+
+&__right {
     float: right;
-    padding: 5px 10px 0 0 ;
-  }
+      padding: 0 ;
+     display: inline-block;
+    width: auto;
+    vertical-align: top;
+}
 
 }
 
+  svg path {
+    fill: inherit;
+  }

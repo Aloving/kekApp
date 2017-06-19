@@ -5,8 +5,10 @@ const DashboardPlugin = require('webpack-dashboard/plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
-const nodeEnv = process.env.NODE_ENV|| 'development';
-const isProduction = process.argv.indexOf('-p') !== -1;
+const nodeEnv = process.env.NODE_ENV  || 'development';
+const isProduction = nodeEnv === "production";
+
+
 
 const jsSourcePath = path.join(__dirname, './frontend/source/js');
 const buildPath = path.join(__dirname, './public');

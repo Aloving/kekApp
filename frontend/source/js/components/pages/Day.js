@@ -1,12 +1,12 @@
 import React from 'react';
-import Container from './Container';
+import Container from '../cards/Container';
 
 
-import Header from './Header'
+import Header from '../Header'
 
 import {connect} from 'react-redux';
 
-import {action_getdays, action_deleteItem, action_getdayById, action_getmarks, action_addmark, action_updatelist, action_updateItem} from './../redux/actions';
+import {action_getdayById} from './../../redux/actions';
 
 
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';

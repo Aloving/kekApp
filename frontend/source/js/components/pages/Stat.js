@@ -1,9 +1,9 @@
 import React from 'react';
-import Container from './Container';
-import Header from './Header';
+import Container from '../cards/Container';
+import Header from '../Header';
 import {connect} from 'react-redux';
 
-import {action_getstat} from './../redux/actions';
+import {action_getstat} from '../../redux/actions';
 
 
 

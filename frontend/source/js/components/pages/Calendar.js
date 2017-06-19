@@ -1,12 +1,11 @@
 import React from 'react';
-import Header from './Header';
+import Header from '../Header';
 import {Link} from 'react-router'
-import ghost from './../../assets/ghost.png';
-import {action_getcalendar} from '../redux/actions';
+import {action_getcalendar} from '../../redux/actions';
 import {connect} from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import arrow from '../../assets/arrow.svg';
-import Icon from './Icon';
+import arrow from '../../../assets/arrow.svg';
+import Icon from '../Icon';
 
 var StateObject = {
     minDate: {year: 0, month: 0},

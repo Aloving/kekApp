@@ -7,12 +7,12 @@ import store from './redux/store';
 import { Router, Route, IndexRoute, browserHistory, IndexRedirect } from 'react-router';
 
 import App from './components/App';
-import Home from './components/Home';
-import Stat from './components/Stat';
-import Calendar from './components/Calendar';
-import NotFound from './components/NotFound';
-import Day from './components/Day';
-import Header from './components/Header';
+import Home from './components/pages/Home';
+import Stat from './components/pages/Stat';
+import Calendar from './components/pages/Calendar';
+import NotFound from './components/pages/NotFound';
+import Day from './components/pages/Day';
+
 
 
 

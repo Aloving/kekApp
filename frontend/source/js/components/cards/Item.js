@@ -1,7 +1,7 @@
-import update_img from '../../assets/update.svg';
-import del_img from '../../assets/del.svg';
+import update_img from '../../../assets/update.svg';
+import del_img from '../../../assets/del.svg';
 import React from 'react';
-import Icon from './Icon'
+import Icon from '../Icon'
 
 
 class Item extends React.Component {

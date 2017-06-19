@@ -16,13 +16,8 @@ class App extends React.Component {
 
                <Sidebar/>
                <div className="main">
-									{this.props.children}
+                   {this.props.children}
                </div>
-                
-
-
-
-
             </div>
 
 

@@ -5,8 +5,8 @@ const DashboardPlugin = require('webpack-dashboard/plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
-const nodeEnv = process.env.NODE_ENV || 'development';
-const isProduction = nodeEnv === 'production';
+const nodeEnv = process.env.NODE_ENV|| 'development';
+const isProduction = process.argv.indexOf('-p') !== -1;
 
 const jsSourcePath = path.join(__dirname, './frontend/source/js');
 const buildPath = path.join(__dirname, './public');
@@ -15,8 +15,11 @@ const sourcePath = path.join(__dirname, './frontend/source');
 
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
+
+
 // Common plugins
 const plugins = [
+
     new SpriteLoaderPlugin(),
 
   new webpack.optimize.CommonsChunkPlugin({
@@ -137,6 +140,7 @@ if (isProduction) {
     }
   );
 }
+
 
 module.exports = {
   devtool: isProduction ? false : 'source-map',

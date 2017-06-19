@@ -7,13 +7,13 @@ export default function reducer(state = [], action) {
         case 'GET_DAYS_FINISH':
             return [...action.data];
         case 'UPDATELIST_FINISH':
-            console.log('REDUCER', action);
+          
             var g = state.concat();
             var h = state.findIndex((item) => {
                 return item.id == action.dataFront.id;
             });
 
-            g.splice(h, 1, {...g[h], items: [...g[h].items,  action.dataFront]});
+            g.splice(h, 1, action.data);
 
             return g;
         case 'DELETE_ITEM_FINISH':

@@ -189,26 +189,17 @@ margin: 3px 1%;
     line-height: 1;
 
   }
-  .add-mark__input {
+ &__input {
     width: 100%;
-    border: none;
+        border: 1px solid #25ba9a;
     border-radius: 7px;
     height: 20px;
     padding: 0 5px;
+    &:focus{
+    outline: none;
+    }
   }
 }
-// .hint{
-//   display: block;
-//   background: #adadad;
-//   color: #fff;
-//   padding: 0 15px;
-//   border-radius: 10px;
-//   opacity: 0;
-//   transition: 0.3s;
-//   &_active{
-//     opacity: 1;
-//   }
-// }
 
 
 

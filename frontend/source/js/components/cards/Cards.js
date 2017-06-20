@@ -3,7 +3,7 @@ import React from 'react';
 import Card from './Card';
 
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-
+import spinner from '../../../assets/spinner.gif';
 
 
 class Cards extends React.Component {
@@ -13,29 +13,26 @@ class Cards extends React.Component {
 
 
 
-    shouldComponentUpdate(nextProps) {
-        return (nextProps.cards !== this.props.cards);
-    }
+
 
     render() {
 
         var counter = 0;
         var cards;
-     
 
-       if(Array.isArray(this.props.cards)){
+       if(this.props.cards.loading){
 
-          cards = this.props.cards.map((item) => {
-                   counter++;
-                   return <Card onDeleteItem={this.props.onDeleteItem} first={counter == 1 ? true : false} stat={this.props.stat ? true : false} number={Math.round(Math.random() * 4) } openModal={this.props.openModal}  id={item.id} date={item.data || item.date}
-                                items={item.items} key={item.id ? item.id : counter}/>
+        cards = <img src={spinner} className="spinner spinner_cards"/>
 
-
-               });
-       }else if(this.props.cards == 'loading'){
-           cards =  ''
        }else{
-           cards =  ''
+
+           cards = this.props.cards.map((item) => {
+               counter++;
+               return <Card onDeleteItem={this.props.onDeleteItem} first={counter == 1 ? true : false} stat={this.props.stat ? true : false} number={Math.round(Math.random() * 4) } openModal={this.props.openModal}  id={item.id} date={item.data || item.date}
+                            items={item.items} key={item.id ? item.id : counter}/>
+
+
+           });
        }
 
 
@@ -44,9 +41,9 @@ class Cards extends React.Component {
             <div className="container">
                 <ReactCSSTransitionGroup  transitionName="animation-opacity"
                                           transitionAppear={true}
-                                          transitionEnterTimeout={800}
-                                          transitionLeaveTimeout={800}
-                                          transitionAppearTimeout={800}
+                                          transitionEnterTimeout={200}
+                                          transitionLeaveTimeout={200}
+                                          transitionAppearTimeout={200}
                 >
                     {cards}
                 </ReactCSSTransitionGroup>

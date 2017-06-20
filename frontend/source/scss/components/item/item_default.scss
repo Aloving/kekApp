@@ -1,0 +1,25 @@
+.item_default{
+  border-color: $mainColor;
+  color: $mainColor;
+
+
+  @media(min-width: 1200px){
+
+    .item__delete:hover {
+      background: rgba(37, 186, 154, 0.46);
+    }
+    .item__update:hover {
+      background: rgba(37, 186, 154, 0.46);
+    }
+  }
+
+    .item__percent{
+      background: #a8ffec;
+    }
+
+
+
+
+
+
+}

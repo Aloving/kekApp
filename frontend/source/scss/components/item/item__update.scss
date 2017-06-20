@@ -1,0 +1,35 @@
+.item__update {
+
+  vertical-align: top;
+  cursor: pointer;
+  display: inline-block;
+
+  padding: 7px;
+  width: 40px;
+  height: 29px;
+
+  transition: 0.3s;
+  & svg{
+    transition: 0.3s;
+  }
+
+  &_green{
+    & svg{
+      fill: $mainColor
+    }
+  }
+  &_grey{
+    & svg{
+      fill: #a4a4a4;
+    }
+
+  }
+  @media(min-width: 1200px){
+    &:hover {
+      background: rgba(165, 165, 165, 0.56);
+      & svg{
+        fill: #fff;
+      }
+    }
+  }
+}

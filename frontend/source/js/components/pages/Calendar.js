@@ -1,44 +1,45 @@
 import React from 'react';
 import Header from '../Header';
-import {Link} from 'react-router'
+
 import {action_getcalendar} from '../../redux/actions';
 import {connect} from 'react-redux';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import arrow from '../../../assets/arrow.svg';
-import Icon from '../Icon';
+
+
+import spinner from '../../../assets/spinner.gif';
+import CalendarBody from '../calendar/CalendarBody';
+
 
 var StateObject = {
     minDate: {year: 0, month: 0},
     dateNow: {year: 0, month: 0},
-    startDays: [],
+    // startDays: [],
     months: {},
-    currentYear : 0,
+    currentYear: 0,
     currentMonth: 0
 }
 
-var currentDate = (function(){
+var currentDate = (function () {
     var date = new Date();
     var year = date.getFullYear();
     var month = date.getMonth();
     StateObject.dateNow = {year: year, month: month};
-    var dayInMonth = 32 - new Date(year, month, 32).getDate();
-    for (var i = 0; i < dayInMonth ; i++) {
-        StateObject.startDays.push(null);
-    }
+    // var dayInMonth = 32 - new Date(year, month, 32).getDate();
+    // for (var i = 0; i < dayInMonth; i++) {
+    //     StateObject.startDays.push(null);
+    // }
     StateObject.currentYear = year;
     StateObject.currentMonth = month;
 
 }())
 
-// currentDate();
 
 class Calendar extends React.Component {
     constructor() {
         super();
         this.state = {
             visibleDays: [],
-            arrowPrevActive : true,
-            arrowNextActive : false,
+            arrowPrevActive: true,
+            arrowNextActive: false,
         }
 
 
@@ -46,49 +47,55 @@ class Calendar extends React.Component {
         this.filterDays = this.filterDays.bind(this);
         this.minMax = this.minMax.bind(this);
     }
+
     componentWillMount() {
         this.props.getcalendar();
         document.title = "Календарь";
     }
+
     componentDidUpdate() {
-        if(typeof this.props.calendar == 'object' && this.props.calendar.length){
-            if(StateObject.minDate.year == 0){
+        if (typeof this.props.calendar == 'object' && this.props.calendar.length) {
+            if (StateObject.minDate.year == 0) {
                 this.minMax();
             }
             this.state.visibleDays.length == 0 ? this.filterDays(StateObject.dateNow.year, StateObject.dateNow.month) : null;
         }
 
 
-       
-
     }
-    minMax(){
 
-        var minYear =  Math.min.apply(Math,this.props.calendar.map(function(item){return item.date.year}))
-        var minYearMonths = this.props.calendar.filter((item)=>{
+    minMax() {
+
+        var minYear = Math.min.apply(Math, this.props.calendar.map(function (item) {
+            return item.date.year
+        }))
+        var minYearMonths = this.props.calendar.filter((item) => {
             return item.date.year == minYear;
         })
-        var minMonth = Math.min.apply(Math,minYearMonths.map(function(item){return item.date.month}))
-        StateObject.minDate =  {year:minYear, month: minMonth};
+        var minMonth = Math.min.apply(Math, minYearMonths.map(function (item) {
+            return item.date.month
+        }))
+        StateObject.minDate = {year: minYear, month: minMonth};
 
 
     }
+
     dateToString(month) {
         var monthsArray = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентабрь", "Октябрь", "Ноябрь", "Декабрь"];
         return monthsArray[month];
 
     }
+
     filterDays(year, month) {
-        var max = year >=  StateObject.dateNow.year && month >= StateObject.dateNow.month  ? false : true;
-        var min = year <= StateObject.minDate.year && month <= StateObject.minDate.month ? false :  true;
+        var max = year >= StateObject.dateNow.year && month >= StateObject.dateNow.month ? false : true;
+        var min = year <= StateObject.minDate.year && month <= StateObject.minDate.month ? false : true;
         this.setState({arrowNextActive: max});
         this.setState({arrowPrevActive: min});
 
 
-
-        if(StateObject.months[year + ' ' + month]){
+        if (StateObject.months[year + ' ' + month]) {
             this.setState({visibleDays: StateObject.months[year + ' ' + month]});
-        }else {
+        } else {
 
             var ollDays = [];
             var dayInMonth = 32 - new Date(year, month, 32).getDate();
@@ -110,94 +117,74 @@ class Calendar extends React.Component {
 
             StateObject.months[year + ' ' + month] = ollDays;
         }
-        
 
 
     }
-    showPrevMonth(){
+
+    showPrevMonth() {
 
 
         var year = StateObject.currentYear;
         var month = StateObject.currentMonth;
 
-        if(month == 0){
+        if (month == 0) {
             year -= 1;
             month = 11;
 
             StateObject.currentYear = year;
             StateObject.currentMonth = month;
             this.filterDays(year, month);
-        }else{
-            month -=   1;
+        } else {
+            month -= 1;
             StateObject.currentMonth = month;
             this.filterDays(year, month);
         }
     }
-    showNextMonth(){
+
+    showNextMonth() {
         var year = StateObject.currentYear;
         var month = StateObject.currentMonth;
-        if(month == 11){
+        if (month == 11) {
             year += 1;
             month = 0;
 
             StateObject.currentYear = year;
             StateObject.currentMonth = month;
             this.filterDays(year, month);
-        }else{
-            month +=   1;
+        } else {
+            month += 1;
             StateObject.currentMonth = month;
             this.filterDays(year, month);
         }
     }
-   
+
     render() {
-       var counter = 0;
-       var daysMap = this.state.visibleDays.length == 0 ? StateObject.startDays :   this.state.visibleDays;
-       var items =
-           <div>
-               {
-                   daysMap.map(item => {
-                       counter++;
-                       return item == null ?  <div  key={counter} className="calendar__link calendar__link_disabled" >{counter}</div> : typeof item == 'object' ?
-                           <Link  key={item._id} className="calendar__link" to={"calendar/day/" + item._id + ""}>{item.date.day}</Link> : '';
-                   })
-               }
-           </div>
+        var content;
+        if(this.props.calendar.loading){
+            content = <img className="spinner spinner_calendar" src={spinner}/>
+        }else {
+            var daysMap = this.state.visibleDays;
+            var props = {
+                showPrevMonth: this.showPrevMonth.bind(this),
+                arrowPrevActive: this.state.arrowPrevActive,
+                currentMonth: this.dateToString(StateObject.currentMonth),
+                showNextMonth: this.showNextMonth.bind(this),
+                arrowNextActive: this.state.arrowNextActive,
+                items: daysMap
 
-        return (
 
-        <ReactCSSTransitionGroup  transitionName="animation-opacity"
-                                  transitionAppear={true}
-                                  transitionEnterTimeout={800}
-                                  transitionLeaveTimeout={800}
-                                  transitionAppearTimeout={800}
-        >
-          <Header content='Календарь'/>
-            <div className="calendar">
-             
-                {/* <h1>{this.state.currentYear}</h1> */}
-                <div className="nav">
-                 <div onClick={this.showPrevMonth.bind(this)} 
-                 className={this.state.arrowPrevActive ?
-                  "nav__arrow nav__arrow_prev" :
-                   "nav__arrow  nav__arrow_disable nav__arrow_prev"}><Icon id={arrow.id} /></div>
-                   
-                    <span className="nav__text">{this.dateToString(StateObject.currentMonth)}</span>
-                    <div onClick={this.showNextMonth.bind(this)} 
-                    className={this.state.arrowNextActive ? 
-                        "nav__arrow nav__arrow_next"
-                         : "nav__arrow  nav__arrow_disable nav__arrow_next"}><Icon id={arrow.id} /></div>
-                    
+            }
+            content = <CalendarBody {...props}/>
+        }
 
-                </div>
-               
+return(
+    <div className="calendar">
+        <Header content='Календарь'/>
+        {content}
+    </div>
+)
 
-           
-                {items}
-            </div>
-        </ReactCSSTransitionGroup>
 
-        )
 
     }
 }

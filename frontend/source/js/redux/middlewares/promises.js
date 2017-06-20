@@ -7,7 +7,7 @@ const middleware = store => next => action => {
     const [startAction, successAction, failureAction] = action.actions;
     store.dispatch({
         type: startAction,
-        payload: 'loading'
+        payload: {loading: true}
     });
 
     if (action.type == 'PROMISE_DATA') {

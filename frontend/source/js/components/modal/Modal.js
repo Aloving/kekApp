@@ -3,6 +3,7 @@ import Marks from './Marks'
 import ModalBody from  './ModalBody'
 
 
+import PropTypes from 'prop-types';
 
 
 class Modal extends React.Component {
@@ -12,8 +13,7 @@ class Modal extends React.Component {
             addMarkOpen: false,
             addMarkValue: '',
             priceValue: '',
-            priceValid: '',
-            buttonValid: '',
+
             activeButton: '',
             errorMessage: ''
         };
@@ -52,7 +52,7 @@ class Modal extends React.Component {
             this.setState({priceValue: val});
         }
         if (this.state.priceValue != '') {
-            this.setState({priceValid: 'valid'});
+            this.setState({errorMessage: ''})
         }
 
     }
@@ -88,11 +88,11 @@ class Modal extends React.Component {
 
             this.setState({errorMessage: 'Введите стоимость покупки и выберите раздел!'})
         }else if(this.state.priceValue == '') {
-            this.setState({priceValid: 'invalid'});
+
         
             this.setState({errorMessage: 'Введите стоимость покупки!'})
         }else if(this.state.activeButton == '') {
-            this.setState({buttonValid: 'invalid'});
+
            
             this.setState({errorMessage: 'Выберите раздел!'})
         }
@@ -144,7 +144,7 @@ class Modal extends React.Component {
         }
         evt.target.classList.add('mark_active');
         if (this.state.activeButton != '') {
-            this.setState({buttonValid: 'valid'});
+
             this.setState({errorMessage: ''})
         }
 
@@ -189,3 +189,4 @@ class Modal extends React.Component {
 }
 
 export default Modal;
+

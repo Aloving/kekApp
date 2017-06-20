@@ -12,7 +12,7 @@ const store = createStoreWithMiddleware(reducer, {
     marks: {},
     stat: [],
     calendar : [],
-    // dayById: [],
+
 
 });
 

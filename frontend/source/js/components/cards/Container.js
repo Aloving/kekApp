@@ -1,7 +1,9 @@
 import React from 'react';
 import Cards from './Cards';
-import Modal from '../modal/ModalContainer';
+import Modal from '../modal/Modal';
 import {connect} from 'react-redux';
+
+import PropTypes from 'prop-types';
 
 
 import {action_getdays, action_getmarks, action_addmark, action_updatelist, action_deleteItem, action_updateItem} from '../../redux/actions';
@@ -18,7 +20,9 @@ class Container extends React.Component {
 
         };
     }
-
+    shouldComponentUpdate(nextProps) {
+        return (nextProps.cards !== this.props.cards);
+    }
     openModal(data) {
     
         if(data.type == 'update'){
@@ -50,9 +54,10 @@ class Container extends React.Component {
 
 
     render() {
+       console.log(this.props);
 
         return (
-            <div className="container" >
+            <div>
                 <Cards openModal={this.openModal.bind(this)} cards={this.props.cards} onDeleteItem={ this.deleteItem.bind(this)}  stat={this.props.stat}/>
                 <Modal
                     dayId={this.state.dayId}
@@ -105,3 +110,11 @@ export default connect(
     mapDispatchToProps
 )(Container);
 
+
+
+Container.propTypes = {
+    cards: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.array
+    ]),
+}

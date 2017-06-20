@@ -1,12 +1,14 @@
 .calendar {
    width: 100%;
-
+text-align: center;
 
 
 
     // width: 322px;
     margin: 0;
-    text-align: left;
+ &__content{
+   text-align: left;
+ }
   &__link {
    border: 1px solid #a4a4a4;
       width: 87px;

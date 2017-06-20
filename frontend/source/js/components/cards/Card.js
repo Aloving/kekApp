@@ -33,14 +33,12 @@ class Card extends React.Component {
 
         var counter = 0;
         var summ = 0;
-        this.props.items.map((item) => {
-            summ += item.price;
-        })
+
 
 
         var items = this.props.items.map((item) => {
-            
 
+            summ += item.price;
             return <Item stat={this.props.stat}
                         defaultItem = {item.defaultItem}
                          percent={this.props.stat ? Math.round((item.price / (summ / 100) )) : null}
@@ -61,7 +59,7 @@ class Card extends React.Component {
             key='total'
         />;
         var content;
-        if (this.state.open) {
+        if (this.props.open) {
 
             content = <div className={"card__content"}>
                 {items}
@@ -76,7 +74,7 @@ class Card extends React.Component {
  {
                         this.props.stat ? 
                         '':
-                        <button onClick={this.openModal.bind(this)} className="card__add">+</button>
+                        <button onClick={this.props.openModal} className="card__add">+</button>
                     }
                     <span className="card__date">
                     {typeof this.props.date == 'object' ? `${this.props.date.month < 10 ? '0' + this.props.date.month : this.props.date.month}.${this.props.date.year}` : this.props.date}
@@ -84,7 +82,7 @@ class Card extends React.Component {
 
                   
                       <button
-                     onClick={this.toggle.bind(this)}
+                     onClick={this.props.toggle}
                       className={this.state.open ? 'card__toggle card__toggle_open' : 'card__toggle card__toggle_close' }><span className="card__toggle-icon"><Icon id={arrow.id} /></span></button>
                 </div>
                 <ReactCSSTransitionGroup transitionName="toggle"

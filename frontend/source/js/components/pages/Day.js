@@ -22,7 +22,7 @@ class Day extends React.Component {
         };
     }
 
-   
+
     componentWillMount() {
 
         this.props.getdayById(this.props.params.dayId);
@@ -30,11 +30,14 @@ class Day extends React.Component {
 
     componentDidUpdate() {
 
-
-        if (document.title == this.props.day[0].date) {
-            return;
+        if (this.props.day.loading) {
+            return
         }
-        else if (this.props.day[0].date != undefined) {
+
+        else if (this.props.day[0]) {
+            if (document.title == this.props.day[0].date) {
+                return;
+            }
             document.title = this.props.day[0].date;
             this.setState({loaded: true});
         }
@@ -45,19 +48,19 @@ class Day extends React.Component {
         var content = this.state.loaded ?
 
             <div>
-              <Header content={this.props.day[0].date}/>
-              <Container cards={this.props.day} />
-        
+                <Header content={this.props.day[0].date}/>
+                <Container cards={this.props.day}/>
+
             </div>
-     : ''
+            : ''
 
         return (
             <div className="day">
-                <ReactCSSTransitionGroup  transitionName="animation-opacity"
-                                          transitionAppear={true}
-                                          transitionEnterTimeout={800}
-                                          transitionLeaveTimeout={800}
-                                          transitionAppearTimeout={800}
+                <ReactCSSTransitionGroup transitionName="animation-opacity"
+                                         transitionAppear={true}
+                                         transitionEnterTimeout={800}
+                                         transitionLeaveTimeout={800}
+                                         transitionAppearTimeout={800}
                 >
 
                     {content}
@@ -76,7 +79,7 @@ const mapDispatchToProps = (dispatch) => {
         getdayById: (id) => {
             dispatch(action_getdayById(id));
         },
-      
+
 
     };
 };

@@ -63,6 +63,7 @@
     "mongoose": "^4.9.8",
     "morgan": "~1.8.1",
     "nconf": "^0.8.4",
+    "prop-types": "^15.5.10",
     "react": "^15.5.0",
     "react-addons-css-transition-group": "^15.5.2",
     "react-addons-update": "^15.5.2",

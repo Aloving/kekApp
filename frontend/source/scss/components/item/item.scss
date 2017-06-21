@@ -1,12 +1,4 @@
-@import "item__delete";
-@import "item__persent";
-@import "item__price";
-@import "item__right";
-@import "item__title";
-@import "item__update";
-@import "item_default";
-@import "item_leave";
-@import "item_total";
+
 
 .item {
   max-height: 70px;
@@ -21,8 +13,19 @@
   border-radius: 3px;
   padding: 0;
 
+
 }
 
-svg path {
+.item svg path {
   fill: inherit;
 }
+
+@import "item__delete";
+@import "item__persent";
+@import "item__price";
+@import "item__right";
+@import "item__title";
+@import "item__update";
+@import "item_default";
+@import "item_leave";
+@import "item_total";

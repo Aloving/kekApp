@@ -177,14 +177,14 @@ class Modal extends React.Component {
 
 
    
-        var content = typeof this.props.marks.defaults != 'undefined' ? <ModalBody {...this.propsObject()} /> : '';
+        var content = typeof this.props.marks.defaults != 'undefined' ? <ModalBody  /*open={ this.props.open}*/ {...this.propsObject()} /> : '';
      
         return (
-            <div>
-           
+        <div>
+
             {content}
-            </div>
-        );
+        </div>
+    )
     }
 }
 

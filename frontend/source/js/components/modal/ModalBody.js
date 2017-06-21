@@ -3,7 +3,7 @@ import Marks from './Marks'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 class ModalBody extends React.Component{
 	render (){
-     
+     console.log(this.props);
 		return(
 			
 			<div onClick={this.props.closeModal} className={this.props.open ? 'modal modal_open' : 'modal'}>

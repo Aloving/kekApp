@@ -12,7 +12,9 @@ class Card extends React.Component {
     }
 
     openModal() {
+
         this.props.openModal({id: this.props.id, type: 'add'});
+
     }
 
     toggle() {
@@ -59,7 +61,7 @@ class Card extends React.Component {
             key='total'
         />;
         var content;
-        if (this.props.open) {
+        if (this.state.open) {
 
             content = <div className={"card__content"}>
                 {items}
@@ -74,7 +76,7 @@ class Card extends React.Component {
  {
                         this.props.stat ? 
                         '':
-                        <button onClick={this.props.openModal} className="card__add">+</button>
+                        <button onClick={this.openModal.bind(this)} className="card__add">+</button>
                     }
                     <span className="card__date">
                     {typeof this.props.date == 'object' ? `${this.props.date.month < 10 ? '0' + this.props.date.month : this.props.date.month}.${this.props.date.year}` : this.props.date}
@@ -82,7 +84,7 @@ class Card extends React.Component {
 
                   
                       <button
-                     onClick={this.props.toggle}
+                     onClick={this.toggle.bind(this)}
                       className={this.state.open ? 'card__toggle card__toggle_open' : 'card__toggle card__toggle_close' }><span className="card__toggle-icon"><Icon id={arrow.id} /></span></button>
                 </div>
                 <ReactCSSTransitionGroup transitionName="toggle"

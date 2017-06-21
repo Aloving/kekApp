@@ -20,10 +20,9 @@ class Container extends React.Component {
 
         };
     }
-    shouldComponentUpdate(nextProps) {
-        return (nextProps.cards !== this.props.cards);
-    }
+
     openModal(data) {
+
     
         if(data.type == 'update'){
             this.setState({ openModal: true, dayId: data.id, itemId: data.itemId, type: 'update'});
@@ -51,10 +50,13 @@ class Container extends React.Component {
    updateItem(data){
         this.props.updateItem(data)
     }
+    componentDidUpdate(){
+
+        console.log(this.state);
+    }
 
 
     render() {
-       console.log(this.props);
 
         return (
             <div>

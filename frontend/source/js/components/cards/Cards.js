@@ -17,6 +17,7 @@ class Cards extends React.Component {
 
     render() {
 
+
         var counter = 0;
         var cards;
 
@@ -28,8 +29,8 @@ class Cards extends React.Component {
 
            cards = this.props.cards.map((item) => {
                counter++;
-               return <Card onDeleteItem={this.props.onDeleteItem} first={counter == 1 ? true : false} stat={this.props.stat ? true : false} number={Math.round(Math.random() * 4) } openModal={this.props.openModal}  id={item.id} date={item.data || item.date}
-                            items={item.items} key={item.id ? item.id : counter}/>
+               return <Card onDeleteItem={this.props.onDeleteItem} first={counter == 1 ? true : false} stat={this.props.stat ? true : false} openModal={this.props.openModal}  id={item.id} date={item.data || item.date}
+                            items={item.items} key={item.id}/>
 
 
            });

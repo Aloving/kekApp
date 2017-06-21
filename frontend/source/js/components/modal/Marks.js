@@ -15,21 +15,21 @@ class Marks extends React.Component{
             if(this.props.marks.loading){
                 content = <img class="spinner spinner_marks" src={spinner}/>
                     }
-                    else{
+                   else {
                 content = <div className="modal__marks">
 
                     <div className="modal__marks modal__marks_default">
                         {
                             this.props.marks.defaults.map((item) => {
                                 var number = 4;
-                                return <button key={item.id} className={"mark mark_default color_" + number} onClick={this.props.toggleClassActive.bind(this)}>{item.title}</button>;
+                                return <button key={item.id} className={"mark mark_default color_" + number} onClick={this.props.toggleClassActive}>{item.title}</button>;
                             })
                         }
 
                     </div>
                     <div className="modal__marks modal__marks_undefault">
                         {
-                            this.props.marks.unDefaults.map((item) => {
+                            this.props.marks.defaults.map((item) => {
 
                                 return <button onClick={this.props.toggleClassActive} key={item.id} className="mark mark_undefault">{item.title}</button>;
                             })
@@ -44,23 +44,25 @@ class Marks extends React.Component{
 
                     </div>
                 </div>
-                    }
+                   }
 
 
 
         return(
+            <div>
             {content}
+            </div>
         )
 
     }
 }
 
+Marks.propTypes = {
+    marks: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.array
+    ]),
+}
 
 export default Marks;
 
-Marks.propTypes = {
-    marks: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.array
-]),
-}

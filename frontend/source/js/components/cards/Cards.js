@@ -23,14 +23,14 @@ class Cards extends React.Component {
 
        if(this.props.cards.loading){
 
-        cards = <img src={spinner} className="spinner spinner_cards"/>
+        cards = ''
 
        }else{
 
            cards = this.props.cards.map((item) => {
                counter++;
-               return <Card onDeleteItem={this.props.onDeleteItem} first={counter == 1 ? true : false} stat={this.props.stat ? true : false} openModal={this.props.openModal}  id={item.id} date={item.data || item.date}
-                            items={item.items} key={item.id}/>
+               return <Card onDeleteItem={this.props.onDeleteItem} first={counter == 1 ? true : false} stat={this.props.stat ? true : false} openModal={this.props.openModal}  id={item.id || item._id} date={item.date}
+                            items={item.items} key={item.id || item._id}/>
 
 
            });
@@ -42,9 +42,9 @@ class Cards extends React.Component {
             <div className="container">
                 <ReactCSSTransitionGroup  transitionName="animation-opacity"
                                           transitionAppear={true}
-                                          transitionEnterTimeout={200}
-                                          transitionLeaveTimeout={200}
-                                          transitionAppearTimeout={200}
+                                          transitionEnterTimeout={600}
+                                          transitionLeaveTimeout={600}
+                                          transitionAppearTimeout={600}
                 >
                     {cards}
                 </ReactCSSTransitionGroup>

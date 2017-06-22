@@ -12,7 +12,7 @@ import CalendarBody from '../calendar/CalendarBody';
 var StateObject = {
     minDate: {year: 0, month: 0},
     dateNow: {year: 0, month: 0},
-    // startDays: [],
+    startDays: [],
     months: {},
     currentYear: 0,
     currentMonth: 0
@@ -23,12 +23,13 @@ var currentDate = (function () {
     var year = date.getFullYear();
     var month = date.getMonth();
     StateObject.dateNow = {year: year, month: month};
-    // var dayInMonth = 32 - new Date(year, month, 32).getDate();
-    // for (var i = 0; i < dayInMonth; i++) {
-    //     StateObject.startDays.push(null);
-    // }
     StateObject.currentYear = year;
     StateObject.currentMonth = month;
+    var dayInMonth = 32 - new Date(year, month, 32).getDate();
+    for (var i = 0; i < dayInMonth; i++) {
+        StateObject.startDays.push(null)
+    }
+
 
 }())
 
@@ -46,6 +47,8 @@ class Calendar extends React.Component {
         this.dateToString = this.dateToString.bind(this);
         this.filterDays = this.filterDays.bind(this);
         this.minMax = this.minMax.bind(this);
+        this.showNextMonth = this.showNextMonth.bind(this);
+        this.showPrevMonth = this.showPrevMonth.bind(this);
     }
 
     componentWillMount() {
@@ -159,31 +162,28 @@ class Calendar extends React.Component {
     }
 
     render() {
-        var content;
-        if(this.props.calendar.loading){
-            content = <img className="spinner spinner_calendar" src={spinner}/>
-        }else {
-            var daysMap = this.state.visibleDays;
-            var props = {
-                showPrevMonth: this.showPrevMonth.bind(this),
-                arrowPrevActive: this.state.arrowPrevActive,
-                currentMonth: this.dateToString(StateObject.currentMonth),
-                showNextMonth: this.showNextMonth.bind(this),
-                arrowNextActive: this.state.arrowNextActive,
-                items: daysMap
-
-
-            }
-            content = <CalendarBody {...props}/>
+        var daysMap;
+        if (this.props.calendar.loading) {
+            daysMap = StateObject.startDays;
+        } else {
+            daysMap = this.state.visibleDays;
         }
+        var props = {
+            showPrevMonth: this.showPrevMonth,
+            arrowPrevActive: this.state.arrowPrevActive,
+            currentMonth: this.dateToString(StateObject.currentMonth),
+            showNextMonth: this.showNextMonth,
+            arrowNextActive: this.state.arrowNextActive,
+            items: daysMap
+        }
+        var content = <CalendarBody {...props}/>
 
-return(
-    <div className="calendar">
-        <Header content='Календарь'/>
-        {content}
-    </div>
-)
-
+        return (
+            <div className="calendar">
+                <Header content='Календарь'/>
+                {content}
+            </div>
+        )
 
 
     }

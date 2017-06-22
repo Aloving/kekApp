@@ -1,0 +1,13 @@
+.card__toggle-icon {
+
+    width: 23px;
+    height: 21px;
+    display: inline-block;
+    transition: 0.6s;
+    & svg {
+      fill: #fff;
+    }
+
+
+
+}

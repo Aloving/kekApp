@@ -1,0 +1,17 @@
+.modal__add {
+  background: rgba(0, 0, 0, 0.14);
+  border: none;
+  color: #fff;
+  line-height: 1;
+  font-size: 29px;
+  border-radius: 10px 10px 10px 0px;
+
+  padding: 2px 12px;
+  margin-left: 0px;
+  transition: 0.3s;
+  cursor: pointer;
+  &:hover{
+    background: rgba(0, 0, 0, 0.24);
+  }
+  margin-bottom: 0px;
+}

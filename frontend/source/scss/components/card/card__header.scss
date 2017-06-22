@@ -1,0 +1,14 @@
+.card__header {
+
+  text-align: center;
+  font-size: 12px;
+  padding: 0;
+  color: #fff;
+
+  background: $mainColor;
+  &:after{
+    content: '';
+    display: table;
+    clear: both;
+  }
+}

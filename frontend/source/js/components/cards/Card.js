@@ -27,20 +27,19 @@ class Card extends React.Component {
         }
 
 
-
-
     }
 
     render() {
 
         var counter = 0;
         var summ = 0;
-
+        this.props.items.map((item) => {
+            summ += item.price;
+        })
 
 
         var items = this.props.items.map((item) => {
 
-            summ += item.price;
             return <Item stat={this.props.stat}
                         defaultItem = {item.defaultItem}
                          percent={this.props.stat ? Math.round((item.price / (summ / 100) )) : null}
@@ -48,14 +47,13 @@ class Card extends React.Component {
                          title={item.title}
                          onDeleteItem={this.props.onDeleteItem}
                          parentId={this.props.id}
-                         id={item._id}
-                         key={this.props.id ? item._id : counter++}
+                         id={item._id || item.id}
+                         key={ item._id || item.id}
                          openModal={this.props.openModal}
             />;
         })
         var total = <Item
             total={true}
-            number={Math.round(Math.random() * 4)}
             price={summ}
             title='Всего'
             key='total'

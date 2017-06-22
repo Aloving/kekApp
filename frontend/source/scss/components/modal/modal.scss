@@ -1,0 +1,35 @@
+.modal {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.49);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.3s;
+  &_open{
+    max-height: 100%;
+  }
+}
+
+@import 'mark';
+@import 'add-mark';
+@import 'modal__add';
+@import 'modal__body';
+@import 'modal__close';
+@import 'modal__error';
+@import 'modal__marks';
+@import 'modal__input';
+@import 'modal__content';
+
+
+
+
+
+
+
+
+
+
+

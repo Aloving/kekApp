@@ -1,0 +1,29 @@
+.card__toggle {
+
+
+  padding: 8px 11px 7px;
+    margin: 0;
+    vertical-align: middle;
+    float: right;
+    border-radius: 5px;
+    border: none;
+
+    line-height: 1;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+    background: transparent;
+
+
+    transition: 0.3s;
+    &_open .card__toggle-icon {
+      transform: rotate(180deg);
+      transform-origin: center;
+    }
+
+
+    &:hover, &:focus {
+      outline: none;
+      background: rgba(0, 0, 0, 0.14);
+    }
+  }

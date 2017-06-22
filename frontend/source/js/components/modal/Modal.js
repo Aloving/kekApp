@@ -38,7 +38,7 @@ class Modal extends React.Component {
 
     closeModal(evt) {
     
-        if (evt == "custom" || evt.target.classList.contains('modal') || evt.target.classList.contains('modal__close') || evt.target.parentElement.classList.contains('modal__close')  )  {
+        if (evt == "custom" || evt.target.classList.contains('modal') || evt.target.closest('modal__close')  )  {
             this.setState({priceValue: ''});
             this.setState({activeButton: ''});
             this.setState({errorMessage: ''})
@@ -61,7 +61,6 @@ class Modal extends React.Component {
 
     addMarkChange(evt) {
         this.setState({addMarkValue: evt.target.value});
-
     }
 
     handleSubmit(evt) {
@@ -101,7 +100,7 @@ class Modal extends React.Component {
      
         if (this.state.priceValue != '' && this.state.activeButton != '') {
             this.setState({errorMessage: ''});
-        
+
            if( this.props.type == 'add'){
                  data = {
                 id: this.props.dayId,
@@ -177,7 +176,7 @@ class Modal extends React.Component {
 
 
    
-        var content = typeof this.props.marks.defaults != 'undefined' ? <ModalBody  /*open={ this.props.open}*/ {...this.propsObject()} /> : '';
+        var content = typeof this.props.marks.defaults != 'undefined' ? <ModalBody   {...this.propsObject()} /> : '';
      
         return (
         <div>

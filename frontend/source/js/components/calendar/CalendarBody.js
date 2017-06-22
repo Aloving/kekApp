@@ -26,9 +26,9 @@ class CalendarBody extends React.Component{
 
             <ReactCSSTransitionGroup transitionName="animation-opacity"
                                      transitionAppear={true}
-                                     transitionEnterTimeout={200}
-                                     transitionLeaveTimeout={200}
-                                     transitionAppearTimeout={200}
+                                     transitionEnterTimeout={400}
+                                     transitionLeaveTimeout={400}
+                                     transitionAppearTimeout={400}
             >
 
 

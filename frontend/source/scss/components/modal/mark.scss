@@ -1,0 +1,44 @@
+.mark {
+
+
+  display: inline-block;
+  padding: 6px 6px;
+  border-radius: 6px;
+
+  min-width: 23%;
+  text-align: center;
+  line-height: 1;
+  border: none;
+  cursor: pointer;
+  margin: 3px 1%;
+  font-size: 16px;
+  background: transparent;
+  transition: 0.3s;
+  @media(max-width: 768px){
+    font-size: 12px;
+    min-width: 31%;
+  }
+
+  &:focus{
+    outline: none;
+  }
+  &_default{
+
+    background: transparent;
+    border: 1px solid $mainColor;
+    color: $mainColor;
+  }
+  &_undefault{
+    color: #a4a4a4;
+    background: transparent;
+    border: 1px solid  #a4a4a4;
+
+  }
+  &_active{
+    background: $mainColor;
+    color: #fff;
+    border: 1px solid $mainColor;
+
+
+  }
+}

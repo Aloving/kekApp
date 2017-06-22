@@ -15,13 +15,12 @@
 
 
 }
-
-.item svg path {
+svg path {
   fill: inherit;
 }
 
 @import "item__delete";
-@import "item__persent";
+@import "item__percent";
 @import "item__price";
 @import "item__right";
 @import "item__title";

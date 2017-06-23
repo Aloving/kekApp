@@ -104,7 +104,7 @@ class Modal extends React.Component {
            if( this.props.type == 'add'){
                  data = {
                 id: this.props.dayId,
-                price: this.state.priceValue,
+                price: parseInt(this.state.priceValue),
                 title: this.state.activeButton
 
             };
@@ -114,7 +114,7 @@ class Modal extends React.Component {
            } else if(this.props.type == "update"){
                 data = {
                     dayId: this.props.dayId,
-                price: this.state.priceValue,
+                price: parseInt(this.state.priceValue),
                 title: this.state.activeButton,
                 itemId: this.props.itemId,
                 defaultItem: this.defaultTesting(this.state.activeButton)

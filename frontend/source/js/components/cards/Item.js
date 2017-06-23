@@ -2,6 +2,7 @@ import update_img from '../../../assets/update.svg';
 import del_img from '../../../assets/del.svg';
 import React from 'react';
 import Icon from '../Icon'
+import PropTypes from 'prop-types';
 
 
 class Item extends React.Component {
@@ -70,6 +71,10 @@ onUpdateItem(){
 
         )
     }
+}
+Item.propTypes ={
+   price:  PropTypes.number.isRequired,
+    title:   PropTypes.string.isRequired,
 }
 
 export default Item;

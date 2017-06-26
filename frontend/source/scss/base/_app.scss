@@ -15,9 +15,6 @@ body {
 }
 body.open-modal{
   overflow: hidden;
-  @media(min-width: 1200px){
-    padding-right: 17px;
-  }
 }
 .spinner{
   max-width: 147px;

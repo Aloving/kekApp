@@ -3,10 +3,10 @@ import Marks from './Marks'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 class ModalBody extends React.Component{
 	render (){
-     console.log(this.props);
+
 		return(
 			
-			<div onClick={this.props.closeModal} className={this.props.open ? 'modal modal_open' : 'modal'}>
+			<div onClick={this.props.closeModal} className={this.props.open ? 'modal modal_open' :  'modal'}>
                 <div className='modal__body'>
                     <button className='modal__add' onClick={this.props.formSubmit}>+</button>
                     <div className='modal__close' onClick={this.props.closeModal}><span>+</span></div>

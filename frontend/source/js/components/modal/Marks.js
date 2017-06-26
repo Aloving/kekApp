@@ -29,7 +29,8 @@ class Marks extends React.Component{
                     </div>
                     <div className="modal__marks modal__marks_undefault">
                         {
-                            this.props.marks.defaults.map((item) => {
+                            this.props.marks.unDefaults.map((item) => {
+
 
                                 return <button onClick={this.props.toggleClassActive} key={item.id} className="mark mark_undefault">{item.title}</button>;
                             })

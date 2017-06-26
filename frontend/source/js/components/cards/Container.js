@@ -50,11 +50,6 @@ class Container extends React.Component {
    updateItem(data){
         this.props.updateItem(data)
     }
-    componentDidUpdate(){
-
-        console.log(this.state);
-    }
-
 
     render() {
 

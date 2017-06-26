@@ -3,7 +3,7 @@ import React from 'react';
 import Card from './Card';
 
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import spinner from '../../../assets/spinner.gif';
+
 
 
 class Cards extends React.Component {

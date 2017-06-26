@@ -1,7 +1,7 @@
 import React from 'react';
 import Marks from './Marks'
 import ModalBody from  './ModalBody'
-
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import PropTypes from 'prop-types';
 
@@ -38,7 +38,7 @@ class Modal extends React.Component {
 
     closeModal(evt) {
     
-        if (evt == "custom" || evt.target.classList.contains('modal') || evt.target.closest('modal__close')  )  {
+        if (evt == "custom" || evt.target.classList.contains('modal') || evt.target.closest('.modal__close')  )  {
             this.setState({priceValue: ''});
             this.setState({activeButton: ''});
             this.setState({errorMessage: ''})
@@ -175,17 +175,28 @@ class Modal extends React.Component {
     render() {
 
 
-   
-        var content = typeof this.props.marks.defaults != 'undefined' ? <ModalBody   {...this.propsObject()} /> : '';
-     
+   var content ='';
+   // if(this.props.open) {
+       content = typeof this.props.marks.defaults != 'undefined' ? <ModalBody   {...this.propsObject()} /> : '';
+   // }
         return (
-        <div>
 
+
+        <div>
             {content}
         </div>
+
     )
     }
 }
 
 export default Modal;
 
+{/*<ReactCSSTransitionGroup transitionName="toggle"*/}
+{/*transitionAppear={true}*/}
+{/*transitionEnterTimeout={600}*/}
+{/*transitionLeaveTimeout={600}*/}
+{/*transitionAppearTimeout={600}*/}
+{/*>*/}
+{/*{content}*/}
+{/*</ReactCSSTransitionGroup>*/}

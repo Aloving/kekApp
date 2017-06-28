@@ -1,21 +1,19 @@
-function createDailtyItem(fromDate){
+function createDailtyItem(fromDate) {
 	var mongoose = require('../libs/mongoose');
 
-	function open(){
+	function open() {
 		return new Promise((resolve, reject) => {
 			mongoose.connection.on('open', resolve(fromDate));
 		});
 	}
 
-	function createData(){
+	function createData() {
 		require('../models/Day');
 		var Day = new mongoose.models.Day({
 			date: fromDate,
-			items:[]
+			items: [],
 		});
-		return Promise.all([
-			Day.save()
-		]);
+		return Promise.all([Day.save()]);
 	}
 
 	open()
@@ -24,7 +22,6 @@ function createDailtyItem(fromDate){
 			console.log(result);
 		})
 		.catch(err => console.log(err));
-		// .then(() => mongoose.disconnect());
 }
 
 module.exports = createDailtyItem;

@@ -7,18 +7,19 @@ module.exports = function(req, res, next) {
     taskid: req.params.id,
   };
 
-  const deleteItem = DayModel.update(
-    { _id: ObjectID(updateInfo.dayid) },
-    {
-      $pull: {
-        items: { _id: ObjectID(updateInfo.taskid) },
+  const deleteItem = () =>
+    DayModel.update(
+      { _id: ObjectID(updateInfo.dayid) },
+      {
+        $pull: {
+          items: { _id: ObjectID(updateInfo.taskid) },
+        },
       },
-    },
-    {
-      upsert: false,
-      multi: false
-    }
-  );
+      {
+        upsert: false,
+        multi: false,
+      }
+    );
 
-  deleteItem.then(data => res.json(data)).catch(next);
+  deleteItem().then(data => res.json(data)).catch(next);
 };

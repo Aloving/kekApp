@@ -2,7 +2,7 @@ const DayModel = require(`${__base}/models/Day`).Day;
 const moment = require(`${__base}/libs/moment`);
 
 module.exports = function(req, res, next) {
-  const getDays = DayModel.aggregate([
+  const getDays = () => DayModel.aggregate([
     {
       $match: {},
     },
@@ -28,7 +28,7 @@ module.exports = function(req, res, next) {
     return _days;
   }
 
-  getDays
+  getDays()
     .then(calendarFormat)
     .then(formatedDays => res.json(formatedDays))
     .catch(next);

@@ -1,9 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-let ObjectID = require('mongodb').ObjectID;
-const mongoose = require(`${__base}/libs/mongoose`);
-const moment = require(`${__base}/libs/moment`);
 const task = require('./task');
 const indexPage = require('./indexPage');
 const calendar = require('./calendar');

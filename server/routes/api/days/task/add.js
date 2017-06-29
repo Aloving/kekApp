@@ -12,16 +12,17 @@ module.exports = function(req, res, next) {
     price: Number(req.body.price),
   };
 
-  const updateDay = DayModel.findByIdAndUpdate(
-    dayId,
-    { $push: { items: task } },
-    {
-      upsert: true,
-      new: true,
-    }
-  );
+  const updateDay = () =>
+    DayModel.findByIdAndUpdate(
+      dayId,
+      { $push: { items: task } },
+      {
+        upsert: true,
+        new: true,
+      }
+    );
 
-  updateDay
+  updateDay()
     .then(markDaysItem)
     .then(updatedDay => res.json(updatedDay))
     .catch(next);

@@ -10,28 +10,27 @@ module.exports = function(req, res, next) {
     taskid: req.params.id,
   };
 
-  const updateDay = DayModel.update(
-    {
-      _id: ObjectID(updateInfo.dayid),
-      'items._id': ObjectID(updateInfo.taskid),
-    },
-    {
-      $set: {
-        'items.$.price': updateInfo.price,
-        'items.$.title': updateInfo.title,
+  const updateDay = () =>
+    DayModel.update(
+      {
+        _id: ObjectID(updateInfo.dayid),
+        'items._id': ObjectID(updateInfo.taskid),
       },
-    },
-    {
-      upsert: true,
-      new: true,
-    }
-  );
+      {
+        $set: {
+          'items.$.price': updateInfo.price,
+          'items.$.title': updateInfo.title,
+        },
+      },
+      {
+        upsert: true,
+        new: true,
+      }
+    );
 
-  function findThatDay() {
-    return DayModel.findById(updateInfo.dayid);
-  }
+  const findThatDay = () => DayModel.findById(updateInfo.dayid);
 
-  updateDay
+  updateDay()
     .then(findThatDay)
     .then(markDaysItem)
     .then(updatedDay => res.json(updatedDay))

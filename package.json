@@ -7,7 +7,7 @@
     "ritahome": "concurrently \"mongod --dbpath ~/data/ --port 15151\" \"npm run serverstart\" \"npm run frontstart\"",
     "production": "concurrently \"mongod --dbpath ~/database\" \"npm run serverProduction\"",
     "serverstart": "node ./server/bin/www",
-    "serverProduction": "NODE_ENV=production node ./client/bin/www",
+    "serverProduction": "NODE_ENV=production node ./server/bin/www",
     "buildw": "set NODE_ENV=production&& webpack -p",
     "frontstart": "webpack-dev-server --hot --inline --watch-poll",
     "frontstartw": "webpack-dev-server --hot --inline --watch-poll"

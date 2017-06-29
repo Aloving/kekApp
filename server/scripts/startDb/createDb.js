@@ -1,12 +1,12 @@
-var mongoose = require('./libs/mongoose');
-var Promise = require('bluebird');
-var startDaysData = require('./startDb/startDaysData');
-var startMarks = require('./startDb/startMarks');
+const mongoose = require('./libs/mongoose');
+const Promise = require('bluebird');
+const startDaysData = require('./startDb/startDaysData');
+const startMarks = require('./startDb/startMarks');
 
 
 function createMarks(){
 	return Promise.each(startMarks, (item) => {
-		var saveMark = new mongoose.models.Mark(item);
+		const saveMark = new mongoose.models.Mark(item);
 		return saveMark.save();
 	});
 }
@@ -26,7 +26,7 @@ function requireModels(){
 }
 
 function dropDb() {
-	var db = mongoose.connection.db;
+	const db = mongoose.connection.db;
 	return new Promise((resolve) => db.dropDatabase(resolve));
 }
 
@@ -36,7 +36,7 @@ function createDays(marks){
 		day.items.map((cat) => {
 			cat.defaultItem = marks.some((item) => item.title == cat.title && item.defaultItem);
 		});
-		var saveDay = new mongoose.models.Day(day);
+		const saveDay = new mongoose.models.Day(day);
 		return saveDay.save();
 	});
 }

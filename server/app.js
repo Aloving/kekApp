@@ -1,3 +1,4 @@
+global.__base = __dirname;
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -6,7 +7,6 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const CronJob = require('cron').CronJob;
 const moment = require('./libs/moment');
-
 
 const createEmptyDay = require('./libs/addDay');
 
@@ -48,14 +48,12 @@ app.use(function(err, req, res, next) {
 	res.render('error');
 });
 
-const generateDays = new CronJob({
+new CronJob({
 	cronTime: '0 30 0 1-31 * *',
 	onTick: function() {
-		createEmptyDay( moment(Date.now()).format('DD.MM.YYYY') );
+		createEmptyDay(moment(Date.now()).format('DD.MM.YYYY'));
 	},
-	start: false
-});
-
-generateDays.start();
+	start: false,
+}).start();
 
 module.exports = app;

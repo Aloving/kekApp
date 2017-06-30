@@ -1,5 +1,6 @@
 {
 	"port": 3001,
+	"secretkey": "mamadavay",
 	"mongoose": {
 		"uri": "mongodb://localhost/kekapp",
 		"options": {

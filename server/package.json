@@ -7,15 +7,20 @@
     "startw": "nodemon ./bin/www"
   },
   "devDependencies": {
-    "concurrently": "^3.4.0"
+    "concurrently": "^3.4.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.2.0"
   },
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "body-parser": "^1.17.1",
     "cookie-parser": "~1.4.3",
     "cron": "^1.2.1",
     "debug": "~2.6.3",
     "express": "~4.15.2",
     "jade": "~1.11.0",
+    "jsonwebtoken": "^7.4.1",
     "mongodb": "^2.2.26",
     "mongoose": "^4.9.8",
     "morgan": "~1.8.1",

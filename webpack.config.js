@@ -10,10 +10,10 @@ const isProduction = nodeEnv === "production";
 
 
 
-const jsSourcePath = path.join(__dirname, './frontend/source/js');
-const buildPath = path.join(__dirname, './public');
-const imgPath = path.join(__dirname, './frontend/source/assets');
-const sourcePath = path.join(__dirname, './frontend/source');
+const jsSourcePath = path.join(__dirname, './client/source/js');
+const buildPath = path.join(__dirname, './server/public');
+const imgPath = path.join(__dirname, './client/source/assets');
+const sourcePath = path.join(__dirname, './client/source');
 
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
@@ -37,7 +37,7 @@ const plugins = [
       NODE_ENV: JSON.stringify(nodeEnv),
     },
   }),
-    new ExtractTextPlugin({ filename: 'style.css', disable: false, allChunks: true }),
+    new ExtractTextPlugin('style.css'),
   new webpack.LoaderOptionsPlugin({
     options: {
       postcss: [
@@ -123,22 +123,22 @@ if (isProduction) {
     {
       test: /\.scss$/,
       exclude: /node_modules/,
-        // loader: ExtractTextPlugin.extract({
-        //     fallback: 'style-loader',
-        //     use: 'css-loader!postcss-loader!sass-loader',
-        // }),
-      use:
-          [
-        'style-loader',
-        // Using source maps breaks urls in the CSS loader
-        // https://github.com/webpack/css-loader/issues/232
-        // This comment solves it, but breaks testing from a local network
-        // https://github.com/webpack/css-loader/issues/232#issuecomment-240449998
-        // 'css-loader?sourceMap',
-        'css-loader',
-        'postcss-loader',
-        'sass-loader?sourceMap',
-      ],
+        loader: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: 'css-loader!postcss-loader!sass-loader',
+        })
+    //   // use:
+    //   //     [
+    //   //   'style-loader',
+    //   //   // Using source maps breaks urls in the CSS loader
+    //   //   // https://github.com/webpack/css-loader/issues/232
+    //   //   // This comment solves it, but breaks testing from a local network
+    //   //   // https://github.com/webpack/css-loader/issues/232#issuecomment-240449998
+    //   //   // 'css-loader?sourceMap',
+    //   //   'css-loader',
+    //   //   'postcss-loader',
+    //   //   'sass-loader?sourceMap',
+    //   // ],
     }
   );
 }
@@ -148,7 +148,7 @@ module.exports = {
   devtool: isProduction ? false : 'source-map',
   context: jsSourcePath,
   entry: {
-    js: './index.js',
+    js: './index.jsx',
   },
   output: {
     path: buildPath,

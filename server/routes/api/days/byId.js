@@ -8,6 +8,9 @@ module.exports = function(req, res, next) {
 
   getDay()
     .then(markDaysItem)
-    .then(formatedDay => res.json(formatedDay))
+    .then(formatedDay => {
+      const formattedArray = [formatedDay];
+      res.json(formattedArray);
+    })
     .catch(next);
 };

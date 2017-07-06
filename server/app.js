@@ -12,6 +12,14 @@ const createEmptyDay = require('./libs/addDay');
 
 const app = express();
 
+/*
+TODO LIST
+  1. registration data
+  2. create day for every users
+  3. sorting month on statistic
+  4. sort marks by month
+*/
+
 // routes
 const index = require('./routes/index');
 const api = require('./routes/api');
@@ -32,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/api', api);
 app.use('/auth', auth);
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   const err = new Error('Not Found');
@@ -40,7 +49,7 @@ app.use((req, res, next) => {
 });
 
 // error handler
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

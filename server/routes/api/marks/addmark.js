@@ -1,14 +1,19 @@
 const MarksModel = require(`${__base}/models/Mark`).Mark;
 
-module.exports = function(req, res, next) {
+module.exports = (req, res, next) => {
   const title = req.body.title;
+  const userID = req.body.userid;
+  const defaultItem = req.body.title;
 
   const updateMark = () =>
     MarksModel.findOneAndUpdate(
-      { title },
+      {
+        userID,
+        title,
+      },
       {
         title,
-        defaultItem: false,
+        defaultItem,
         create: new Date(),
       },
       {

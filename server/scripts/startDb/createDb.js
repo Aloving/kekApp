@@ -1,7 +1,7 @@
-const mongoose = require('./libs/mongoose');
+const mongoose = require('../../libs/mongoose');
 const Promise = require('bluebird');
-const startDaysData = require('./startDb/startDaysData');
-const startMarks = require('./startDb/startMarks');
+const startDaysData = require('./startDaysData');
+const startMarks = require('./startMarks');
 
 
 function createMarks(){
@@ -18,8 +18,8 @@ function open(){
 }
 
 function requireModels(){
-	require('./models/Day');
-	require('./models/Mark');
+	require('../../models/Day');
+	require('../../models/Mark');
 	return Promise.each(Object.keys(mongoose.models), (modelName) =>{
 		return mongoose.models[modelName].ensureIndexes();
 	});

@@ -1,4 +1,5 @@
-const mongoose = require(`${__base}/libs/mongoose`);
+const mongoose = require('../libs/mongoose');
+
 const Schema = mongoose.Schema;
 
 const UserSchema = Schema({

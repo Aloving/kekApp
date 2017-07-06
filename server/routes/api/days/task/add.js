@@ -4,8 +4,9 @@ const marksModel = require(`${__base}/models/Mark`).Mark;
 const ObjectID = require('mongodb').ObjectID;
 const markDaysItem = require(`${__base}/libs/markDaysItem`);
 
-module.exports = function(req, res, next) {
+module.exports = (req, res, next) => {
   const dayId = req.body.dayid;
+  const userID = req.body.userid;
 
   const task = {
     title: req.body.title,
@@ -13,8 +14,11 @@ module.exports = function(req, res, next) {
   };
 
   const updateDay = () =>
-    DayModel.findByIdAndUpdate(
-      dayId,
+    DayModel.findOneAndUpdate(
+      {
+        _id: ObjectID(dayId),
+        userID: ObjectID(userID),
+      },
       { $push: { items: task } },
       {
         upsert: true,

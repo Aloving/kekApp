@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
   });
 
   getDay()
-    .then(markDaysItem)
+    .then(day => markDaysItem(day, userID))
     .then(formatedDay => {
       const formattedArray = [formatedDay];
       res.json(formattedArray);

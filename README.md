@@ -21,3 +21,4 @@ App for lulz
 | - | - | - | - | - |
 |  /api/marks/getmarks  | route for getting marks | GET | [request](https://gist.github.com/Aloving/143c64c1fa2bad919c51cd3f808cece6) | [response](https://gist.github.com/Aloving/fb4959600cc749e55b096e4178e2fcf8) |
 | /api/marks/addmark | route add undefault mark | POST | [request](https://gist.github.com/Aloving/b8cada6ab8a05577875b3d9365f9256a) | [response](https://gist.github.com/Aloving/https://gist.github.com/Aloving/3adee92e1c40d19f91e94af3a417a09a) |
+## /auth

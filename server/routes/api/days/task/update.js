@@ -34,7 +34,7 @@ module.exports = (req, res, next) => {
 
   updateDay()
     .then(findThatDay)
-    .then(markDaysItem)
+    .then(day => markDaysItem(day, updateInfo.userid))
     .then(updatedDay => res.json(updatedDay))
     .catch(next);
 };

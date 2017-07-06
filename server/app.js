@@ -61,7 +61,7 @@ app.use((err, req, res) => {
 
 new CronJob({
   cronTime: '0 30 0 1-31 * *',
-  onTick: function() {
+  onTick: () => {
     createEmptyDay(moment(Date.now()).format('DD.MM.YYYY'));
   },
   start: false,

@@ -6,10 +6,11 @@ module.exports = (req, res, next) => {
   const userID = req.headers.userid;
   const getDays = () =>
     DayModel.find({
-      userID: ObjectID(userID),
+      userID,
     })
       .sort({ date: -1 })
       .limit(7);
 
-  getDays().then(markDaysItem).then(days => res.json(days)).catch(next);
+  getDays()
+  .then(days => markDaysItem(days, userID)).then(days => res.json(days)).catch(next);
 };

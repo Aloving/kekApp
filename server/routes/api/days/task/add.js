@@ -27,7 +27,7 @@ module.exports = (req, res, next) => {
     );
 
   updateDay()
-    .then(markDaysItem)
+    .then(day => markDaysItem(day, userID))
     .then(updatedDay => res.json(updatedDay))
     .catch(next);
 };

@@ -1,14 +1,8 @@
 import React from 'react';
 import Container from '../cards/Container';
-
-
 import Header from '../Header'
-
 import {connect} from 'react-redux';
-
 import {action_getdayById} from './../../redux/actions';
-
-
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Day extends React.Component {
@@ -21,19 +15,14 @@ class Day extends React.Component {
 
         };
     }
-
-
     componentWillMount() {
-
         this.props.getdayById(this.props.params.dayId);
     }
 
     componentDidUpdate() {
-
         if (this.props.day.loading) {
             return
         }
-
         else if (this.props.day[0]) {
             if (document.title == this.props.day[0].date) {
                 return;
@@ -44,13 +33,10 @@ class Day extends React.Component {
     }
 
     render() {
-
         var content = this.state.loaded ?
-
             <div>
                 <Header content={this.props.day[0].date}/>
                 <Container cards={this.props.day}/>
-
             </div>
             : ''
 
@@ -60,9 +46,7 @@ class Day extends React.Component {
                                          transitionAppear={true}
                                          transitionEnterTimeout={800}
                                          transitionLeaveTimeout={800}
-                                         transitionAppearTimeout={800}
-                >
-
+                                         transitionAppearTimeout={800}>
                     {content}
                 </ReactCSSTransitionGroup>
 

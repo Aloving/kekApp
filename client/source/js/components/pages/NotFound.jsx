@@ -4,6 +4,7 @@ class NotFound extends React.Component{
     componentDidMount() {
         document.title = "Ошибка";
     }
+
     render(){
         return(
             <div className="error404">

@@ -3,12 +3,9 @@ import {Link} from 'react-router'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import arrow from '../../../assets/arrow.svg';
 import Icon from '../Icon';
-
 import PropTypes from 'prop-types';
 
-
 class CalendarBody extends React.Component{
-
     render() {
         var counter = 0;
         var items =
@@ -23,32 +20,24 @@ class CalendarBody extends React.Component{
             </div>
 
         return (
-
             <ReactCSSTransitionGroup transitionName="animation-opacity"
                                      transitionAppear={true}
                                      transitionEnterTimeout={400}
                                      transitionLeaveTimeout={400}
                                      transitionAppearTimeout={400}
             >
-
-
-
                     <div className="nav">
                         <div onClick={this.props.showPrevMonth}
                              className={this.props.arrowPrevActive ?
                                  "nav__arrow nav__arrow_prev" :
                                  "nav__arrow  nav__arrow_disable nav__arrow_prev"}><Icon id={arrow.id}/></div>
-
                         <span className="nav__text">{this.props.currentMonth}</span>
                         <div onClick={this.props.showNextMonth}
                              className={this.props.arrowNextActive ?
                                  "nav__arrow nav__arrow_next"
                                  : "nav__arrow  nav__arrow_disable nav__arrow_next"}><Icon id={arrow.id}/></div>
-
-
                     </div>
                     {items}
-
             </ReactCSSTransitionGroup>
 
         )
@@ -56,8 +45,8 @@ class CalendarBody extends React.Component{
     }
 }
 
-
 export default CalendarBody;
+
 CalendarBody.propTypes = {
     items: PropTypes.array,
     currentMonth : PropTypes.string,

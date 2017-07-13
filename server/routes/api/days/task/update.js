@@ -2,11 +2,12 @@ const DayModel = require(`${__base}/models/Day`).Day;
 const ObjectID = require('mongodb').ObjectID;
 const markDaysItem = require(`${__base}/libs/markDaysItem`);
 
-module.exports = function(req, res, next) {
+module.exports = (req, res, next) => {
   const updateInfo = {
     title: req.body.title,
     price: req.body.price,
     dayid: req.body.dayid,
+    userid: req.body.userid,
     taskid: req.params.id,
   };
 
@@ -14,6 +15,7 @@ module.exports = function(req, res, next) {
     DayModel.update(
       {
         _id: ObjectID(updateInfo.dayid),
+        userID: ObjectID(updateInfo.userid),
         'items._id': ObjectID(updateInfo.taskid),
       },
       {
@@ -32,7 +34,7 @@ module.exports = function(req, res, next) {
 
   updateDay()
     .then(findThatDay)
-    .then(markDaysItem)
+    .then(day => markDaysItem(day, updateInfo.userid))
     .then(updatedDay => res.json(updatedDay))
     .catch(next);
 };

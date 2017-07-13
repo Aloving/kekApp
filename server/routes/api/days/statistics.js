@@ -3,34 +3,36 @@ const DayModel = require(`${__base}/models/Day`).Day;
 const ObjectID = require('mongodb').ObjectID;
 const MarksModel = require(`${__base}/models/Mark`).Mark;
 
-module.exports = function(req, res, next) {
-  const getMarks = () => MarksModel.find({});
-  const getDays = DayModel.aggregate([
-    {
-      $match: {},
-    },
-    {
-      $project: {
-        date: 1,
-        items: 1,
-      },
-    },
-    {
-      $group: {
-        _id: {
-          month: { $month: '$date' },
-          year: { $year: '$date' },
+module.exports = (req, res, next) => {
+  const userID = req.headers.userid;
+  const getMarks = () => MarksModel.find({ userID });
+  const getDays = () =>
+    DayModel.aggregate([
+      {
+        $match: {
+          userID: ObjectID(userID),
         },
-        id: { $push: '$_id' },
-        items: { $push: '$items' },
       },
-    },
-  ]);
-
-  getDays
-    .then(monthsSort)
-    .then(sortedMonths => res.json(sortedMonths))
-    .catch(next);
+      {
+        $sort: { date: 1 },
+      },
+      {
+        $project: {
+          date: 1,
+          items: 1,
+        },
+      },
+      {
+        $group: {
+          _id: {
+            month: { $month: '$date' },
+            year: { $year: '$date' },
+          },
+          id: { $push: '$_id' },
+          items: { $push: '$items' },
+        },
+      },
+    ]);
 
   function monthsSort(months) {
     return getMarks().then(marks => {
@@ -77,4 +79,9 @@ module.exports = function(req, res, next) {
       return data;
     });
   }
+
+  getDays()
+    .then(monthsSort)
+    .then(sortedMonths => res.json(sortedMonths))
+    .catch(next);
 };

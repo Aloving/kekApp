@@ -1,11 +1,10 @@
 const marksModel = require(`${__base}/models/Mark`).Mark;
 
-module.exports = function markDaysItems(data) {
-  const getMarks = function() {
-    return marksModel.find({});
-  };
+module.exports = function markDaysItems(data, userID) {
+  const getMarks = () => marksModel.find({ userID });
 
   if (data instanceof Array) {
+    if (!data.length) return data;
     let localDays = [].concat(data);
 
     return getMarks()
@@ -19,6 +18,7 @@ module.exports = function markDaysItems(data) {
   }
 
   function markDay(marks, day) {
+    if (!marks.length) return day;
     day.items.map(mItem => {
       mItem.defaultItem = marks.some(
         sItem => sItem.title == mItem.title && sItem.defaultItem

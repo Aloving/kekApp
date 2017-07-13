@@ -1,38 +1,44 @@
-var mongoose = require('../libs/mongoose');
-var Schema = mongoose.Schema;
-var moment = require('../libs/moment');
+const mongoose = require('../libs/mongoose');
 
-mongoose.set('debug', true);
+const Schema = mongoose.Schema;
+const moment = require('../libs/moment');
 
-var schema = new Schema({
-	date: {
-		type: Date,
-		default: Date.now,
-		unique: true,
-		required: true,
-		get: getFormatData,
-		set: setFormatData
-	},
-	items: [
-		{
-			title: String,
-			price: Number,
-			defaultItem: Boolean
-		}
-	]
-},
-	{
-		toObject : {getters: true},
-		toJSON : {getters: true}
-	}
+mongoose.set('debug', process.env.NODE_ENV);
+
+function setFormatData(date) {
+  return moment(date, 'DD.MM.YYYY').toISOString();
+}
+
+function getFormatData(date) {
+  return moment(date).format('DD.MM.YYYY');
+}
+
+const schema = new Schema(
+  {
+    userID: {
+      type: Schema.Types.ObjectId,
+      required: true,
+    },
+    date: {
+      type: Date,
+      default: Date.now,
+      unique: true,
+      required: true,
+      get: getFormatData,
+      set: setFormatData,
+    },
+    items: [
+      {
+        title: String,
+        price: Number,
+        defaultItem: Boolean,
+      },
+    ],
+  },
+  {
+    toObject: { getters: true },
+    toJSON: { getters: true },
+  },
 );
-
-function setFormatData(date){
-	return moment(date, 'DD.MM.YYYY').toISOString();
-}
-
-function getFormatData(date){
-	return moment(date).format('DD.MM.YYYY');
-}
 
 exports.Day = mongoose.model('Day', schema);

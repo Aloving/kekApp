@@ -12,16 +12,25 @@ const createEmptyDay = require('./libs/addDay');
 
 const app = express();
 
-//routes
+/*
+TODO LIST
+  1. registration data
+  2. create day for every users
+  3. sorting month on statistic
+  4. sort marks by month
+*/
+
+// routes
 const index = require('./routes/index');
 const api = require('./routes/api');
+const auth = require('./routes/auth');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -30,30 +39,32 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/api', api);
+app.use('/auth', auth);
+
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-	const err = new Error('Not Found');
-	err.status = 404;
-	next(err);
+app.use((req, res, next) => {
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
-	// set locals, only providing error in development
-	res.locals.message = err.message;
-	res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use((err, req, res) => {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-	// render the error page
-	res.status(err.status || 500);
-	res.render('error');
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
 });
 
 new CronJob({
-	cronTime: '0 30 0 1-31 * *',
-	onTick: function() {
-		createEmptyDay(moment(Date.now()).format('DD.MM.YYYY'));
-	},
-	start: false,
+  cronTime: '0 30 0 1-31 * *',
+  onTick: () => {
+    createEmptyDay(moment(Date.now()).format('DD.MM.YYYY'));
+  },
+  start: false,
 }).start();
 
 module.exports = app;

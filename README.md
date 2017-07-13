@@ -20,4 +20,10 @@ App for lulz
 | Route | Information | Method | Request Example | Response Example |
 | - | - | - | - | - |
 |  /api/marks/getmarks  | route for getting marks | GET | [request](https://gist.github.com/Aloving/143c64c1fa2bad919c51cd3f808cece6) | [response](https://gist.github.com/Aloving/fb4959600cc749e55b096e4178e2fcf8) |
-| /api/marks/addmark | route add undefault mark | POST | [request](https://gist.github.com/Aloving/https://gist.github.com/Aloving/b8cada6ab8a05577875b3d9365f9256a) | [response](https://gist.github.com/Aloving/https://gist.github.com/Aloving/3adee92e1c40d19f91e94af3a417a09a) |
+| /api/marks/addmark | route add undefault mark | POST | [request](https://gist.github.com/Aloving/b8cada6ab8a05577875b3d9365f9256a) | [response](https://gist.github.com/Aloving/https://gist.github.com/Aloving/3adee92e1c40d19f91e94af3a417a09a) |
+## /auth
+| Route | Information | Method | Request Example | Response Example |
+| - | - | - | - | - |
+| /auth/user | create user | POST | [request](https://gist.github.com/Aloving/3e43014f743314e28d999b7cf45821bf) | [response](https://gist.github.com/Aloving/be31320a900ed2816c96b3b49f43c013) |
+| /auth/user | get user information | GET | [request](https://gist.github.com/Aloving/f89cd691fd6f3110e0964d2ce9b66372) | [response](https://gist.github.com/Aloving/9a87f9ec353653377b036c833c9b4377) |
+| /auth/login | get token | POST | [request](https://gist.github.com/Aloving/a93ef683f98e090807feeed2b5c82182) | [response](https://gist.github.com/Aloving/faf5a70c9b076443de56413c9e5ae23e) |

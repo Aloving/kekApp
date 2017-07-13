@@ -1,15 +1,19 @@
 const DayModel = require(`${__base}/models/Day`).Day;
 const ObjectID = require('mongodb').ObjectID;
 
-module.exports = function(req, res, next) {
+module.exports = (req, res, next) => {
   const updateInfo = {
     dayid: req.body.dayid,
     taskid: req.params.id,
+    userid: req.body.userid,
   };
 
   const deleteItem = () =>
     DayModel.update(
-      { _id: ObjectID(updateInfo.dayid) },
+      {
+        _id: ObjectID(updateInfo.dayid),
+        userID: ObjectID(updateInfo.userid),
+      },
       {
         $pull: {
           items: { _id: ObjectID(updateInfo.taskid) },

@@ -12,22 +12,19 @@ import Stat from './components/pages/Stat';
 import Calendar from './components/pages/Calendar';
 import NotFound from './components/pages/NotFound';
 import Day from './components/pages/Day';
+import Auth from './components/pages/Auth.jsx';
 
 
-
+var login = false;
 
 
 ReactDOM.render(<Provider store={store}>
     <Router history={browserHistory}>
-        <Route path="/" component={App}>
-            <IndexRoute  component={Home}/>
-            <Route path="/stat" component={Stat}/>
-            <Route path="/calendar"  >
 
-                <IndexRoute component={Calendar}/>
-                <Route path="day/:dayId" component={Day}/>
-            </Route>
-            <Route path="*" component={NotFound}/>
+        <Route path="/" component={App}>
+
+            <IndexRoute  component={Auth}/>
+
 
         </Route>
     </Router>

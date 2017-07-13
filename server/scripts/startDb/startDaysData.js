@@ -1,4 +1,47 @@
 module.exports = [
+  {
+    date: '19.07.2017',
+    items: [
+      {
+        title: 'Обед(Алёша)',
+        price: 300
+      },
+      {
+        title: 'Обед(Рита)',
+        price: 270
+      },
+      {
+        title: 'Продукты',
+        price: 857
+      },
+      {
+        title: 'Бухло',
+        price: 1000
+      }
+    ]
+  },
+  {
+    date: '09.06.2017',
+    items: [
+      {
+        title: 'Обед(Алёша)',
+        price: 300
+      },
+      {
+        title: 'Обед(Рита)',
+        price: 270
+      },
+      {
+        title: 'Продукты',
+        price: 857
+      },
+      {
+        title: 'Бухло',
+        price: 1000
+      }
+    ]
+  },
+
 	{
 		date: '19.05.2017',
 		items: [

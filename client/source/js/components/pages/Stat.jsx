@@ -5,11 +5,22 @@ import {connect} from 'react-redux';
 import {action_getstat} from '../../redux/actions';
 
 class Stat extends React.Component{
-    componentDidMount() {
+    constructor(){
+        super();
+        this.state = {
+
+        }
+    }
+    componentWillMount() {
         this.props.getstat();
         document.title = "Статистика";
+
+
     }
+
+
     render() {
+
         return(
             <div className="statistic">
             <Header content="Статистика"/>

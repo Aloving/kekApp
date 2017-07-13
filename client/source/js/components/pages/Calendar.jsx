@@ -43,12 +43,29 @@ class Calendar extends React.Component {
   }
 
   componentWillMount() {
-    this.props.getcalendar();
+    if(!this.props.calendar.length) {
+      this.props.getcalendar();
+    }
     document.title = "Календарь";
   }
 
+  componentDidMount(){
+
+
+    if (this.props.calendar.length && this.state.visibleDays.length == 0) {
+      this.filterDays(StateObject.currentYear, StateObject.currentMonth)
+    }
+
+    // if(this.props.calendar.length && StateObject.dateNow.year != 0 && this.state.visibleDays.length == 0){
+    //   console.log('lfedgs');
+    //   this.state.visibleDays.length == 0 ? this.filterDays(StateObject.dateNow.year, StateObject.dateNow.month) : null;
+    // }
+  
+  }
+
   componentDidUpdate() {
-    if (typeof this.props.calendar == 'object' && this.props.calendar.length) {
+
+    if (this.props.calendar.length) {
       if (StateObject.minDate.year == 0) {
         this.minMax();
       }
@@ -88,12 +105,10 @@ class Calendar extends React.Component {
         ollDays.push(null);
       }
       this.props.calendar.filter((item) => {
-        return item.date.year == year;
+        return item.date.year == year && item.date.month == month;
       })
-        .filter((item) => {
-          return item.date.month == month;
-        }).map(item => {
 
+        .map(item => {
         let index = item.date.day - 1;
         ollDays.splice(index, 1, item)
       })
@@ -138,7 +153,7 @@ class Calendar extends React.Component {
 
   render() {
     var daysMap;
-    if (this.props.calendar.loading) {
+    if (!this.state.visibleDays.length) {
       daysMap = StateObject.startDays;
     } else {
       daysMap = this.state.visibleDays;
@@ -152,6 +167,7 @@ class Calendar extends React.Component {
       items: daysMap
     }
     var content = <CalendarBody {...props}/>
+    console.log();
     return (
       <div className="calendar">
         <Header content='Календарь'/>

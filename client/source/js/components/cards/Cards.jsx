@@ -9,6 +9,7 @@ class Cards extends React.Component {
        if(this.props.cards.loading){
         cards = ''
        }else{
+
            cards = this.props.cards.map((item) => {
                counter++;
                return <Card onDeleteItem={this.props.onDeleteItem} first={counter == 1 ? true : false} stat={this.props.stat ? true : false} openModal={this.props.openModal}  id={item.id || item._id} date={item.date}

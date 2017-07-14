@@ -96,5 +96,48 @@ export function addmark(title) {
 }
 
 
+/* auth */
 
 
+
+export function createUser(data){
+  return fetch('/auth/user',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: data.username,
+        password: data.password
+      })
+    })
+    .then(res => res.json())
+
+
+
+}
+
+
+export function getUser(data){
+  return fetch('/auth/user', {
+    method: 'GET',
+    headers: {'x-auth': data.token}
+  })
+    .then(res =>  res.json())
+}
+
+export function getToken(data){
+  return fetch('/auth/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      username: data.username,
+      password: data.password
+    })
+  })
+    .then(res => res.json())
+
+}

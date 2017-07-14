@@ -15,7 +15,6 @@ import Day from './components/pages/Day';
 import Auth from './components/pages/Auth.jsx';
 
 
-var login = false;
 
 
 ReactDOM.render(<Provider store={store}>

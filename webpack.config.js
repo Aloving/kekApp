@@ -171,7 +171,11 @@ module.exports = {
       proxy: [{
           path: '/api/**',
           target: 'http://localhost:3001'
-      }],
+      },
+        {
+          path: '/auth/**',
+          target: 'http://localhost:3001'
+        }],
       port: 8001
   }
 };

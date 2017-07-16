@@ -37,6 +37,8 @@ class Auth extends React.Component{
     }
   }
   componentDidMount(){
+localStorage.removeItem('token')
+
 
 
     var token = localStorage.getItem('token');

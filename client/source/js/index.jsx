@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import '../scss/app.scss';
 import store from './redux/store';
-import { Router, Route, IndexRoute, browserHistory, IndexRedirect } from 'react-router';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 
 import App from './components/App';
 import Home from './components/pages/Home';
@@ -18,14 +18,14 @@ import Auth from './components/pages/Auth.jsx';
 
 
 ReactDOM.render(<Provider store={store}>
-    <Router history={browserHistory}>
+    <Router >
 
-        <Route path="/" component={App}>
-
-            <IndexRoute  component={Auth}/>
-
-
-        </Route>
+            <App>
+                <Route exect path="/" component={Home}/>
+                <Route path="/login" component={Auth}/>
+                <Route path="/stat" component={Stat}/>
+            </App>
+        
     </Router>
 
 

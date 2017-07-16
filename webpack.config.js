@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 
-const DashboardPlugin = require('webpack-dashboard/plugin');
+
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
@@ -114,7 +114,6 @@ if (isProduction) {
   // Development plugins
   plugins.push(
     new webpack.HotModuleReplacementPlugin(),
-    new DashboardPlugin()
   );
 
   // Development rules

@@ -9,8 +9,8 @@ export default function reducer(state = {}, action) {
 
     case 'GET_USER_FINISH' :
       return {...state, username: action.data.username, id: action.data._id};
-    case 'LOGIN' :
-      return {...state, login: true};
+    case 'LOGOUT' :
+      return {};
     default:
       return state;
 

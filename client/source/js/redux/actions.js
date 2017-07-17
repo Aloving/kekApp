@@ -63,6 +63,6 @@ export function action_getToken(data){
   return {type: 'PROMISE_DATA', promise:getToken, data: data, actions: ['GET_TOKEN_START', 'GET_TOKEN_FINISH', 'GET_TOKEN_ERROR']};
 }
 
-export function action_login(){
-  return {type: 'LOGIN'};
+export function action_logout(){
+  return {type: 'LOGOUT'};
 }

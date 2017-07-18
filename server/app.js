@@ -14,9 +14,9 @@ const app = express();
 
 /*
 TODO LIST
-  1. registration data
-  2. create day for every users
-  3. sorting month on statistic
+  1. registration data - done
+  2. create day for every users - done
+  3. sorting month on statistic - done
   4. sort marks by month
 */
 
@@ -40,6 +40,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/api', api);
 app.use('/auth', auth);
+app.use('*', (req, res) => {
+  res.render('index', { title: 'Express' });
+});
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

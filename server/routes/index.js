@@ -7,8 +7,4 @@ router.get('/', (req, res) => {
   res.render('index', { title: 'Express' });
 });
 
-router.get(['/stat', '/calendar', '/calendar/**'], (req, res) => {
-  res.render('index', { title: 'Express' });
-});
-
 module.exports = router;

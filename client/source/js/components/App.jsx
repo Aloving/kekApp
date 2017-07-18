@@ -10,6 +10,7 @@ import { Route, Switch, withRouter} from "react-router-dom";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 import Home from "./pages/Home";
+import Day from "./pages/Day";
 import Stat from "./pages/Stat";
 import Calendar from "./pages/Calendar";
 import NotFound from "./pages/NotFound";
@@ -24,7 +25,7 @@ class App extends React.Component {
   }
 
   login = user => {
-    console.log(user);
+
     this.setState({user}, () => this.props.history.push('/'))
   }
   logout = () => {
@@ -43,9 +44,9 @@ class App extends React.Component {
               <Switch>
                 <PrivateRoute user={this.state.user} exact path="/" component={Home}/>
                 <PrivateRoute user={this.state.user} path="/stat" component={Stat}/>
-                <PrivateRoute user={this.state.user} path="/calendar" component={Calendar}>
-                  <PrivateRoute user={this.state.user} path="/day:dayId"/>
-                </PrivateRoute>
+                <PrivateRoute exact user={this.state.user} path="/calendar" component={Calendar}/>
+                <PrivateRoute user={this.state.user} path="/calendar/day/:dayId" component={Day}/>
+
                 <Route path="/login" render={props => <Login onLogin={this.login}/>}/>
                 <Route path="/logout" render={props => <Logout onLogout={this.logout}/>}/>
 

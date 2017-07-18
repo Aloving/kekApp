@@ -12,7 +12,7 @@ class Stat extends React.Component{
         }
     }
     componentWillMount() {
-        this.props.getstat();
+        this.props.getstat({userId: this.props.userId});
         document.title = "Статистика";
 
 
@@ -32,8 +32,8 @@ class Stat extends React.Component{
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getstat: () => {
-            dispatch(action_getstat());
+        getstat: (data) => {
+            dispatch(action_getstat(data));
         }
     };
 };

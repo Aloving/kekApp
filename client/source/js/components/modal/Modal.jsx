@@ -61,7 +61,7 @@ class Modal extends React.Component {
 
     })
     if (!search.length) {
-      this.props.addmark(this.state.addMarkValue);
+      this.props.addmark({title: this.state.addMarkValue});
       this.setState({addMarkOpen: false});
       this.setState({addMarkValue: ''});
     }

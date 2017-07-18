@@ -2,27 +2,38 @@ import fetch from 'isomorphic-fetch';
 
 /* days */
 
-export function getdays() {
-    return fetch('/api/days/index')
+export function getdays(data) {
+    return fetch('/api/days/index', {
+      headers: {'userid': data.userId}
+    })
         .then((data) => data.json());
 
 
 }
-export function getcalendar() {
-  return fetch('/api/days/calendar')
+export function getcalendar(data) {
+  return fetch('/api/days/calendar',
+    {
+      headers: {'userid': data.userId}
+    })
     .then(data => data.json());
 
 
 }
-export function getdayById(id){
+export function getdayById(data){
 
-  return fetch('/api/days/byid/' + id + '')
+  return fetch('/api/days/byid/' + data.dayId + '',
+    {
+      headers: {'userid': data.userId}
+    })
     .then(data => data.json());
 
 
 }
-export function getstat() {
-  return fetch('/api/days/statistics')
+export function getstat(data) {
+  return fetch('/api/days/statistics',
+    {
+      headers: {'userid': data.userId}
+    })
     .then((data) => data.json());
 
 }
@@ -40,13 +51,15 @@ export function updatelist(data) {
         dayid: data.id,
         title: data.title,
         price: data.price,
+        userid: data.userId
+
       })
     })
     .then(data => data.json());
 
 }
 export function updateItem(data){
-  return fetch('/api/days/task/update/' +  data.itemId,{
+  return fetch('./api/days/task/update/' + data.itemId,{
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -55,26 +68,32 @@ export function updateItem(data){
       dayid:data.dayId,
       title: data.title,
       price: data.price,
+      userid: data.userId
     })
   })
+    .then(res => res.json())
 
 }
 export function deleteItem(data){
-  return fetch('(/api/days/task/delete/' +   data.itemId, {
+  return fetch('./api/days/task/delete/' +data.itemId, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       dayid:  data.dayId,
+      userid: data.userId
     })
-  });
+  })
+    .then(res => res.json())
 }
 
 /*marks*/
 
-export function getmarks() {
-    return fetch('/api/marks/getmarks')
+export function getmarks(data) {
+    return fetch('/api/marks/getmarks', {
+      headers: {'userid': data.userId}
+    })
         .then((data) => data.json());
 
 }
@@ -87,7 +106,8 @@ export function addmark(title) {
             },
             body: JSON.stringify({
                 title: title,
-                defaultItem: false
+                defaultItem: false,
+              userid: data.userId
             })
         })
         .then(data => data.json())
@@ -109,7 +129,7 @@ export function createUser(data){
       },
       body: JSON.stringify({
         username: data.username,
-        password: data.password
+        password: data.password,
       })
     })
     .then(res => res.json())

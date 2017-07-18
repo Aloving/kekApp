@@ -6,7 +6,8 @@ import {action_getdays} from '../../redux/actions';
 
 class Home extends React.Component {
     componentDidMount() {
-        this.props.getdays();
+        console.log(this.props.userId);
+        this.props.getdays({userId: this.props.userId});
         document.title = "Главная";
     }
 
@@ -14,7 +15,7 @@ class Home extends React.Component {
         return (
             <div className="home" >
                 <Header content='За последние 7 дней'/>
-                <Container cards={this.props.days}/>
+                <Container userId={this.props.userId} cards={this.props.days}/>
             </div>
         )
     }
@@ -22,8 +23,8 @@ class Home extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getdays: () => {
-            dispatch(action_getdays());
+        getdays: (data) => {
+            dispatch(action_getdays(data));
         },
     };
 };

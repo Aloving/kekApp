@@ -1,5 +1,5 @@
 const middleware = store => next => action => {
-    if (action.type !== 'PROMISE' && action.type !== 'PROMISE_DATA') {
+    if (action.type !== 'PROMISE') {
         return next(action);
     }
 
@@ -10,33 +10,23 @@ const middleware = store => next => action => {
         payload: {loading: true}
     });
 
-    if (action.type == 'PROMISE_DATA') {
+
         
         return action.promise(action.data)
-        .then(dataf => {
+        .then(data => {
 
             return store.dispatch({
                 type: successAction,
                 dataFront : action.data,
-                data: dataf
+                data: data
             })
 
             error => store.dispatch({
-
                 type: failureAction,
                 error: error
             })
         });
-    } else if(action.type == 'PROMISE' ){
-        return action.promise().then((data) => {
-            return store.dispatch({
-            type: successAction,
-            data: data
-        }), (error) => store.dispatch({
-            type: failureAction,
-            error: error
-        })});
-    }
+
 }
 
 export default middleware;

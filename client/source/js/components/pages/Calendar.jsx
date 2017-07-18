@@ -44,7 +44,7 @@ class Calendar extends React.Component {
 
   componentWillMount() {
     if(!this.props.calendar.length) {
-      this.props.getcalendar();
+      this.props.getcalendar({userId: this.props.userId});
     }
     document.title = "Календарь";
   }
@@ -181,8 +181,8 @@ class Calendar extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getcalendar: () => {
-      dispatch(action_getcalendar());
+    getcalendar: (data) => {
+      dispatch(action_getcalendar(data));
     },
   };
 };

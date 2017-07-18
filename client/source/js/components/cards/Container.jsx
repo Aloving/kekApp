@@ -25,7 +25,7 @@ class Container extends React.Component {
       this.setState({openModal: true, dayId: data.id, type: 'add'});
     }
     document.body.classList.add('open-modal');
-    this.props.getmarks();
+    this.getmarks();
   }
 
   closeModal() {
@@ -34,18 +34,29 @@ class Container extends React.Component {
   }
 
   getmarks() {
-    this.props.getmarks();
+    this.props.getmarks({userId: this.props.userId});
   }
 
 
   deleteItem(data) {
-    this.props.deleteItem(data)
+
+    var params = {...data, userId: this.props.userId}
+    this.props.deleteItem(params)
   }
 
   updateItem(data) {
-    this.props.updateItem(data)
+    var params = {...data, userId: this.props.userId}
+    this.props.updateItem(params)
   }
+  addMark(data){
+    var params = {...data, userId: this.props.userId}
+    this.props.addMark(params)
+  }
+  updatelist(data){
 
+    var params = {...data, userId: this.props.userId}
+    this.props.updatelist(params)
+  }
   render() {
 
     return (
@@ -53,15 +64,15 @@ class Container extends React.Component {
         <Cards openModal={this.openModal.bind(this)} cards={this.props.cards} onDeleteItem={ this.deleteItem.bind(this)} stat={this.props.stat}/>
         <Modal
           dayId={this.state.dayId}
-          addmark={this.props.addmark}
+          addmark={this.addMark.bind(this)}
           marks={this.props.marks}
-          getmarks={this.props.getmarks}
+          getmarks={this.getmarks.bind(this)}
           open={this.state.openModal}
           closeModal={this.closeModal.bind(this)}
-          updatelist={this.props.updatelist}
+          updatelist={this.updatelist.bind(this)}
           type={this.state.type}
           itemId={this.state.itemId}
-          updateItem={this.props.updateItem}
+          updateItem={this.props.updateItem.bind(this)}
 
         />
 
@@ -72,15 +83,13 @@ class Container extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getdays: () => {
-      dispatch(action_getdays());
-    },
 
-    getmarks: () => {
-      dispatch(action_getmarks());
+
+    getmarks: (data) => {
+      dispatch(action_getmarks(data));
     },
-    addmark: (title) => {
-      dispatch(action_addmark(title))
+    addmark: (data) => {
+      dispatch(action_addmark(data))
     },
     updatelist: (data) => {
       dispatch(action_updatelist(data))

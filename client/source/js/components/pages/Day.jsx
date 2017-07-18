@@ -9,13 +9,15 @@ var daysArr = [];
 var dayNow = [];
 
 class Day extends React.Component {
+
   componentWillMount() {
+
     document.title = 'Календарь';
-    var finded = this.findItem(this.props.params.dayId);
+    var finded = this.findItem(this.props.match.params.dayId);
     if (finded) {
-      dayNow.push(finded)
+      dayNow = finded;
     } else {
-      this.props.getdayById(this.props.params.dayId);
+      this.props.getdayById({dayId: this.props.match.params.dayId, userId: this.props.userId});
     }
   }
 
@@ -36,20 +38,23 @@ class Day extends React.Component {
   render() {
 
     var days;
+   
 
     if (dayNow.length) {
       days = dayNow;
     }
-    else if (this.props.day.length && this.props.day[0].id == this.props.params.dayId) {
-      daysArr.push(this.props.day.length);
+    else if (this.props.day.length) {
+     
+      daysArr.push(this.props.day[0]);
       days = this.props.day;
     } else {
       days = []
     }
+console.log(days);
 
     var content = <div>
                     <Header content='Календарь'/>
-                    <Container cards={days}/>
+                    <Container userId={this.props.userId} cards={days}/>
                   </div>
 
 
@@ -73,8 +78,8 @@ class Day extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getdayById: (id) => {
-      dispatch(action_getdayById(id));
+    getdayById: (data) => {
+      dispatch(action_getdayById(data));
     },
 
 

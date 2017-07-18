@@ -35,7 +35,7 @@ export default function reducer(state = [], action) {
     case 'GET_DAY_BY_ID_ERROR':
       return state;
     case'GET_DAY_BY_ID_FINISH':
-      var arr = [action.data];
+      var arr = action.data;
 
       return arr;
     default:

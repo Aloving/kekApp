@@ -3,7 +3,7 @@ import Cards from "./Cards";
 import Modal from "../modal/Modal";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import {action_addmark, action_deleteItem, action_getdays, action_getmarks, action_updateItem, action_updatelist} from "../../redux/actions";
+import {action_addmark, action_deleteItem,  action_getmarks, action_updateItem, action_updatelist, action_clear_days} from "../../redux/actions";
 
 
 class Container extends React.Component {
@@ -11,19 +11,14 @@ class Container extends React.Component {
     super();
     this.state = {
       openModal: false,
-      dayId: '',
-      itemId: '',
-      type: '',
+      modalData: {}
+
     };
   }
 
   openModal(data) {
-    if (data.type == 'update') {
-      this.setState({openModal: true, dayId: data.id, itemId: data.itemId, type: 'update'});
-    }
-    if (data.type == 'add') {
-      this.setState({openModal: true, dayId: data.id, type: 'add'});
-    }
+    console.log(data);
+    this.setState({openModal: true, modalData: {...data}});
     document.body.classList.add('open-modal');
     this.getmarks();
   }
@@ -36,10 +31,12 @@ class Container extends React.Component {
   getmarks() {
     this.props.getmarks({userId: this.props.userId});
   }
+  componentWillUnmount(){
+    this.props.clearDays();
+  }
 
 
   deleteItem(data) {
-
     var params = {...data, userId: this.props.userId}
     this.props.deleteItem(params)
   }
@@ -53,9 +50,10 @@ class Container extends React.Component {
     this.props.addMark(params)
   }
   updatelist(data){
-
+    
     var params = {...data, userId: this.props.userId}
     this.props.updatelist(params)
+
   }
   render() {
 
@@ -63,17 +61,17 @@ class Container extends React.Component {
       <div>
         <Cards openModal={this.openModal.bind(this)} cards={this.props.cards} onDeleteItem={ this.deleteItem.bind(this)} stat={this.props.stat}/>
         <Modal
-          dayId={this.state.dayId}
+          dayId={this.state.modalData.id}
           addmark={this.addMark.bind(this)}
           marks={this.props.marks}
           getmarks={this.getmarks.bind(this)}
           open={this.state.openModal}
+          price={this.state.modalData.price || ''}
           closeModal={this.closeModal.bind(this)}
           updatelist={this.updatelist.bind(this)}
-          type={this.state.type}
-          itemId={this.state.itemId}
-          updateItem={this.props.updateItem.bind(this)}
-
+          type={this.state.modalData.type}
+          itemId={this.state.modalData.itemId || undefined}
+          updateItem={this.updateItem.bind(this)}
         />
 
       </div>
@@ -100,6 +98,10 @@ const mapDispatchToProps = (dispatch) => {
     updateItem: (data) => {
       dispatch(action_updateItem(data))
     },
+    clearDays: () => {
+      dispatch( action_clear_days())
+
+    }
 
   };
 };

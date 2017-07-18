@@ -22,6 +22,7 @@ class Modal extends React.Component {
 
   }
 
+
   handleClick(evt) {
     this.setState({addMarkOpen: !this.state.addMarkOpen});
     if (this.state.addMarkOpen == false) {
@@ -46,9 +47,12 @@ class Modal extends React.Component {
     if (this.state.priceValue != '') {
       this.setState({errorMessage: ''})
     }
-
   }
-
+  componentWillReceiveProps(nextProps){
+    if(nextProps.price != this.props.price){
+      this.setState({ priceValue: nextProps.price})
+    }
+  }
 
   addMarkChange(evt) {
     this.setState({addMarkValue: evt.target.value});

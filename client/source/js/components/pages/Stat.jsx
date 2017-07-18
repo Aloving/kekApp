@@ -2,7 +2,7 @@ import React from 'react';
 import Container from '../cards/Container';
 import Header from '../Header';
 import {connect} from 'react-redux';
-import {action_getstat} from '../../redux/actions';
+import {action_getstat, action_clear_stat} from '../../redux/actions';
 
 class Stat extends React.Component{
     constructor(){
@@ -12,13 +12,15 @@ class Stat extends React.Component{
         }
     }
     componentWillMount() {
-        this.props.getstat({userId: this.props.userId});
+        this.props.getStat({userId: this.props.userId});
         document.title = "Статистика";
 
 
     }
 
-
+    componentWillUnmount(){
+        this.props.clearStat();
+    }
     render() {
 
         return(
@@ -32,9 +34,12 @@ class Stat extends React.Component{
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getstat: (data) => {
+        getStat: (data) => {
             dispatch(action_getstat(data));
-        }
+        },
+      clearStat: () => {
+        dispatch(action_clear_stat());
+      }
     };
 };
 

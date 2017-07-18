@@ -17,7 +17,8 @@ class Item extends React.Component {
   }
 
   onUpdateItem() {
-    this.props.openModal({id: this.props.parentId, type: 'update', itemId: this.props.id});
+
+    this.props.openModal({id: this.props.parentId, type: 'update', itemId: this.props.id, price: this.props.price});
   }
 
   render() {

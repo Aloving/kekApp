@@ -23,6 +23,7 @@ export default function reducer(state = [], action) {
       g.splice(h, 1, k)
       return g
     case 'UPDATE_ITEM_FINISH':
+
       var g = state.concat();
       var h = g.findIndex((item) => {
         return item.id == action.dataFront.dayId;
@@ -33,12 +34,15 @@ export default function reducer(state = [], action) {
       var newItem = {defaultItem: action.dataFront.defaultItem, _id: action.dataFront.itemId, price: action.dataFront.price, title: action.dataFront.title}
       g[h].items.splice(j, 1, newItem);
       return g;
-    // case 'GET_DAY_BY_ID_START':
-    //   return action.payload;
-    // case 'GET_DAY_BY_ID_ERROR':
-    //   return state;
-    // case 'GET_DAY_BY_ID_FINISH':
-    //   return action.data;
+
+
+
+    case 'GET_DAY_BY_ID_START':
+      return action.payload;
+    case 'CLEAR_DAYS':
+      return [];
+    case 'GET_DAY_BY_ID_FINISH':
+      return action.data;
     default:
       return state;
   }

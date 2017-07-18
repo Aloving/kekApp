@@ -37,43 +37,28 @@ class Calendar extends React.Component {
     }
     this.dateToString = this.dateToString.bind(this);
     this.filterDays = this.filterDays.bind(this);
-    this.minMax = this.minMax.bind(this);
+    this.minDate = this.minDate.bind(this);
     this.showNextMonth = this.showNextMonth.bind(this);
     this.showPrevMonth = this.showPrevMonth.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if(!this.props.calendar.length) {
       this.props.getcalendar({userId: this.props.userId});
+    }else{
+      this.filterDays(StateObject.currentYear, StateObject.currentMonth)
     }
     document.title = "Календарь";
   }
 
-  componentDidMount(){
-
-
-    if (this.props.calendar.length && this.state.visibleDays.length == 0) {
-      this.filterDays(StateObject.currentYear, StateObject.currentMonth)
-    }
-
-    // if(this.props.calendar.length && StateObject.dateNow.year != 0 && this.state.visibleDays.length == 0){
-    //   console.log('lfedgs');
-    //   this.state.visibleDays.length == 0 ? this.filterDays(StateObject.dateNow.year, StateObject.dateNow.month) : null;
-    // }
-  
-  }
-
   componentDidUpdate() {
-
     if (this.props.calendar.length) {
-      if (StateObject.minDate.year == 0) {
-        this.minMax();
-      }
+      StateObject.minDate.year == 0 ? this.minDate(): null;
       this.state.visibleDays.length == 0 ? this.filterDays(StateObject.dateNow.year, StateObject.dateNow.month) : null;
     }
   }
 
-  minMax() {
+  minDate() {
     var minYear = Math.min.apply(Math, this.props.calendar.map(function (item) {
       return item.date.year
     }))
@@ -92,31 +77,30 @@ class Calendar extends React.Component {
   }
 
   filterDays(year, month) {
-    var max = year >= StateObject.dateNow.year && month >= StateObject.dateNow.month ? false : true;
-    var min = year <= StateObject.minDate.year && month <= StateObject.minDate.month ? false : true;
+    var max = year < StateObject.dateNow.year ||  (year == StateObject.dateNow.year && month < StateObject.dateNow.month);
+    var min = year > StateObject.minDate.year ||  (year == StateObject.dateNow.year && month > StateObject.minDate.month)
+
     this.setState({arrowNextActive: max});
     this.setState({arrowPrevActive: min});
+
     if (StateObject.months[year + ' ' + month]) {
       this.setState({visibleDays: StateObject.months[year + ' ' + month]});
     } else {
-      var ollDays = [];
       var dayInMonth = 32 - new Date(year, month, 32).getDate();
-      for (var i = 0; i < dayInMonth; i++) {
-        ollDays.push(null);
-      }
-      this.props.calendar.filter((item) => {
+      var ollDays = Array(dayInMonth).fill(null);
+
+      this.props.calendar
+        .filter((item) => {
         return item.date.year == year && item.date.month == month;
       })
-
-        .map(item => {
-        let index = item.date.day - 1;
+        .map((item) => {
+        var index = item.date.day - 1;
         ollDays.splice(index, 1, item)
-      })
+      });
+
       this.setState({visibleDays: ollDays});
       StateObject.months[year + ' ' + month] = ollDays;
     }
-
-
   }
 
   showPrevMonth() {
@@ -174,8 +158,6 @@ class Calendar extends React.Component {
         {content}
       </div>
     )
-
-
   }
 }
 

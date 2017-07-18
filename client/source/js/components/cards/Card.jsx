@@ -60,7 +60,7 @@ class Card extends React.Component {
     }
 
     return (
-      <div className={"card"} ref="card" id={this.props.id}>
+      <div className="card" ref="card" id={this.props.id}>
         <div className="card__header">
           {
             this.props.stat ?

@@ -12,7 +12,16 @@ export function action_deleteItem(data){
     return {type: 'PROMISE', promise: deleteItem, data: data, actions: ['DELETE_ITEM_START', 'DELETE_ITEM_FINISH', 'DELETE_ITEM_ERROR']};
 }
 export function action_updateItem(data){
-    return {type: 'PROMISE', promise: updateItem, data: data, actions: ['UPDATE_ITEM_START', 'UPDATE_ITEM_FINISH', 'UPDATE_ITEM_ERROR']};
+  return {type: 'PROMISE', promise: updateItem, data: data, actions: ['UPDATE_ITEM_START', 'UPDATE_ITEM_FINISH', 'UPDATE_ITEM_ERROR']};
+}
+export function action_updateItemBYID(data){
+  return {type: 'PROMISE', promise: updateItem, data: data, actions: ['DABYID_UPDATE_ITEM_START', 'DABYID_UPDATE_ITEM_FINISH', 'DABYID_UPDATE_ITEM_ERROR']};
+}
+export function action_updatelistBYID(data){
+  return {type: 'PROMISE', promise: updatelist, data: data, actions: ['DABYID_UPDATELIST_START', 'DABYID_UPDATELIST_FINISH', 'DABYID_UPDATELIST_ERROR']};
+}
+export function action_deleteItemBYID(data){
+  return {type: 'PROMISE', promise: deleteItem, data: data, actions: ['DABYID_DELETE_ITEM_START', 'DABYID_DELETE_ITEM_FINISH', 'DABYID_DELETE_ITEM_ERROR']};
 }
 
 
@@ -23,6 +32,10 @@ export function action_getdays(data){
 }
 export function action_getdayById(data){
     return {type: 'PROMISE', promise: getdayById, data: data, actions: ['GET_DAY_BY_ID_START', 'GET_DAY_BY_ID_FINISH', 'GET_DAY_BY_ID_ERROR']};
+}
+
+export function action_clear_days(){
+  return {type: 'CLEAR_DAYS'}
 }
 
 
@@ -40,6 +53,10 @@ export function action_addmark(data){
 /* statistic */
 export function action_getstat(data){
     return {type: 'PROMISE', promise: getstat, data: data, actions: ['GET_STAT_START', 'GET_STAT_FINISH', 'GET_STAT_ERROR']};
+}
+
+export function action_clear_stat(){
+  return {type: 'CLEAR_STAT'}
 }
 
 /* calendar */

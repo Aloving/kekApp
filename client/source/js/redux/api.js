@@ -59,7 +59,8 @@ export function updatelist(data) {
 
 }
 export function updateItem(data){
-  return fetch('./api/days/task/update/' + data.itemId,{
+
+  return fetch('/api/days/task/update/' + data.itemId,{
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -75,7 +76,7 @@ export function updateItem(data){
 
 }
 export function deleteItem(data){
-  return fetch('./api/days/task/delete/' +data.itemId, {
+  return fetch('/api/days/task/delete/' +data.itemId, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'

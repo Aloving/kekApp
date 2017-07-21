@@ -72,7 +72,7 @@ class Login extends React.Component {
             <form className="auth__form" onSubmit={this.handleSubmit}>
               <input type="text" required name="username" placeholder="Ваш логин" className={this.state.error ? "auth__input auth__input_error" : "auth__input" } ref={(username) => this.username = username}/>
               <input type="password" required name="password" placeholder="Ваш пароль" className={this.state.error ? "auth__input auth__input_error" : "auth__input" } ref={(password) => this.password = password}/>
-              <button type="submit" className="auth__submit">Войти</button>
+              <button type="submit" className="auth__submit">Вход</button>
             </form>
           </div>
         </div>

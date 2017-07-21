@@ -1,6 +1,6 @@
 .auth__submit {
   margin-top: 12px;
-  transition: 0.5s;
+  transition: 0.3s;
   border: none;
   padding: 7px 50px;
   font-weight: 500;
@@ -8,8 +8,9 @@
   color: #fff;
   font-size: 18px;
   background: #20bb9b;
+  cursor: pointer;
   &:hover, &:focus {
     outline: none;
-    background: rgba(0, 0, 0, 0.21);
+    background: rgba(0, 0, 0, 0.32);
   }
 }

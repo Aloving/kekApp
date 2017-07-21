@@ -6,6 +6,7 @@
   bottom: 0;
   text-align: center;
   right: 0;
+  overflow: auto;
   @import 'auth__body';
   @import 'auth__header';
   @import 'auth__input';

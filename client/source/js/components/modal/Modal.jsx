@@ -43,7 +43,7 @@ if(val.match(/[\d+()+\-*\/]/g) != null) {
     var search = [];
     for(let i in this.props.marks){
       var res = this.props.marks[i].filter((item) => {
-        return item.title == data.title;
+        return item.title.toLowerCase() == data.title.toLowerCase();
       })
       if(res.length) {
         search.push(res)
@@ -52,7 +52,7 @@ if(val.match(/[\d+()+\-*\/]/g) != null) {
 
 
     if (!search.length) {
-      this.props.addmark({title: data.title, defaultItem: data.defaultItem});
+      this.props.addmark({title: data.title.toLowerCase(), defaultItem: data.defaultItem});
     }
   }
 

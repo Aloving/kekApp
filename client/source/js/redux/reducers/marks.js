@@ -7,10 +7,8 @@ export default function reducer(state = {}, action) {
     case 'ADD_MARK_START':
       return state;
     case 'ADD_MARK_ERROR' :
-      console.log(action.error);
       return state;
     case 'ADD_MARK_FINISH' :
-      console.log('REDUCER', action.data)
       var res = {}
       action.data.defaultItem ?
         res = {

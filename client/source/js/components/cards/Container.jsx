@@ -47,7 +47,7 @@ class Container extends React.Component {
   }
   addMark(data){
     var params = {...data, userId: this.props.userId}
-    this.props.addMark(params)
+    this.props.addmark(params)
   }
   updatelist(data){
     

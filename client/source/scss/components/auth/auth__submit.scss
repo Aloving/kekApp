@@ -1,0 +1,15 @@
+.auth__submit {
+  margin-top: 12px;
+  transition: 0.5s;
+  border: none;
+  padding: 7px 50px;
+  font-weight: 500;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 18px;
+  background: #20bb9b;
+  &:hover, &:focus {
+    outline: none;
+    background: rgba(0, 0, 0, 0.21);
+  }
+}

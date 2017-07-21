@@ -12,7 +12,7 @@ class ModalBody extends React.Component {
           <div className='modal__close' onClick={this.props.closeModal}><span>+</span></div>
           <div className='modal__content'>
             <input
-              type='number'
+
               className='modal__input'
               placeholder="Введите сумму покупки"
               onChange={this.props.priceChange}

@@ -1,0 +1,10 @@
+.auth__tooltip-item {
+  margin-top: 7px;
+  font-weight: 400;
+  & span{
+    font-weight: 600;
+  }
+  &:first-child {
+    margin-top: 0;
+  }
+}

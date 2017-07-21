@@ -5,6 +5,9 @@ export default function reducer(state = {}, action) {
       return {...state, password: action.data.password, username: action.data.username, id: action.data._id};
     case 'GET_TOKEN_FINISH' :
       return {...state, token: action.data.token};
+    case 'GET_TOKEN_ERROR' :
+
+      return {error: true};
 
 
     case 'GET_USER_FINISH' :

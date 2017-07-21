@@ -6,29 +6,12 @@ class Modal extends React.Component {
     super();
     this.state = {
       addMarkOpen: false,
-      addMarkValue: '',
       priceValue: '',
       activeButton: '',
       errorMessage: ''
     };
   }
 
-  defaultTesting(title) {
-    var g = this.props.marks.defaults.filter(item => {
-      return item.title == title
-    })
-    var result = g.length == 0 ? false : true
-    return result;
-
-  }
-
-
-  handleClick(evt) {
-    this.setState({addMarkOpen: !this.state.addMarkOpen});
-    if (this.state.addMarkOpen == false) {
-      document.getElementsByClassName('add-mark__input')[0].focus()
-    }
-  }
 
   closeModal(evt) {
     if (evt == "custom" || evt.target.classList.contains('modal') || evt.target.closest('.modal__close')) {
@@ -41,9 +24,11 @@ class Modal extends React.Component {
 
   priceChange(evt) {
     var val = evt.target.value;
-    if (/^\d+$/.test(val) || val == "") {
-      this.setState({priceValue: val});
-    }
+if(val.match(/[\d+()+\-*\/]/g) != null) {
+  this.setState({priceValue: val.match(/[\d+()+\-*\/]/g).join('') || ''});
+}else if(val == ''){
+  this.setState({priceValue: ''});
+}
     if (this.state.priceValue != '') {
       this.setState({errorMessage: ''})
     }
@@ -54,20 +39,20 @@ class Modal extends React.Component {
     }
   }
 
-  addMarkChange(evt) {
-    this.setState({addMarkValue: evt.target.value});
-  }
+  addmark(data) {
+    var search = [];
+    for(let i in this.props.marks){
+      var res = this.props.marks[i].filter((item) => {
+        return item.title == data.title;
+      })
+      if(res.length) {
+        search.push(res)
+      }
+    }
 
-  handleSubmit(evt) {
-    evt.preventDefault();
-    var search = this.props.marks.unDefaults.filter((item) => {
-      return item.title == this.state.addMarkValue;
 
-    })
     if (!search.length) {
-      this.props.addmark({title: this.state.addMarkValue});
-      this.setState({addMarkOpen: false});
-      this.setState({addMarkValue: ''});
+      this.props.addmark({title: data.title, defaultItem: data.defaultItem});
     }
   }
 
@@ -81,11 +66,13 @@ class Modal extends React.Component {
       this.setState({errorMessage: 'Выберите раздел!'})
     }
     if (this.state.priceValue != '' && this.state.activeButton != '') {
+
+
       this.setState({errorMessage: ''});
       if (this.props.type == 'add') {
         data = {
           id: this.props.dayId,
-          price: parseInt(this.state.priceValue),
+          price: eval(this.state.priceValue),
           title: this.state.activeButton
 
         };
@@ -94,10 +81,9 @@ class Modal extends React.Component {
       } else if (this.props.type == "update") {
         data = {
           dayId: this.props.dayId,
-          price: parseInt(this.state.priceValue),
+          price: eval(this.state.priceValue),
           title: this.state.activeButton,
           itemId: this.props.itemId,
-          defaultItem: this.defaultTesting(this.state.activeButton)
         }
         this.props.updateItem(data);
         this.closeModal('custom');
@@ -136,11 +122,7 @@ class Modal extends React.Component {
       marksProps: {
         marks: this.props.marks,
         toggleClassActive: this.toggleClassActive.bind(this),
-        addMarkOpen: this.state.addMarkOpen,
-        handleClick: this.handleClick.bind(this),
-        handleSubmit: this.handleSubmit.bind(this),
-        addMarkChange: this.addMarkChange.bind(this),
-        addMarkValue: this.state.addMarkValue,
+       addmark: this.addmark.bind(this),
       }
 
     }

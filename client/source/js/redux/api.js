@@ -98,7 +98,7 @@ export function getmarks(data) {
         .then((data) => data.json());
 
 }
-export function addmark(title) {
+export function addmark(data) {
    return fetch('/api/marks/addmark',
         {
             method: 'POST',
@@ -106,8 +106,8 @@ export function addmark(title) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                title: title,
-                defaultItem: false,
+                title: data.title,
+                defaultItem: data.defaultItem,
               userid: data.userId
             })
         })
@@ -135,8 +135,6 @@ export function createUser(data){
     })
     .then(res => res.json())
 
-
-
 }
 
 
@@ -147,6 +145,8 @@ export function getUser(data){
   })
     .then(res =>  res.json())
 }
+
+
 
 export function getToken(data){
   return fetch('/auth/login', {
@@ -159,6 +159,8 @@ export function getToken(data){
       password: data.password
     })
   })
-    .then(res => res.json())
+
+     .then(res => res.json())
+
 
 }

@@ -6,76 +6,10 @@
   bottom: 0;
   text-align: center;
   right: 0;
-
-  &__tooltip{
-    background: #20bb9b;
-    color: #fff;
-    margin-bottom: 23px;
-    border-radius: 10px;
-    padding: 35px  0 30px 0;
-  }
-  &__tooltip-item {
-    margin-top: 7px;
-    font-weight: 400;
-    & span{
-      font-weight: 600;
-    }
-    &:first-child {
-      margin-top: 0;
-    }
-  }
-
-  &__header {
-
-    font-size: 60px;
-    font-weight: 900;
-    color: #fff;
-    text-shadow: 4px 3px 0px #25ba9a;
-  }
-
-
-
-
-  &__body {
-    max-width: 100%;
-    margin: 200px auto;
-    width: 288px;
-  }
-
-  .auth__input {
-    width: 100%;
-    transition: 0.3s;
-    margin: 0 0 7px 0;
-    padding: 0 20px;
-    border-radius: 10px;
-    height: 36px;
-    border: none;
-
-  }
-
- &__input:focus {
-    outline: none;
-
-  }
-
-  &__header {
-    margin-bottom: 20px;
-  }
-
-  &__submit {
-    margin-top: 12px;
-    transition: 0.5s;
-border: none;
-    padding: 7px 50px;
-    font-weight: 900;
-    border-radius: 10px;
-    color: #fff;
-    font-size: 18px;
-    background: #20bb9b;
-  }
-
-  &__submit:hover, &__submit:focus {
-    outline: none;
-    background: rgba(0, 0, 0, 0.21);
-  }
+  @import 'auth__body';
+  @import 'auth__header';
+  @import 'auth__input';
+  @import 'auth__submit';
+  @import 'auth__tooltip';
+  @import 'auth__tooltip-item';
 }

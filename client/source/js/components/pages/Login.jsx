@@ -6,7 +6,8 @@ class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      haveToken: true
+      haveToken: true,
+      error: false
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -39,6 +40,9 @@ class Login extends React.Component {
       this.saveToken(nextProps.auth.token);
       this.getUser(nextProps.auth.token);
     }
+    if(nextProps.auth.error){
+      this.setState({error: true})
+    }
     if (this.props.auth.id != nextProps.auth.id) {
       this.onChangeId(nextProps.auth);
     }
@@ -66,8 +70,8 @@ class Login extends React.Component {
               </div>
             </div>
             <form className="auth__form" onSubmit={this.handleSubmit}>
-              <input type="text" required name="username" placeholder="Ваш логин" className="auth__input" ref={(username) => this.username = username}/>
-              <input type="password" required name="password" placeholder="Ваш пароль" className="auth__input" ref={(password) => this.password = password}/>
+              <input type="text" required name="username" placeholder="Ваш логин" className={this.state.error ? "auth__input auth__input_error" : "auth__input" } ref={(username) => this.username = username}/>
+              <input type="password" required name="password" placeholder="Ваш пароль" className={this.state.error ? "auth__input auth__input_error" : "auth__input" } ref={(password) => this.password = password}/>
               <button type="submit" className="auth__submit">Войти</button>
             </form>
           </div>

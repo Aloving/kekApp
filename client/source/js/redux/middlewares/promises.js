@@ -15,17 +15,16 @@ const middleware = store => next => action => {
         return action.promise(action.data)
         .then(data => {
 
-            return store.dispatch({
-                type: successAction,
-                dataFront : action.data,
-                data: data
-            })
-
-            error => store.dispatch({
-                type: failureAction,
-                error: error
-            })
-        });
+          return store.dispatch({
+            type: successAction,
+            dataFront: action.data,
+            data: data
+          })
+        }
+        ).catch(error => store.dispatch({
+            type: failureAction,
+            error: error
+          }))
 
 }
 

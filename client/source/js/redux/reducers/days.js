@@ -9,6 +9,7 @@ export default function reducer(state = [], action) {
       var h = state.findIndex((item) => {
         return item.id == action.dataFront.id;
       });
+
       g.splice(h, 1, action.data);
       return g;
     case 'DELETE_ITEM_FINISH':
@@ -31,7 +32,8 @@ export default function reducer(state = [], action) {
       var j = g[h].items.findIndex(item => {
         return item._id == action.dataFront.itemId;
       })
-      var newItem = {defaultItem: action.dataFront.defaultItem, _id: action.dataFront.itemId, price: action.dataFront.price, title: action.dataFront.title}
+      console.log(action);
+      var newItem = {defaultItem: action.data.defaultItem, _id: action.dataFront.itemId, price: action.dataFront.price, title: action.dataFront.title}
       g[h].items.splice(j, 1, newItem);
       return g;
 

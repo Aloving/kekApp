@@ -10,7 +10,7 @@ export default function reducer(state = {}, action) {
             console.log(action.error);
             return state;
         case 'ADD_MARK_FINISH' :
-        console.log('REDUCER', state)
+        console.log('REDUCER', action.data)
           
            return {
             ...state, 

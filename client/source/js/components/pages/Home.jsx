@@ -6,7 +6,6 @@ import {action_getdays} from '../../redux/actions';
 
 class Home extends React.Component {
     componentDidMount() {
-        console.log(this.props.userId);
         this.props.getdays({userId: this.props.userId});
         document.title = "Главная";
     }

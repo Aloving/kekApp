@@ -1,6 +1,7 @@
 .animation-opacity-enter{
   opacity: 0;
 }
+
 .animation-opacity-enter.animation-opacity-enter-active{
   opacity: 1;
   transition: 0.3s;
@@ -9,81 +10,70 @@
 .animation-opacity-leave{
   opacity: 1;
 }
+
 .animation-opacity-leave.animation-opacity-leave-active{
   opacity: 0;
   transition: 0.3s;
 }
+
 .animation-opacity-appear {
   opacity: 0;
-
 }
+
 .animation-opacity-appear.animation-opacity-appear-active {
   opacity: 1;
 
   transition: .5s;
 }
 
-
 .toggle-enter {
   max-height: 0;
   overflow: hidden;
-
-
 }
+
 .toggle-enter.toggle-enter-active {
   max-height: 1000px;
   transition: 0.6s ease-in;
 }
+
 .toggle-leave {
   max-height: 1000px;
-
-
 }
+
 .toggle-leave.toggle-leave-active {
   max-height: 0;
   overflow: hidden;
-
   transition: 0.6s ease-out;
 }
-
-
-
-
-
 
 .modal-enter {
   max-height: 0;
   overflow: hidden;
-
-
 }
+
 .modal-enter.modal-enter-active {
   max-height: 1000px;
   transition: 0.6s ease-in;
 }
+
 .modal-leave {
   max-height: 1000px;
-
-
 }
+
 .modal-leave.modal-leave-active {
   max-height: 0;
   overflow: hidden;
-
   transition: 0.6s ease-out;
 }
-
 
 @keyframes leave{
   90%{
     padding: 0;
-
     margin: 0;
     max-height: 0;
     border-width: 2px;
   }
   100%{
-
     margin: 0;
     border-width: 0;
     padding: 0;

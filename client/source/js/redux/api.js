@@ -119,8 +119,6 @@ export function addmark(data) {
 
 /* auth */
 
-
-
 export function createUser(data){
   return fetch('/auth/user',
     {

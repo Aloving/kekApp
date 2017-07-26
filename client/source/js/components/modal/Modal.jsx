@@ -12,7 +12,6 @@ class Modal extends React.Component {
     };
   }
 
-
   closeModal(evt) {
     if (evt == "custom" || evt.target.classList.contains('modal') || evt.target.closest('.modal__close')) {
       this.setState({priceValue: ''});
@@ -24,28 +23,32 @@ class Modal extends React.Component {
 
   priceChange(evt) {
     var val = evt.target.value;
-if(val.match(/[\d+()+\-*\/]/g) != null) {
-  this.setState({priceValue: val.match(/[\d+()+\-*\/]/g).join('') || ''});
-}else if(val == ''){
-  this.setState({priceValue: ''});
-}
+    if (val.match(/[\d+()+\-*\/]/g) != null) {
+      this.setState({priceValue: val.match(/[\d+()+\-*\/]/g).join('') || ''});
+    } else if (val == '') {
+      this.setState({priceValue: ''});
+    }
     if (this.state.priceValue != '') {
       this.setState({errorMessage: ''})
     }
   }
-  componentWillReceiveProps(nextProps){
-    if(nextProps.price != this.props.price){
-      this.setState({ priceValue: nextProps.price})
+
+  componentWillReceiveProps(nextProps) {
+
+    if (nextProps.price) {
+      this.setState({priceValue: nextProps.price})
+    }else{
+      this.setState({priceValue: ''})
     }
   }
 
   addmark(data) {
     var search = [];
-    for(let i in this.props.marks){
+    for (let i in this.props.marks) {
       var res = this.props.marks[i].filter((item) => {
         return item.title.toLowerCase() == data.title.toLowerCase();
       })
-      if(res.length) {
+      if (res.length) {
         search.push(res)
       }
     }
@@ -66,8 +69,6 @@ if(val.match(/[\d+()+\-*\/]/g) != null) {
       this.setState({errorMessage: 'Выберите раздел!'})
     }
     if (this.state.priceValue != '' && this.state.activeButton != '') {
-
-
       this.setState({errorMessage: ''});
       if (this.props.type == 'add') {
         data = {
@@ -87,10 +88,7 @@ if(val.match(/[\d+()+\-*\/]/g) != null) {
         }
         this.props.updateItem(data);
         this.closeModal('custom');
-
       }
-
-
     }
   }
 
@@ -104,10 +102,8 @@ if(val.match(/[\d+()+\-*\/]/g) != null) {
     }
     evt.target.classList.add('mark_active');
     if (this.state.activeButton != '') {
-
       this.setState({errorMessage: ''})
     }
-
   }
 
   propsObject() {
@@ -122,12 +118,11 @@ if(val.match(/[\d+()+\-*\/]/g) != null) {
       marksProps: {
         marks: this.props.marks,
         toggleClassActive: this.toggleClassActive.bind(this),
-       addmark: this.addmark.bind(this),
+        addmark: this.addmark.bind(this),
       }
 
     }
   }
-
 
   render() {
     var content = typeof this.props.marks.defaults != 'undefined' ? <ModalBody   {...this.propsObject()} /> : '';
@@ -135,7 +130,6 @@ if(val.match(/[\d+()+\-*\/]/g) != null) {
       <div>
         {content}
       </div>
-
     )
   }
 }

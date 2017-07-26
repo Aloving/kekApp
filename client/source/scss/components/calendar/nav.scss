@@ -1,0 +1,44 @@
+
+.nav {
+  background: #25ba9a;
+  padding: 0px 20px;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+  &__arrow_disable {
+    opacity: 0;
+    visibility: hidden;
+
+  }
+  &__text {
+    display: inline-block;
+    padding: 8px 0;
+  }
+  &__arrow {
+    transition: 0.3s;
+    border: none;
+    transform: rotate(90deg);
+    height: 19px;
+    vertical-align: top;
+    width: 24px;
+    margin-top: 8px;
+    transform-origin: center;
+    display: inline-block;
+    cursor: pointer;
+    & svg {
+      fill: #fff;
+    }
+  }
+  &__arrow_next {
+
+    float: right;
+    transform: rotate(-90deg);
+  }
+  &__arrow_prev {
+
+    transform: rotate(90deg);
+    float: left;
+
+  }
+}

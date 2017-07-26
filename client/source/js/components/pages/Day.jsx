@@ -6,8 +6,7 @@ import {action_getdayById} from "./../../redux/actions";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 class Day extends React.Component {
-
-  componentWillMount() {
+  componentDidMount() {
     document.title = 'Календарь';
     this.props.getdayById({dayId: this.props.match.params.dayId, userId: this.props.userId});
   }
@@ -15,13 +14,13 @@ class Day extends React.Component {
   render() {
     return (
       <div className="day">
+        <Header content='Календарь'/>
         <ReactCSSTransitionGroup transitionName="animation-opacity"
                                  transitionAppear={true}
                                  transitionEnterTimeout={800}
                                  transitionLeaveTimeout={800}
                                  transitionAppearTimeout={800}>
           <div>
-            <Header content='Календарь'/>
             <Container userId={this.props.userId} cards={this.props.day}/>
           </div>
         </ReactCSSTransitionGroup>

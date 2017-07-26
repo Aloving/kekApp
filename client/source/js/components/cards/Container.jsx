@@ -3,8 +3,7 @@ import Cards from "./Cards";
 import Modal from "../modal/Modal";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import {action_addmark, action_deleteItem,  action_getmarks, action_updateItem, action_updatelist, action_clear_days} from "../../redux/actions";
-
+import {action_addmark, action_clear_days, action_deleteItem, action_getmarks, action_updateItem, action_updatelist} from "../../redux/actions";
 
 class Container extends React.Component {
   constructor() {
@@ -12,12 +11,10 @@ class Container extends React.Component {
     this.state = {
       openModal: false,
       modalData: {}
-
     };
   }
 
   openModal(data) {
-    console.log(data);
     this.setState({openModal: true, modalData: {...data}});
     document.body.classList.add('open-modal');
     this.getmarks();
@@ -31,10 +28,10 @@ class Container extends React.Component {
   getmarks() {
     this.props.getmarks({userId: this.props.userId});
   }
-  componentWillUnmount(){
+
+  componentWillUnmount() {
     this.props.clearDays();
   }
-
 
   deleteItem(data) {
     var params = {...data, userId: this.props.userId}
@@ -45,18 +42,18 @@ class Container extends React.Component {
     var params = {...data, userId: this.props.userId}
     this.props.updateItem(params)
   }
-  addMark(data){
+
+  addMark(data) {
     var params = {...data, userId: this.props.userId}
     this.props.addmark(params)
   }
-  updatelist(data){
-    
+
+  updatelist(data) {
     var params = {...data, userId: this.props.userId}
     this.props.updatelist(params)
-
   }
-  render() {
 
+  render() {
     return (
       <div>
         <Cards openModal={this.openModal.bind(this)} cards={this.props.cards} onDeleteItem={ this.deleteItem.bind(this)} stat={this.props.stat}/>
@@ -81,8 +78,6 @@ class Container extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
-
     getmarks: (data) => {
       dispatch(action_getmarks(data));
     },
@@ -99,10 +94,8 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(action_updateItem(data))
     },
     clearDays: () => {
-      dispatch( action_clear_days())
-
+      dispatch(action_clear_days())
     }
-
   };
 };
 
@@ -112,7 +105,6 @@ export default connect(
   },
   mapDispatchToProps
 )(Container);
-
 
 Container.propTypes = {
   cards: PropTypes.oneOfType([

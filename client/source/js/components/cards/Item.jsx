@@ -4,9 +4,8 @@ import React from "react";
 import Icon from "../Icon";
 import PropTypes from "prop-types";
 
-
 class Item extends React.Component {
-  onDeleteItem(evt) {
+  onDeleteItem() {
     this.item.classList.add('item_leave')
     var self = this;
     setTimeout(function () {
@@ -17,7 +16,6 @@ class Item extends React.Component {
   }
 
   onUpdateItem() {
-
     this.props.openModal({id: this.props.parentId, type: 'update', itemId: this.props.id, price: this.props.price});
   }
 
@@ -32,7 +30,6 @@ class Item extends React.Component {
       }
     }
     var className = 'item ' + classNames.join(' ');
-
     return (
       <div className={className} ref={(item) => {
         this.item = item;

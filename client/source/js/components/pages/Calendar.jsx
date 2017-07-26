@@ -21,11 +21,8 @@ var currentDate = (function () {
   StateObject.currentYear = year;
   StateObject.currentMonth = month;
   var dayInMonth = 32 - new Date(year, month, 32).getDate();
-  for (var i = 0; i < dayInMonth; i++) {
-    StateObject.startDays.push(null)
-  }
+  StateObject.startDays = Array(dayInMonth).fill(null);
 }())
-
 
 class Calendar extends React.Component {
   constructor() {
@@ -77,8 +74,8 @@ class Calendar extends React.Component {
   }
 
   filterDays(year, month) {
-    var max = year < StateObject.dateNow.year ||  (year == StateObject.dateNow.year && month < StateObject.dateNow.month);
-    var min = year > StateObject.minDate.year ||  (year == StateObject.dateNow.year && month > StateObject.minDate.month)
+    var max = year < StateObject.dateNow.year ||  (year >= StateObject.dateNow.year && month < StateObject.dateNow.month);
+    var min = year > StateObject.minDate.year ||  (year <= StateObject.dateNow.year && month > StateObject.minDate.month);
 
     this.setState({arrowNextActive: max});
     this.setState({arrowPrevActive: min});
@@ -106,6 +103,9 @@ class Calendar extends React.Component {
   showPrevMonth() {
     var year = StateObject.currentYear;
     var month = StateObject.currentMonth;
+
+    if( year == StateObject.minDate.year && month <= StateObject.minDate.month){return};
+
     if (month == 0) {
       year -= 1;
       month = 11;
@@ -122,6 +122,9 @@ class Calendar extends React.Component {
   showNextMonth() {
     var year = StateObject.currentYear;
     var month = StateObject.currentMonth;
+
+    if( year == StateObject.dateNow.year && month >= StateObject.dateNow.month){return};
+
     if (month == 11) {
       year += 1;
       month = 0;
@@ -136,6 +139,7 @@ class Calendar extends React.Component {
   }
 
   render() {
+    console.log(StateObject.currentYear, StateObject.currentMonth, StateObject.minDate);
     var daysMap;
     if (!this.state.visibleDays.length) {
       daysMap = StateObject.startDays;
@@ -151,7 +155,6 @@ class Calendar extends React.Component {
       items: daysMap
     }
     var content = <CalendarBody {...props}/>
-    console.log();
     return (
       <div className="calendar">
         <Header content='Календарь'/>

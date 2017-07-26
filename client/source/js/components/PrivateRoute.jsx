@@ -1,8 +1,8 @@
 import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
 
-function PrivateRoute({user, component: Component, ...rest}){
-
+function PrivateRoute({ onOpenFirst, user, component: Component, ...rest}){
+user ? null : onOpenFirst(location.pathname);
   return(
     <Route {...rest} render={
       props => (

@@ -69,9 +69,6 @@ export function action_getcalendar(data){
 /* auth */
 
 
-export function action_createUser(data){
-  return {type: 'PROMISE', promise:createUser, data: data, actions: ['CREATE_USER_START', 'CREATE_USER_FINISH', 'CREATE_USER_ERROR']};
-}
 export function action_getUser(data){
   return {type: 'PROMISE', promise:getUser, data: data, actions: ['GET_USER_START', 'GET_USER_FINISH', 'GET_USER_ERROR']};
 }

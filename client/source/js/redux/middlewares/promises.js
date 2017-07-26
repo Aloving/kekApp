@@ -9,9 +9,6 @@ const middleware = store => next => action => {
         type: startAction,
         payload: {loading: true}
     });
-
-
-        
         return action.promise(action.data)
         .then(data => {
 

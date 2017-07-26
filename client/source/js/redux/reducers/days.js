@@ -32,7 +32,7 @@ export default function reducer(state = [], action) {
       var j = g[h].items.findIndex(item => {
         return item._id == action.dataFront.itemId;
       })
-      console.log(action);
+
       var newItem = {defaultItem: action.data.defaultItem, _id: action.dataFront.itemId, price: action.dataFront.price, title: action.dataFront.title}
       g[h].items.splice(j, 1, newItem);
       return g;

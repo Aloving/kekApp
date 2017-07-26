@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {action_createUser, action_getToken, action_getUser} from "../../redux/actions";
+import {action_getToken, action_getUser} from "../../redux/actions";
 
 class Login extends React.Component {
   constructor() {
@@ -15,6 +15,7 @@ class Login extends React.Component {
   saveToken(token) {
     localStorage.setItem('token', token);
   }
+
   getUser(token){
     this.props.getUser({token: token})
   }
@@ -23,7 +24,6 @@ class Login extends React.Component {
     evt.preventDefault();
     var data = {username: this.username.value, password: this.password.value}
     this.props.getToken(data)
-
   }
 
   componentDidMount() {

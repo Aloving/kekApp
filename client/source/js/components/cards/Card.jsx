@@ -27,7 +27,6 @@ class Card extends React.Component {
   }
 
   render() {
-    var counter = 0;
     var summ = 0;
     this.props.items.map((item) => {
       summ += item.price;
@@ -84,7 +83,6 @@ class Card extends React.Component {
           {content}
         </ReactCSSTransitionGroup>
       </div>
-
     )
   }
 }

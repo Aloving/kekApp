@@ -3,10 +3,11 @@ import {connect} from "react-redux";
 import {action_logout} from "../../redux/actions";
 
 class Logout extends React.Component{
+
   componentDidMount(){
 
     localStorage.removeItem('token');
-    this.props.onLogout(location.pathname);
+    this.props.onLogout();
     this.props.logout();
   }
   render(){

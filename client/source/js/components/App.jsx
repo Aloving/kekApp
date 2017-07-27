@@ -11,26 +11,31 @@ import Calendar from "./pages/Calendar";
 import NotFound from "./pages/NotFound";
 import PrivateRoute from "./PrivateRoute";
 
+
+
+
+
+
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       user: null,
-      backToPage: ''
+
     }
+    this.backToPage = '/'
     this.onOpen = this.onOpen.bind(this)
   }
 
   login = user => {
-
-    this.setState({user}, () => this.props.history.push(this.state.backToPage))
+    this.setState({user}, () => this.props.history.push(this.backToPage))
   }
-  logout = (page) => {
-    this.setState({backToPage: page})
+  logout = () => {
+    this.backToPage = '/';
     this.setState({user: null}, () => this.props.history.push('/login'))
   }
   onOpen(page){
-    this.setState({backToPage: page})
+    this.backToPage =  page;
   }
 
   render() {
@@ -39,10 +44,10 @@ class App extends React.Component {
         <Sidebar />
         <div className="main">
           <Switch>
-            <PrivateRoute onOpenFirst={this.onOpen} user={this.state.user} exact path="/" component={Home}/>
-            <PrivateRoute onOpenFirst={this.onOpen} user={this.state.user} path="/stat" component={Stat}/>
-            <PrivateRoute onOpenFirst={this.onOpen} exact user={this.state.user} path="/calendar" component={Calendar}/>
-            <PrivateRoute onOpenFirst={this.onOpen} user={this.state.user} path="/calendar/day/:dayId" component={Day}/>
+            <PrivateRoute pathForRedirect="/" onOpenFirst={this.onOpen} user={this.state.user} exact path="/" component={Home}/>
+            <PrivateRoute pathForRedirect="/stat" onOpenFirst={this.onOpen} user={this.state.user} path="/stat" component={Stat}/>
+            <PrivateRoute pathForRedirect="/calendar" onOpenFirst={this.onOpen} exact user={this.state.user} path="/calendar" component={Calendar}/>
+            <PrivateRoute pathForRedirect="/calendar" onOpenFirst={this.onOpen} user={this.state.user} path="/calendar/day/:dayId" component={Day}/>
             <Route path="/login" render={props => <Login onLogin={this.login}/>}/>
             <Route path="/logout" render={props => <Logout onLogout={this.logout}/>}/>
             <Route component={NotFound}/>

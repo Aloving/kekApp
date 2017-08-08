@@ -1,4 +1,5 @@
 module.exports = [
+
     {
         title: 'Обед',
         defaultItem: true,
@@ -65,3 +66,6 @@ module.exports = [
         create: '10.04.2017'
     }
 ];
+
+
+

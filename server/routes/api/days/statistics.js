@@ -14,9 +14,6 @@ module.exports = (req, res, next) => {
         },
       },
       {
-        $sort: { date: 1 },
-      },
-      {
         $project: {
           date: 1,
           items: 1,
@@ -53,7 +50,7 @@ module.exports = (req, res, next) => {
 
           currentCopy.items = currentCopy.items.reduce(function(prev, current) {
             var haveInArray = prev.filter(
-              item => (item.title == current.title ? item : false)
+              item => (item.title == current.title ? item : false),
             );
 
             haveInArray.length || !haveInArray
@@ -70,7 +67,7 @@ module.exports = (req, res, next) => {
         .map(function(month) {
           month.items.map(function(item) {
             item.defaultItem = marks.some(
-              sItem => sItem.title == item.title && sItem.defaultItem
+              sItem => sItem.title == item.title && sItem.defaultItem,
             );
           });
           return month;
@@ -80,8 +77,20 @@ module.exports = (req, res, next) => {
     });
   }
 
+  function sortByMonth(months) {
+    const sortedMonths = months.sort((a, b) => {
+      const _a = +new Date(a.date.year, a.date.month);
+      const _b = +new Date(b.date.year, b.date.month);
+      return _b - _a;
+    });
+    return sortedMonths;
+  }
+
   getDays()
     .then(monthsSort)
-    .then(sortedMonths => res.json(sortedMonths))
+    .then(sortByMonth)
+    .then(sortedMonths => {
+      return res.json(sortedMonths);
+    })
     .catch(next);
 };

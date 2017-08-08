@@ -4,6 +4,7 @@ const startDaysData = require('./startDaysData');
 const startMarks = require('./startMarks');
 const startUsers = require('./startUsers');
 var userFor = null;
+const cryptPass = require('../../libs/cryptPass');
 require('../../models/Day');
 require('../../models/Mark');
 require('../../models/User');
@@ -38,7 +39,8 @@ function createDays(marks, user) {
     day.userID = user._id;
     day.items.map(cat => {
       cat.defaultItem = marks.some(
-        item => item.title == cat.title && item.defaultItem);
+        item => item.title == cat.title && item.defaultItem,
+      );
     });
     const saveDay = new mongoose.models.Day(day);
     return saveDay.save();
@@ -46,10 +48,16 @@ function createDays(marks, user) {
 }
 
 function createUsers() {
-  return Promise.each(startUsers, user => {
-    const saveUser = new mongoose.models.User(user);
-    return saveUser.save();
-  });
+  const _user = startUsers[0];
+  const cryptedPass = () => cryptPass(_user.password);
+  // const user = Object.assign({},_user, {password: });
+
+  return cryptedPass()
+    .then(hash => Object.assign({}, _user, { password: hash }))
+    .then(readyUser => {
+      const saveUser = new mongoose.models.User(readyUser);
+      return saveUser.save();
+    });
 }
 
 function findUser() {

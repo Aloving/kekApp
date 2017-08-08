@@ -3,8 +3,6 @@ const mongoose = require('../libs/mongoose');
 const Schema = mongoose.Schema;
 const moment = require('../libs/moment');
 
-mongoose.set('debug', process.env.NODE_ENV);
-
 function setFormatData(date) {
   return moment(date, 'DD.MM.YYYY').toISOString();
 }
@@ -38,7 +36,7 @@ const schema = new Schema(
   {
     toObject: { getters: true },
     toJSON: { getters: true },
-  },
+  }
 );
 
 exports.Day = mongoose.model('Day', schema);

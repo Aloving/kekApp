@@ -5,6 +5,7 @@ const User = require(`${__base}/models/User`).User;
 const decryptPass = require(`${__base}/libs/decryptPass`);
 
 exports.post = (req, res, next) => {
+  console.log(123123);
   const username = req.body.username;
   const password = req.body.password;
 
@@ -14,6 +15,7 @@ exports.post = (req, res, next) => {
 
   getUser()
     .then(user => {
+      console.log(user);
       if (!user) next({ status: 401 });
       return decryptPass(password, user.password);
     })
@@ -23,4 +25,6 @@ exports.post = (req, res, next) => {
     })
     .then(token => res.json({ token }))
     .catch(err => next(err));
+
+    return false;
 };

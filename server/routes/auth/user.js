@@ -4,6 +4,9 @@ const User = require(`${__base}/models/User`).User;
 const config = require(`${__base}/config`);
 const cryptPass = require(`${__base}/libs/cryptPass`);
 
+const createEmptyDay = require(`${__base}/libs/addDay`);
+const moment = require(`${__base}/libs/moment`);
+
 exports.post = (req, res, next) => {
   const user = User();
   const username = req.body.username;
@@ -14,8 +17,14 @@ exports.post = (req, res, next) => {
       user.password = hash;
       return user.save();
     })
+    .then(savedUser => {
+      createEmptyDay(moment(Date.now()).format('DD.MM.YYYY'), savedUser);
+      return savedUser;
+    })
     .then(response => res.json(response))
     .catch(next);
+
+    return false;
 };
 
 exports.get = (req, res, next) => {
@@ -23,12 +32,13 @@ exports.get = (req, res, next) => {
 
   if (!xAuth) next({ status: 401 });
 
-  const getDecodeJson = () => new Promise((resolve, reject) => {
-    jwt.verify(xAuth, config.get('secretkey'), (err, decoded) => {
-      if (err) return reject(err);
-      return resolve(decoded);
+  const getDecodeJson = () =>
+    new Promise((resolve, reject) => {
+      jwt.verify(xAuth, config.get('secretkey'), (err, decoded) => {
+        if (err) return reject(err);
+        return resolve(decoded);
+      });
     });
-  });
 
   getDecodeJson()
     .then(decoded => User.findOne({ username: decoded.username }))

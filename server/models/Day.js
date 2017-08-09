@@ -20,7 +20,6 @@ const schema = new Schema(
     date: {
       type: Date,
       default: Date.now,
-      unique: true,
       required: true,
       get: getFormatData,
       set: setFormatData,

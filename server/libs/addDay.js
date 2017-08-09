@@ -10,11 +10,12 @@ function open() {
   });
 }
 
-function findUsers() {
-  return User.find({});
+function findUsers(fUsers = {}) {
+  return User.find(fUsers);
 }
 
 function createDays(users, date) {
+  console.log(users, date);
   return Promise.each(users, user => {
     const Day = new mongoose.models.Day({
       date,
@@ -25,11 +26,10 @@ function createDays(users, date) {
   });
 }
 
-async function startFunc(fromDate) {
+async function startFunc(fromDate, forUser = {}) {
   await open();
-  const users = await findUsers();
+  const users = await findUsers(forUser);
   await createDays(users, fromDate);
-  mongoose.disconnect();
 }
 
 module.exports = startFunc;

@@ -7,17 +7,14 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const CronJob = require('cron').CronJob;
 const moment = require('./libs/moment');
-
 const createEmptyDay = require('./libs/addDay');
 
 const app = express();
 
+
 /*
 TODO LIST
-  1. registration data - done
-  2. create day for every users - done
-  3. sorting month on statistic - done
-  4. sort marks by month
+  1. sort marks by month
 */
 
 // routes

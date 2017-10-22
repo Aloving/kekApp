@@ -1,10 +1,9 @@
 .mark {
-
-
+  text-transform: capitalize;
   display: inline-block;
   padding: 6px 6px;
   border-radius: 6px;
-min-height: 30px;
+  min-height: 30px;
   min-width: 23%;
   text-align: center;
   line-height: 1;
@@ -38,7 +37,5 @@ min-height: 30px;
     background: $mainColor;
     color: #fff;
     border: 1px solid $mainColor;
-
-
   }
 }

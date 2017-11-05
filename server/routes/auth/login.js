@@ -5,7 +5,6 @@ const User = require(`${__base}/models/User`).User;
 const decryptPass = require(`${__base}/libs/decryptPass`);
 
 exports.post = (req, res, next) => {
-  console.log(123123);
   const username = req.body.username;
   const password = req.body.password;
 
